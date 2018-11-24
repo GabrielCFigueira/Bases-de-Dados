@@ -115,6 +115,7 @@ values(:numTelefone, :instanteChamada, :nomePessoa, :moradaLocal, :numProcessoSo
         }
 
         $db->commit();
+        $db = null;
 
     }
     catch (PDOException $e)

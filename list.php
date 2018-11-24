@@ -5,18 +5,18 @@
     <body>
 <?php
 
-function printQuery($result) {
-    echo("<table border='5'>"); 
-    $result->setFetchMode(PDO::FETCH_ASSOC);   
-    while($row = $result->fetch()){ 
-        echo("<tr>"); 
-        foreach($row as $key=>$val) { 
-            echo("<td> $key : $val </td>\n"); 
+    function printQuery($result) {
+        echo("<table border='5'>"); 
+        $result->setFetchMode(PDO::FETCH_ASSOC);   
+        while($row = $result->fetch()){ 
+            echo("<tr>"); 
+            foreach($row as $key=>$val) { 
+                echo("<td> $key : $val </td>\n"); 
+            }
+            echo("</tr>");
         }
-        echo("</tr>");
+        echo("</table>");
     }
-    echo("</table>");
-}
 
     $table = $_REQUEST['table'];
 
@@ -34,9 +34,10 @@ function printQuery($result) {
 
 
 
-    if ($table == "ProcessoSocorro") {
+    if ($table == "Processo") {
 
-        $result = $db->prepare($listProcessoSocorro);
+        $sql = "select * from ProcessoSocorro;";
+        $result = $db->prepare($sql);
 
         $result->execute();
 
