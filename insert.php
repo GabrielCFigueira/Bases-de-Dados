@@ -12,14 +12,14 @@
     $insertLocal = "insert into Local(moradaLocal) values(:moradaLocal)";
     $insertEvento = "insert into EventoEmergencia(numTelefone, instanteChamada, nomePessoa, 
 moradaLocal, numProcessoSocorro) values(:numTelefone, :instanteChamada, :nomePessoa, 
-:moradaLocal, :numProcessoSocorro)"
+:moradaLocal, :numProcessoSocorro)";
     $insertProcesso = "insert into ProcessoSocorro(numProcessoSocorro) values(:numProcessoSocorro)";
     $insertMeio = "insert into Meio(numMeio, nomeMeio, nomeEntidade) values(:numMeio, :nomeMeio, 
 :nomeEntidade)";
     $insertEntidade = "insert into EntidadeMeio(nomeEntidade) values(:nomeEntidade)";
-    $insertMeioCombate = "insert into MeioCombate(numMeio, nomeEntidade) values(:numMeio, :nomeEntidade);"
-    $insertMeioApoio = "insert into MeioApoio(numMeio, nomeEntidade) values(:numMeio, :nomeEntidade);"
-    $insertMeioSocorro = "insert into MeioSocorro(numMeio, nomeEntidade) values(:numMeio, :nomeEntidade);"
+    $insertMeioCombate = "insert into MeioCombate(numMeio, nomeEntidade) values(:numMeio, :nomeEntidade)";
+    $insertMeioApoio = "insert into MeioApoio(numMeio, nomeEntidade) values(:numMeio, :nomeEntidade)";
+    $insertMeioSocorro = "insert into MeioSocorro(numMeio, nomeEntidade) values(:numMeio, :nomeEntidade)";
 
 
     try 
@@ -27,7 +27,7 @@ moradaLocal, numProcessoSocorro) values(:numTelefone, :instanteChamada, :nomePes
         $user="ist186426";		// -> replace by the user name
         $host="db.ist.utl.pt";	        // -> server where postgres is running
         $port=5432;			// -> default port where Postgres is installed
-        $password="ytub0362";	        // -> replace with the password
+        $password="gqck3074";	        // -> replace with the password
         $dbname = $user;		// -> by default the name of the database is the name of the user
         
         $db = new PDO("pgsql:host=$host;dbname=$dbname", $user, $password);

@@ -22,14 +22,14 @@
     $insertLocal = "insert into Local(moradaLocal) values(:moradaLocal)";
     $insertEvento = "insert into EventoEmergencia(numTelefone, instanteChamada, nomePessoa, 
 moradaLocal, numProcessoSocorro) values(:numTelefone, :instanteChamada, :nomePessoa, 
-:moradaLocal, :numProcessoSocorro)"
+:moradaLocal, :numProcessoSocorro)";
     $insertProcesso = "insert into ProcessoSocorro(numProcessoSocorro) values(:numProcessoSocorro)";
     $insertMeio = "insert into Meio(numMeio, nomeMeio, nomeEntidade) values(:numMeio, :nomeMeio, 
 :nomeEntidade)";
     $insertEntidade = "insert into EntidadeMeio(nomeEntidade) values(:nomeEntidade)";
-    $insertMeioCombate = "insert into MeioCombate(numMeio, nomeEntidade) values(:numMeio, :nomeEntidade);"
-    $insertMeioApoio = "insert into MeioApoio(numMeio, nomeEntidade) values(:numMeio, :nomeEntidade);"
-    $insertMeioSocorro = "insert into MeioSocorro(numMeio, nomeEntidade) values(:numMeio, :nomeEntidade);"
+    $insertMeioCombate = "insert into MeioCombate(numMeio, nomeEntidade) values(:numMeio, :nomeEntidade)";
+    $insertMeioApoio = "insert into MeioApoio(numMeio, nomeEntidade) values(:numMeio, :nomeEntidade)";
+    $insertMeioSocorro = "insert into MeioSocorro(numMeio, nomeEntidade) values(:numMeio, :nomeEntidade)";
 
 
     
@@ -40,9 +40,9 @@ instanteChamada = :instanteChamada";
     $removeProcesso = "delete from ProcessoSocorro where numProcessoSocorro = :numProcessoSocorro";
     $removeMeio = "delete from Meio where numMeio = :numMeio and nomeEntidade = :nomeEntidade";
     $removeEntidade = "delete from EntidadeMeio where nomeEntidade = :nomeEntidade";
-    $removeMeioCombate = "delete from MeioCombate where numMeio = :numMeio and nomeEntidade = :nomeEntidade"
-    $removeMeioApoio = "delete from MeioApoio where numMeio = :numMeio and nomeEntidade = :nomeEntidade"
-    $removeMeioSocorro = "delete from MeioSocorro where numMeio = :numMeio and nomeEntidade = :nomeEntidade"
+    $removeMeioCombate = "delete from MeioCombate where numMeio = :numMeio and nomeEntidade = :nomeEntidade";
+    $removeMeioApoio = "delete from MeioApoio where numMeio = :numMeio and nomeEntidade = :nomeEntidade";
+    $removeMeioSocorro = "delete from MeioSocorro where numMeio = :numMeio and nomeEntidade = :nomeEntidade";
 
 
 
