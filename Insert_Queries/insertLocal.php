@@ -23,9 +23,7 @@
 
         if ($table == "Local") {
 
-            echo("<p> funcionou</p>");
-
-            $moradaLocal = $_REQUEST['moradaLocal'];
+            $moradaLocal = $_POST['moradaLocal'];
 
 
             $sql = "insert into Local(moradaLocal) values(:moradaLocal);";
