@@ -20,7 +20,7 @@
 
         $db->beginTransaction(); 
 
-
+        echo("<p> "$table"</p>");
         if ($table == "Local") {
 
             echo("<p> funcionou</p>");
