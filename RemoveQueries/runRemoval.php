@@ -25,7 +25,7 @@
             $moradaLocal = $_POST['moradaLocal'];
 
 
-            $sql = "insert into Local(moradaLocal) values(:moradaLocal);";
+            $sql = "delete from Local where moradaLocal= :moradaLocal;";
             $result = $db->prepare($sql);
             $result->execute([':moradaLocal' => $moradaLocal]);
 
@@ -34,16 +34,12 @@
 
             $numTelefone = $_REQUEST['numTelefone'];
             $instanteChamada = $_REQUEST['instanteChamada'];
-            $nomePessoa = $_REQUEST['nomePessoa'];
-            $moradaLocal = $_REQUEST['moradaLocal'];
-            $numProcessoSocorro = $_REQUEST['numProcessoSocorro'];
 
 
-            $sql = "insert into EventoEmergencia(numTelefone, instanteChamada, nomePessoa, moradaLocal, numProcessoSocorro) 
-values(:numTelefone, :instanteChamada, :nomePessoa, :moradaLocal, :numProcessoSocorro);";
+            $sql = "delete from EventoEmergencia where numTelefone = :numTelefone and 
+            instanteChamada = :instanteChamada;";
             $result = $db->prepare($sql);   
-            $result->execute([':moradaLocal' => $moradaLocal, ':numTelefone' => $numTelefone, ':instanteChamada' => $instanteChamada,
-':nomePessoa' => $nomePessoa, ':numProcessoSocorro' => $numProcessoSocorro]);
+            $result->execute([':numTelefone' => $numTelefone, ':instanteChamada' => $instanteChamada]);
 
 
         } else  if ($table == "Processo") {
@@ -51,7 +47,7 @@ values(:numTelefone, :instanteChamada, :nomePessoa, :moradaLocal, :numProcessoSo
             $numProcessoSocorro = $_REQUEST['numProcessoSocorro'];
 
 
-            $sql = "insert into ProcessoSocorro(numProcessoSocorro) values(:numProcessoSocorro);";
+            $sql = "delete from ProcessoSocorro where numProcessoSocorro = :numProcessoSocorro";;
             $result = $db->prepare($sql);
             $result->execute([':numProcessoSocorro' => $numProcessoSocorro]);
 
@@ -59,20 +55,19 @@ values(:numTelefone, :instanteChamada, :nomePessoa, :moradaLocal, :numProcessoSo
         } else  if ($table == "Meio") {
 
             $numMeio = $_REQUEST['numMeio'];
-            $nomeMeio = $_REQUEST['nomeMeio'];
             $nomeEntidade = $_REQUEST['nomeEntidade'];
 
 
-            $sql = "insert into Meio(numMeio, nomeMeio, nomeEntidade) values(:numMeio, :nomeMeio, :nomeEntidade);";
+            $sql = "delete from Meio where numMeio = :numMeio and nomeEntidade = :nomeEntidade";
             $result = $db->prepare($sql);
-            $result->execute([':numMeio' => $numMeio, ':nomeMeio' => $nomeMeio, ':nomeEntidade' => $nomeEntidade]);
+            $result->execute([':numMeio' => $numMeio, ':nomeEntidade' => $nomeEntidade]);
 
 
         } else  if ($table == "Entidade") {
 
             $nomeEntidade = $_REQUEST['nomeEntidade'];
 
-            $sql = "insert into EntidadeMeio(nomeEntidade) values(:nomeEntidade);";
+            $sql = "delete from EntidadeMeio where nomeEntidade = :nomeEntidade";
             $result = $db->prepare($insertEntidade);
             $result->execute([':nomeEntidade' => $nomeEntidade]);
 
@@ -83,7 +78,7 @@ values(:numTelefone, :instanteChamada, :nomePessoa, :moradaLocal, :numProcessoSo
             $nomeEntidade = $_REQUEST['nomeEntidade'];
 
 
-            $sql = "insert into MeioCombate(numMeio, nomeEntidade) values(:numMeio, :nomeEntidade);";
+            $sql = "delete from MeioCombate where numMeio = :numMeio and nomeEntidade = :nomeEntidade";
             $result = $db->prepare($insertMeioCombate);
             $result->execute([':numMeio' => $numMeio, ':nomeMeio' => $nomeMeio]);
 
@@ -94,7 +89,7 @@ values(:numTelefone, :instanteChamada, :nomePessoa, :moradaLocal, :numProcessoSo
             $nomeEntidade = $_REQUEST['nomeEntidade'];
 
 
-            $sql = "insert into MeioApoio(numMeio, nomeEntidade) values(:numMeio, :nomeEntidade);";
+            $sql = "delete from MeioApoio where numMeio = :numMeio and nomeEntidade = :nomeEntidade";
             $result = $db->prepare($insertMeioCombate);
             $result->execute([':numMeio' => $numMeio, ':nomeMeio' => $nomeMeio]);
 
@@ -105,7 +100,7 @@ values(:numTelefone, :instanteChamada, :nomePessoa, :moradaLocal, :numProcessoSo
             $nomeEntidade = $_REQUEST['nomeEntidade'];
 
 
-            $sql = "insert into MeioSocorro(numMeio, nomeEntidade) values(:numMeio, :nomeEntidade);";
+            $sql = "delete from MeioSocorro where numMeio = :numMeio and nomeEntidade = :nomeEntidade";
             $result = $db->prepare($insertMeioCombate);
             $result->execute([':numMeio' => $numMeio, ':nomeMeio' => $nomeMeio]);
 
@@ -115,6 +110,7 @@ values(:numTelefone, :instanteChamada, :nomePessoa, :moradaLocal, :numProcessoSo
         }
 
         $db->commit();
+        $db = null;
 
     }
     catch (PDOException $e)

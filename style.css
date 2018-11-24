@@ -10,6 +10,25 @@
     text-shadow: #EDEDED 3px 2px 0;
 }
 
+#input_style {
+    width: 200px;
+    padding: 10px 10px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 2px solid #dddddd;
+    border-radius: 50px;
+    outline: none;
+    font-size: 12px;
+    -webkit-transition: width .35s ease-in-out;
+    transition: width .35s ease-in-out;
+}
+
+#input_style:focus{
+    width: 500px;
+    border-color: #555555;
+    
+}
+
 #menu, #menu ul {
     margin: 0;
     padding: 0;
