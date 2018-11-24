@@ -1,9 +1,79 @@
 ﻿<html>
     <head>
         <title> Gestão Florestal </title>
+        <link rel="stylesheet" href="style.css"/>
     </head>
     <body>
-        <table border=\"0\" cellspacing=\"5\">
+        <center>
+            <h1>Sistema de Gestão de Incêndios Florestais ​no SGBD POSTGRES</h1>
+        </center>
+        <ul id="menu">
+            <li><a href="#">Locais</a>
+                <ul>
+                    <li><a href="#">Inserir</a></li>
+                    <li><a href="#">Remover</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Eventos de Emergência</a>
+                <ul>
+                    <li><a href="#">Inserir</a></li>
+                    <li><a href="#">Remover</a></li>
+                    <li><a href="#">Associar Processo</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Processos de Socorro</a>
+                <ul>
+                    <li><a href="#">Inserir</a></li>
+                    <li><a href="#">Remover</a></li>
+                    <li><a href="#">Listar</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Meios</a>
+                <ul>
+                    <li><a href="#">Inserir</a></li>
+                    <li><a href="#">Remover</a></li>
+                    <li><a href="#">Listar</a></li>
+                    <li><a href="#">Combate</a>
+                        <ul>
+                            <li><a href="#">Inserir</a></li>
+                            <li><a href="#">Editar</a></li>
+                            <li><a href="#">Remover</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Apoio</a>
+                        <ul>
+                            <li><a href="#">Inserir</a></li>
+                            <li><a href="#">Editar</a></li>
+                            <li><a href="#">Remover</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Socorro</a>
+                        <ul>
+                            <li><a href="#">Inserir</a></li>
+                            <li><a href="#">Editar</a></li>
+                            <li><a href="#">Remover</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Associar Processo</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Entidades</a>
+                <ul>
+                    <li><a href="#">Inserir</a></li>
+                    <li><a href="#">Remover</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Listagens</a>
+                <ul>
+                    <li><a href="#">Meios acionados num processo de socorro</a></li>
+                    <li><a id="bigtext" href="#">
+                    Meios de socorro em processos de socorro originados num dado local de incêndio</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <!--<table border=\"0\" cellspacing=\"5\">
             <tr>
                 <td><a href=\"balance.php\">Listar Processos Socorro</a></td>
             </tr>
@@ -21,30 +91,30 @@
             </tr>
         
             <tr>
-                <td><a href=\"balance.php\">Listar Meios accionados num Processo de Socorro</a></td>
+                <td><a href=\"balance.php\">Associar Processos de Socorro a Eventos de Emergência</a></td>
                     
-                    <!--
+                    
                     <form action='listMeiosProc.php' method='post'>
                         <p>Listar Meios accionados num Processo de Socorro</p>
                         <p>Número de Processo de Socorro: <input type='text' name='numProcessoSocorro'/>
                         <input type='submit' value='Submit'/></p>
-                    </form>-->
+                    </form>
                 </td>
             </tr>
         
             <tr>
-                <td><a href=\"balance.php\">Listar Meios accionados em Processos de Socorro num dado local de incendio</a></td>
+                <td><a href=\"balance.php\">Associar Processos de Socorro a Eventos de Emergência</a></td>
                    
-                    <!--
+                    
                         <form action='listMeiosLocal.php' method='post'>
                         <p>Listar Meios accionados em Processos de Socorro num dado local de incendio</p>
                         <p>Morada do Local: <input type='text' name='moradaLocal'/>
                         <input type='submit' value='Submit'/></p>
-                    </form> -->
+                    </form> 
                 </td>
             </tr>
         
-        </table>
+        </table>-->
     </body>
 </html>
                 
