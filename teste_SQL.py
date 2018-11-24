@@ -66,7 +66,7 @@ lista_nomes = ['Alice','Sophia','Helena','Valentina','Laura','Isabella',
 'Maria Alice','Isabelly','Lavínia','Esther','Sarah','Elisa',
 'Antonella','Rafaela','Maria Cecília','Liz','Marina',
 'Nicole','Maitê','Isis','Alícia','Luna','Rebeca','Agatha',
-'Letícia','Maria-','Gabriela','Ana Laura','Catarina','Clara',
+'Letícia','Maria','Gabriela','Ana Laura','Catarina','Clara',
 'Ana Beatriz','Vitória','Olívia','Maria Fernanda','Emilly',
 'Maria Valentina','Milena','Maria Helena','Bianca','Larissa',
 'Mirella','Maria Flor','Allana','Ana Sophia','Clarice','Pietra',
@@ -94,6 +94,257 @@ lista_nomes = ['Alice','Sophia','Helena','Valentina','Laura','Isabella',
 'Tomás','Lucas Gabriel','André','José','Yago','Danilo',
 'Anthony Gabriel','Ruan','Miguel Henrique','Oliver']
 
+lista_textos = ['A auditoria marcada para o acontecimento 1 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 2 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 3 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 4 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 5 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 6 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 7 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 8 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 9 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 10 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 11 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 12 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 13 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 14 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 15 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 16 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 17 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 18 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 19 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 20 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 21 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 22 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 23 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 24 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 25 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 26 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 27 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 28 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 29 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 30 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 31 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 32 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 33 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 34 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 35 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 36 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 37 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 38 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 39 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 40 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 41 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 42 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 43 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 44 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 45 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 46 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 47 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 48 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 49 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 50 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 51 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 52 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 53 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 54 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 55 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 56 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 57 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 58 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 59 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 60 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 61 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 62 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 63 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 64 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 65 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 66 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 67 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 68 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 69 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 70 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 71 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 72 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 73 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 74 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 75 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 76 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 77 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 78 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 79 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 80 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 81 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 82 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 83 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 84 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 85 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 86 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 87 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 88 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 89 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 90 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 91 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 92 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 93 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 94 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 95 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 96 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 97 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 98 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 99 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 100 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 101 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 102 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 103 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 104 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 105 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 106 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 107 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 108 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 109 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 110 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 111 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 112 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 113 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 114 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 115 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 116 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 117 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 118 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 119 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 120 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 121 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 122 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 123 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 124 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 125 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 126 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 127 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 128 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 129 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 130 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 131 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 132 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 133 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 134 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 135 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 136 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 137 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 138 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 139 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 140 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 141 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 142 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 143 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 144 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 145 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 146 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 147 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 148 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 149 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 150 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 151 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 152 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 153 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 154 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 155 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 156 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 157 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 158 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 159 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 160 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 161 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 162 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 163 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 164 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 165 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 166 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 167 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 168 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 169 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 170 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 171 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 172 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 173 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 174 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 175 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 176 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 177 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 178 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 179 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 180 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 181 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 182 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 183 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 184 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 185 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 186 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 187 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 188 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 189 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 190 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 191 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 192 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 193 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 194 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 195 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 196 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 197 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 198 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 199 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 200 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 201 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 202 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 203 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 204 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 205 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 206 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 207 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 208 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 209 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 210 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 211 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 212 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 213 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 214 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 215 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 216 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 217 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 218 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 219 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 220 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 221 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 222 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 223 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 224 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 225 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 226 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 227 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 228 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 229 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 230 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 231 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 232 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 233 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 234 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 235 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 236 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 237 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 238 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 239 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 240 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 241 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 242 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 243 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 244 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 245 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 246 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 247 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 248 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 249 tem como efeito decidir os procedimentos a seguir.',
+'A auditoria marcada para o acontecimento 250 tem como efeito decidir os procedimentos a seguir.']
+
 dicionario_video_Inicio_camara = {}
 dicionario_video_Inicio_Fim = {}
 dicionario_meioApoio = {}
@@ -105,12 +356,17 @@ lista_camaras_reforco_Vigia_Monchique = []
 dicionario_reforco_Vigia_Monchique = {}
 lista_camaras_dicionario_Vigia_Monchique = []
 
+lista_numProcessos_reforco_Acciona_Audita = []
+
 iteracoes_minimas = 100
 iteracoes_meio = 500
 iteracoes_vigia = 300
 iteracoes_eventoemergencia = 150
 iteracoes_video = 150
 iteracoes_segmentovideo = 3
+iteracoes_acciona = 200
+iteracoes_audita = 120
+iteracoes_solicita = 120
 
 def Camara():
     f.write("----------------------------------------\n")
@@ -166,7 +422,7 @@ def Meio():
         nums[k]+=[rand]
         f.write("insert into Meio(numMeio, nomeMeio, nomeEntidade) values("+str(k)+", 'Meio"+str(j)+"', 'EntidadeMeio"+str(rand)+"');\n")
         dici[k] += ["EntidadeMeio"+str(rand)]
-        if j%(iteracoes_meio//100) == 0:
+        if j%(iteracoes_meio//iteracoes_minimas) == 0:
             k+=1
     return dici
 
@@ -175,17 +431,42 @@ def Meio_Seleciona(string, dici):
     f.write("-- " + string + " - Values\n")
     f.write("----------------------------------------\n")
     lista_rnd = []
+
     for i in range(iteracoes_minimas):
         randM = int(random.uniform(1,iteracoes_minimas+1))
         while randM in lista_rnd:
             randM = int(random.uniform(1,iteracoes_minimas+1))
         lista_rnd += [randM]
-        nomeEntidade = dici[randM][int(random.uniform(0,iteracoes_meio//100))]
+        
+        index1 = int(random.uniform(0,iteracoes_meio//iteracoes_minimas))
+        nomeEntidade = dici[randM][index1]
         f.write("insert into "+string+"(numMeio, nomeEntidade) values(" + str(randM) + ", '" + nomeEntidade + "');\n")
         if string == "MeioApoio":
-            dicionario_meioApoio[randM] = nomeEntidade
+            dicionario_meioApoio[randM] = [nomeEntidade]
         elif string == "MeioSocorro":
-            dicionario_meioSocorro[randM] = nomeEntidade
+            dicionario_meioSocorro[randM] = [nomeEntidade]
+        
+        index2 = int(random.uniform(0,iteracoes_meio//iteracoes_minimas))
+        while index1 == index2:
+            index2 = int(random.uniform(0,iteracoes_meio//iteracoes_minimas))
+
+        nomeEntidade = dici[randM][index2]
+        f.write("insert into "+string+"(numMeio, nomeEntidade) values(" + str(randM) + ", '" + nomeEntidade + "');\n")
+        if string == "MeioApoio":
+            dicionario_meioApoio[randM] += [nomeEntidade]
+        elif string == "MeioSocorro":
+            dicionario_meioSocorro[randM] += [nomeEntidade]
+        
+        index3 = int(random.uniform(0,iteracoes_meio//iteracoes_minimas))
+        while index1 == index3 or index2 == index3:
+            index3 = int(random.uniform(0,iteracoes_meio//iteracoes_minimas))
+
+        nomeEntidade = dici[randM][index3]
+        f.write("insert into "+string+"(numMeio, nomeEntidade) values(" + str(randM) + ", '" + nomeEntidade + "');\n")
+        if string == "MeioApoio":
+            dicionario_meioApoio[randM] += [nomeEntidade]
+        elif string == "MeioSocorro":
+            dicionario_meioSocorro[randM] += [nomeEntidade]
 
 def Vigia():
     global lista_camaras_reforco_Vigia_Monchique
@@ -224,23 +505,24 @@ def Vigia():
         print("Monchique - numCamara = "+ str(e))
 
 def EventoEmergencia():
+    global lista_numProcessos_reforco_Acciona_Audita
     f.write("\n\n----------------------------------------\n")
     f.write("-- EventoEmergencia - Values\n")
     f.write("----------------------------------------\n")
 
-    oliveira_do_hospital = int(random.uniform(1, 101))
-    monchique = int(random.uniform(1, 101))
+    oliveira_do_hospital = int(random.uniform(1, iteracoes_minimas+1))
+    monchique = int(random.uniform(1, iteracoes_minimas+1))
 
-    f.write("insert into EventoEmergencia(numTelefone, instanteChamada, nomePessoa, moradaLocal, numProcessoSocorro) values(" + 
-    str(int(random.uniform(910000000, 930000000))) + ", '" + str(datetime.datetime(2018, 9, 10, 20, 31))  + "', 'Alice', 'Oliveira do Hospital', " + str(oliveira_do_hospital) + ");\n")
-    f.write("insert into EventoEmergencia(numTelefone, instanteChamada, nomePessoa, moradaLocal, numProcessoSocorro) values(" + 
-    str(int(random.uniform(910000000, 930000000))) + ", '" + str(datetime.datetime(2018, 8, 30, 18, 59))  + "', 'Oliver', 'Monchique', " + str(monchique) + ");\n")
+    f.write("insert into EventoEmergencia(numTelefone, instanteChamada, nomePessoa, moradaLocal, numProcessoSocorro) values('" + 
+    str(int(random.uniform(910000000, 930000000))) + "', '" + str(datetime.datetime(2018, 9, 10, 20, 31))  + "', 'Alice', 'Oliveira do Hospital', " + str(oliveira_do_hospital) + ");\n")
+    f.write("insert into EventoEmergencia(numTelefone, instanteChamada, nomePessoa, moradaLocal, numProcessoSocorro) values('" + 
+    str(int(random.uniform(910000000, 930000000))) + "', '" + str(datetime.datetime(2018, 8, 30, 18, 59))  + "', 'Oliver', 'Monchique', " + str(monchique) + ");\n")
     lst_local = [0,1]
     lst_nome = [0,len(lista_nomes)-1]
 
-
-
     dicio_localidades_numProcesso = {}
+
+    count_Oliveira = 0
 
     for i in range(iteracoes_minimas):
         ano = int(random.uniform(2017, 2019))
@@ -259,8 +541,8 @@ def EventoEmergencia():
         elif i == monchique:
             dicio_localidades_numProcesso[i] += [lista_localidades[1]]
 
-        f.write("insert into EventoEmergencia(numTelefone, instanteChamada, nomePessoa, moradaLocal, numProcessoSocorro) values(" + 
-        str(int(random.uniform(910000000, 930000000))) + ", '" + str(datetime.datetime(ano, mes, dia, hora, minutos))  + "', '" +
+        f.write("insert into EventoEmergencia(numTelefone, instanteChamada, nomePessoa, moradaLocal, numProcessoSocorro) values('" + 
+        str(int(random.uniform(910000000, 930000000))) + "', '" + str(datetime.datetime(ano, mes, dia, hora, minutos))  + "', '" +
          lista_nomes[rand_nomes] + "', '" + lista_localidades[rand_loc] + "', " + str(i+1) + ");\n")
 
     for i in range(iteracoes_eventoemergencia-iteracoes_minimas):
@@ -270,7 +552,10 @@ def EventoEmergencia():
         hora = int(random.uniform(0, 24))
         minutos = int(random.uniform(0, 60))
         
-        rand_loc = int(random.uniform(0,len(lista_localidades)))
+        if int(random.uniform(1,101))%3 == 0:
+            rand_loc = 0
+        else:
+            rand_loc = int(random.uniform(0,len(lista_localidades)))
 
         rand_nomes = int(random.uniform(0,len(lista_nomes)))
 
@@ -281,14 +566,20 @@ def EventoEmergencia():
 
         dicio_localidades_numProcesso[numProc] += [lista_localidades[rand_loc]]
 
+        if rand_loc==0:
+            count_Oliveira += 1
+            lista_numProcessos_reforco_Acciona_Audita += [numProc]
+
         if int(random.uniform(0,200))%3 == 0:
-            f.write("insert into EventoEmergencia(numTelefone, instanteChamada, nomePessoa, moradaLocal, numProcessoSocorro) values(" + 
-            str(int(random.uniform(910000000, 930000000))) + ", '" + str(datetime.datetime(ano, mes, dia, hora, minutos))  + "', '" +
+            f.write("insert into EventoEmergencia(numTelefone, instanteChamada, nomePessoa, moradaLocal, numProcessoSocorro) values('" + 
+            str(int(random.uniform(910000000, 930000000))) + "', '" + str(datetime.datetime(ano, mes, dia, hora, minutos))  + "', '" +
             lista_nomes[rand_nomes] + "', '" + lista_localidades[rand_loc] + "', NULL);\n")
         else:
-            f.write("insert into EventoEmergencia(numTelefone, instanteChamada, nomePessoa, moradaLocal, numProcessoSocorro) values(" + 
-            str(int(random.uniform(910000000, 930000000))) + ", '" + str(datetime.datetime(ano, mes, dia, hora, minutos))  + "', '" +
+            f.write("insert into EventoEmergencia(numTelefone, instanteChamada, nomePessoa, moradaLocal, numProcessoSocorro) values('" + 
+            str(int(random.uniform(910000000, 930000000))) + "', '" + str(datetime.datetime(ano, mes, dia, hora, minutos))  + "', '" +
             lista_nomes[rand_nomes] + "', '" + lista_localidades[rand_loc] + "', " + str(numProc+1) + ");\n")
+    
+    print("Oliveira do Hospital - EventoEmergencia: " + str(count_Oliveira))
 
 def Video():
     global lista_camaras_dicionario_Vigia_Monchique
@@ -335,12 +626,12 @@ def Video():
         ano = key.year
         mes = key.month
         dia = key.day
-        hora = int(random.uniform(22, 24))
+        hora = int(random.uniform(key.hour+1, 24))
         minutos = int(random.uniform(0, 60))
         Fim = datetime.datetime(ano, mes, dia, hora, minutos)
 
         while Fim <= key:
-            hora = int(random.uniform(22, 24))
+            hora = int(random.uniform(key.hour+1, 24))
             minutos = int(random.uniform(0, 60))
             Fim = datetime.datetime(ano, mes, dia, hora, minutos)
         
@@ -361,6 +652,7 @@ def SegmentoVideo():
     f.write("\n\n----------------------------------------\n")
     f.write("-- SegmentoVideo - Values\n")
     f.write("----------------------------------------\n")
+    
     k=1
 
     index_camara = 0
@@ -375,16 +667,23 @@ def SegmentoVideo():
         interval = horaFim-horaInicio
         interval = int(interval.total_seconds())
 
-        for i in range( int(random.uniform(1,iteracoes_segmentovideo)) ):
+        total = int(random.uniform(0,2))
+        limite = int(random.uniform(1,iteracoes_segmentovideo))
+
+        for i in range( limite ):
             time_to_insert = int(random.uniform(0,interval+1))
             interval -= time_to_insert
-            if interval < 0:
-                interval = 0
+            if i == limite-1 and total == 1:
                 f.write("insert into SegmentoVideo(numSegmento, duracao, dataHoraInicio, numCamara) values(" + str(k) + ", '" + str(interval//3600) + ":" + str((interval%3600)//60) + ":" + str((interval%3600)%60) + "', '" + str(key) + "', " + str(camara) + ");\n")
                 k += 1
-            elif interval != 0:
-                f.write("insert into SegmentoVideo(numSegmento, duracao, dataHoraInicio, numCamara) values(" + str(k) + ", '" + str(time_to_insert//3600) + ":" + str((time_to_insert%3600)//60) + ":" + str((time_to_insert%3600)%60) + "', '" + str(key) + "', " + str(camara) + ");\n")
-                k += 1
+            else:
+                if interval < 0:
+                    interval = 0
+                    f.write("insert into SegmentoVideo(numSegmento, duracao, dataHoraInicio, numCamara) values(" + str(k) + ", '" + str(interval//3600) + ":" + str((interval%3600)//60) + ":" + str((interval%3600)%60) + "', '" + str(key) + "', " + str(camara) + ");\n")
+                    k += 1
+                elif interval != 0:
+                    f.write("insert into SegmentoVideo(numSegmento, duracao, dataHoraInicio, numCamara) values(" + str(k) + ", '" + str(time_to_insert//3600) + ":" + str((time_to_insert%3600)//60) + ":" + str((time_to_insert%3600)%60) + "', '" + str(key) + "', " + str(camara) + ");\n")
+                    k += 1
         """
 
         for i in range(iteracoes_segmentovideo):
@@ -410,6 +709,228 @@ def SegmentoVideo():
     """
     #print("SegmentosVideos duração superior a 60 segundos - Monchique: " + str(index_camara))
 
+def Transporta():
+    f.write("\n\n----------------------------------------\n")
+    f.write("-- Transporta - Values\n")
+    f.write("----------------------------------------\n")
+
+    for key in dicionario_meioSocorro:
+        nomeEntidade = dicionario_meioSocorro[key][int(random.uniform(0,len(dicionario_meioSocorro[key])))]
+        f.write("insert into Transporta(numMeio, nomeEntidade, numVitimas, numProcessoSocorro) values(" + str(key) + ", '" + str(nomeEntidade) + "', " + str(int(random.uniform(1,201))) + ", " + str(int(random.uniform(1,iteracoes_minimas+1))) + ");\n")
+
+def Alocado():
+    f.write("\n\n----------------------------------------\n")
+    f.write("-- Alocado - Values\n")
+    f.write("----------------------------------------\n")
+
+    for key in dicionario_meioApoio:
+        nomeEntidade = dicionario_meioApoio[key][int(random.uniform(0,len(dicionario_meioApoio[key])))]
+        horas = int(random.uniform(0,24))
+        minutos = int(random.uniform(0,60))
+        f.write("insert into Alocado(numMeio, nomeEntidade, numHoras, numProcessoSocorro) values(" + str(key) + ", '" + str(nomeEntidade) + "', '" + str(horas) + ":" + str(minutos) + "', " + str(int(random.uniform(1,iteracoes_minimas+1))) + ");\n")
+
+def Acciona(dici):
+    f.write("\n\n----------------------------------------\n")
+    f.write("-- Acciona - Values\n")
+    f.write("----------------------------------------\n")
+    dici_usado = {}
+    lista_conta_meio = []
+    index_reforco = len(lista_numProcessos_reforco_Acciona_Audita)-1
+    count_Oliveira = 0
+    for i in range(iteracoes_minimas):
+        dici_usado[i+1] = []
+        lista_conta_meio += [0]
+
+    for i in range(iteracoes_acciona):
+        numMeio = int(random.uniform(1,iteracoes_minimas+1))
+        while lista_conta_meio[numMeio-1] == 5 or len(dici_usado[numMeio]) == (iteracoes_meio//iteracoes_minimas):
+            numMeio = int(random.uniform(1,iteracoes_minimas+1))
+        
+        nomeEntidade = dici[numMeio][int(random.uniform(0,len(dici[numMeio])))]
+        
+        while nomeEntidade in dici_usado[numMeio]:
+            nomeEntidade = dici[numMeio][int(random.uniform(0,len(dici[numMeio])))]
+        
+        dici_usado[numMeio] += [nomeEntidade]
+
+        if int(random.uniform(1,1001))%20 == 0 and index_reforco != 0:
+            numProcessoSocorro = lista_numProcessos_reforco_Acciona_Audita[index_reforco]+1
+            index_reforco -= 1
+            count_Oliveira += 1
+        else:
+            numProcessoSocorro = int(random.uniform(1,iteracoes_minimas+1))
+
+        f.write("insert into Acciona(numMeio, nomeEntidade, numProcessoSocorro) values(" + str(numMeio) + ", '" + str(nomeEntidade) + "', " + str(numProcessoSocorro) + ");\n")
+        if numMeio in dicionario_Acciona_numMeio_nomeEntidade.keys():
+            dicionario_Acciona_numMeio_nomeEntidade[numMeio] += [nomeEntidade]
+            dicionario_Acciona_numMeio_numProcessoSocorro[numMeio] += [numProcessoSocorro]
+        else:
+            dicionario_Acciona_numMeio_nomeEntidade[numMeio] = [nomeEntidade]
+            dicionario_Acciona_numMeio_numProcessoSocorro[numMeio] = [numProcessoSocorro]
+        
+        lista_conta_meio[numMeio-1]+=1
+    
+    print("Oliveira do Hospital - Acciona: " + str(count_Oliveira))
+
+def Audita():
+    f.write("\n\n----------------------------------------\n")
+    f.write("-- Audita - Values\n")
+    f.write("----------------------------------------\n")
+
+    dici_usado = {}
+    dici_usado_Processo = {}
+    lista_conta_meio = []
+    temp = []
+
+    indexs_texto = []
+
+    for i in range(iteracoes_minimas):
+        dici_usado[i+1] = []
+        dici_usado_Processo[i+1] = []
+        lista_conta_meio += [0]
+
+    lista_acciona_meios = list(dicionario_Acciona_numMeio_nomeEntidade.keys())
+
+    for i in range(iteracoes_audita):
+        numMeio = lista_acciona_meios[int(random.uniform(0,len(lista_acciona_meios)))]
+
+        while lista_conta_meio[numMeio-1] == len(dicionario_Acciona_numMeio_nomeEntidade[numMeio]) or len(dicionario_Acciona_numMeio_nomeEntidade[numMeio]) == len(dici_usado[numMeio]):
+            numMeio = lista_acciona_meios[int(random.uniform(0,len(lista_acciona_meios)))]
+        
+        index = int(random.uniform(0,len(dicionario_Acciona_numMeio_nomeEntidade[numMeio])))
+        
+        nomeEntidade = dicionario_Acciona_numMeio_nomeEntidade[numMeio][index]
+        
+        while nomeEntidade in dici_usado[numMeio]:
+            index = int(random.uniform(0,len(dicionario_Acciona_numMeio_nomeEntidade[numMeio])))
+            nomeEntidade = dicionario_Acciona_numMeio_nomeEntidade[numMeio][index]
+        
+        dici_usado[numMeio] += [nomeEntidade]
+
+        processoSocorro = dicionario_Acciona_numMeio_numProcessoSocorro[numMeio][index]
+
+        ano = int(random.uniform(2017, 2019))
+        mes = int(random.uniform(1, 13))
+        dia = int(random.uniform(1, 28))
+        hora = int(random.uniform(0, 24))
+        minutos = int(random.uniform(0, 60))
+
+        Inicio = datetime.datetime(ano, mes, dia, hora, minutos)
+
+        while Inicio in temp:
+            ano = int(random.uniform(2017, 2019))
+            mes = int(random.uniform(1, 13))
+            dia = int(random.uniform(1, 28))
+            hora = int(random.uniform(0, 24))
+            minutos = int(random.uniform(0, 60))
+
+            Inicio = datetime.datetime(ano, mes, dia, hora, minutos)
+
+        temp += [Inicio]
+
+        ano = int(random.uniform(2017, 2019))
+        mes = int(random.uniform(1, 13))
+        dia = int(random.uniform(1, 28))
+        hora = int(random.uniform(0, 24))
+        minutos = int(random.uniform(0, 60))
+        Fim = datetime.datetime(ano, mes, dia, hora, minutos)
+
+        while Fim <= Inicio:
+            ano = int(random.uniform(2017, 2019))
+            mes = int(random.uniform(1, 13))
+            dia = int(random.uniform(1, 28))
+            hora = int(random.uniform(0, 24))
+            minutos = int(random.uniform(0, 60))
+            Fim = datetime.datetime(ano, mes, dia, hora, minutos)
+        
+        ano = int(random.uniform(2018, 2020))
+        mes = int(random.uniform(1, 13))
+        dia = int(random.uniform(1, 28))
+        hora = int(random.uniform(0, 24))
+        minutos = int(random.uniform(0, 60))
+        dataAuditoria = datetime.datetime(ano, mes, dia, hora, minutos)
+
+        while dataAuditoria <= datetime.datetime.now():
+            ano = int(random.uniform(2018, 2020))
+            mes = int(random.uniform(1, 13))
+            dia = int(random.uniform(1, 28))
+            hora = int(random.uniform(0, 24))
+            minutos = int(random.uniform(0, 60))
+            dataAuditoria = datetime.datetime(ano, mes, dia, hora, minutos)
+
+        index_texto = int(random.uniform(0,len(lista_textos)))
+
+        while index_texto in indexs_texto:
+            index_texto = int(random.uniform(0,len(lista_textos)))
+        
+        indexs_texto += [index_texto]
+
+        f.write("insert into Audita(idCoordenador, numMeio, nomeEntidade, numProcessoSocorro, dataHoraInicio, dataHoraFim, dataAuditoria, texto) values(" + 
+        str(int(random.uniform(1,iteracoes_minimas+1))) + "," + str(numMeio) + ", '" + str(nomeEntidade) + "', " +
+        str(processoSocorro) + ", '" + str(Inicio) + "', '" + str(Fim) + "', '" +
+        str(dataAuditoria) + "', '" + lista_textos[index_texto] + "');\n" )
+        
+        lista_conta_meio[numMeio-1]+=1
+
+
+def Solicita():
+    f.write("\n\n----------------------------------------\n")
+    f.write("-- Solicita - Values\n")
+    f.write("----------------------------------------\n")
+
+    lista_video = list(dicionario_video_Inicio_camara.keys())
+
+    lista_temp = []
+    inicio_temp = []
+
+    for i in range(iteracoes_solicita):
+        dataInicio = lista_video[int(random.uniform(0,len(lista_video)))]
+
+        while dataInicio in lista_temp:
+            dataInicio = lista_video[int(random.uniform(0,len(lista_video)))]
+        
+        key = dataInicio
+        lista_temp += [key]
+
+        ano = int(random.uniform(key.year, 2020))
+        mes = int(random.uniform(1, 13))
+        dia = int(random.uniform(1, 28))
+        hora = int(random.uniform(0, 24))
+        minutos = int(random.uniform(0, 60))
+
+        Inicio = datetime.datetime(ano, mes, dia, hora, minutos)
+
+        while Inicio in inicio_temp:
+            ano = int(random.uniform(key.year, 2020))
+            mes = int(random.uniform(1, 13))
+            dia = int(random.uniform(1, 28))
+            hora = int(random.uniform(0, 24))
+            minutos = int(random.uniform(0, 60))
+
+            Inicio = datetime.datetime(ano, mes, dia, hora, minutos)
+
+        inicio_temp += [Inicio]
+
+        ano = int(random.uniform(key.year, 2020))
+        mes = int(random.uniform(1, 13))
+        dia = int(random.uniform(1, 28))
+        hora = int(random.uniform(0, 24))
+        minutos = int(random.uniform(0, 60))
+        Fim = datetime.datetime(ano, mes, dia, hora, minutos)
+
+        while Fim <= Inicio:
+            ano = int(random.uniform(key.year, 2020))
+            mes = int(random.uniform(1, 13))
+            dia = int(random.uniform(1, 28))
+            hora = int(random.uniform(0, 24))
+            minutos = int(random.uniform(0, 60))
+            Fim = datetime.datetime(ano, mes, dia, hora, minutos)
+
+        f.write("insert into Solicita(idCoordenador, dataHoraInicioVideo, numCamara, dataHoraInicio, dataHoraFim) values(" +
+        str(int(random.uniform(1,iteracoes_minimas+1))) + ", '" + str(key) + "', " + 
+        str(dicionario_video_Inicio_camara[key]) + ", '" + str(Inicio) + "', '" + str(Fim) + "');\n")
+
+
 Camara()
 Coordenador()
 EntidadeMeio()
@@ -423,6 +944,11 @@ Vigia()
 EventoEmergencia()
 Video()
 SegmentoVideo()
+Transporta()
+Alocado()
+Acciona(dicio)
+Audita()
+Solicita()
 
 f.close()
 
