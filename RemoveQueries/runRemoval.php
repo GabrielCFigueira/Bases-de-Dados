@@ -47,7 +47,7 @@
             $numProcessoSocorro = $_REQUEST['numProcessoSocorro'];
 
 
-            $sql = "delete from ProcessoSocorro where numProcessoSocorro = :numProcessoSocorro";;
+            $sql = "delete from ProcessoSocorro where numProcessoSocorro = :numProcessoSocorro;";
             $result = $db->prepare($sql);
             $result->execute([':numProcessoSocorro' => $numProcessoSocorro]);
 

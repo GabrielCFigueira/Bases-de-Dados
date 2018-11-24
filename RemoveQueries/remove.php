@@ -14,7 +14,7 @@
         <p>Remover Local</p>
         <p>Morada do Local: <input type='text' name='moradaLocal'/>
         <input type='submit' value='Submit'/></p>
-        </form>")
+        </form>");
 
     } else  if ($table == "Evento") {  
 
@@ -24,7 +24,7 @@
         <p>Número de Telefone: <input type='text' name='numTelefone'/>
         <p>Instante da Chamada: <input type='text' name='instanteChamada'/>
         <input type='submit' value='Submit'/></p>
-        </form>")
+        </form>");
 
 
     } else  if ($table == "Processo") {
@@ -34,7 +34,7 @@
         <p>Remover Processo de Socorro</p>
         <p>Número de Processo Socorro: <input type='text' name='numProcessoSocorro'/>
         <input type='submit' value='Submit'/></p>
-        </form>")
+        </form>");
 
     } else  if ($table == "Meio") {
 
@@ -44,7 +44,7 @@
         <p>Número do Meio: <input type='text' name='numMeio'/>
         <p>Nome da Entidade Detentora do Meio: <input type='text' name='nomeEntidade'/>
         <input type='submit' value='Submit'/></p>
-        </form>")
+        </form>");
 
     } else  if ($table == "Entidade") {
 
@@ -53,7 +53,7 @@
         <p>Remover Entidade</p>
         <p>Nome da Entidade : <input type='text' name='nomeEntidade'/>
         <input type='submit' value='Submit'/></p>
-        </form>")
+        </form>");
 
     } else  if ($table == "MeioCombate") {
 
@@ -63,7 +63,7 @@
         <p>Número do Meio: <input type='text' name='numMeio'/>
         <p>Nome do Meio: <input type='text' name='nomeMeio'/>
         <input type='submit' value='Submit'/></p>
-        </form>")
+        </form>");
 
     } else  if ($table == "MeioApoio") {
 
@@ -73,7 +73,7 @@
         <p>Número do Meio: <input type='text' name='numMeio'/>
         <p>Nome do Meio: <input type='text' name='nomeMeio'/>
         <input type='submit' value='Submit'/></p>
-        </form>")
+        </form>");
 
     } else  if ($table == "MeioSocorro") {
 
@@ -83,7 +83,7 @@
         <p>Número do Meio: <input type='text' name='numMeio'/>
         <p>Nome do Meio: <input type='text' name='nomeMeio'/>
         <input type='submit' value='Submit'/></p>
-        </form>")
+        </form>");
 
     } else {
         #error message
