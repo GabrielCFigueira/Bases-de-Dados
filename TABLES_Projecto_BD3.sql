@@ -17,6 +17,19 @@ drop table SegmentoVideo cascade;
 drop table Video cascade;
 drop table Camara cascade;
 
+
+CREATE OR REPLACE FUNCTION  checkEventProc()
+RETURNS TRIGGER
+AS $$
+BEGIN
+    IF NEW.numProcessoSocorro not in(SELECT numProcessoSocorro from EventoEmergencia) THEN
+        RAISERROR('Nao e possivel existir processo de socorro nao estando associado a nenhum evento de emergencia',16,1);
+    END IF;
+END;
+$BODY$ LANGUAGE plpgsqpl;
+
+CREATE TRIGGER checkEvent BEFORE INSERT,UPDATE ON ProcessoSocorro FOR EACH ROW EXECUTE PROCEDURE checkEventProc();
+
 create table Camara(
     numCamara integer not null /*unique*/,
     constraint pk_Camara primary key(numCamara)
