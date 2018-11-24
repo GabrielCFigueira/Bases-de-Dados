@@ -75,42 +75,7 @@ where numMeio = :oldnumMeio and nomeEntidade = :oldnomeEntidade"
     $accioMeioSocorroLocal = null;
 
 
-    echo("<table border=\"0\" cellspacing=\"5\">\n");
-
-    echo("<tr>\n");
-    echo("<td><a href=\"balance.php\">Listar Processos Socorro</a></td>\n");
-    echo("</tr>\n");
-
-    echo("<tr>\n");
-    echo("<td><a href=\"balance.php\">Listar Meios</a></td>\n");
-    echo("</tr>\n");
-
-    echo("<tr>\n");
-    echo("<td><a href=\"balance.php\">Associar Processos de Socorro a Meios</a></td>\n");
-    echo("</tr>\n");
-
-    echo("<tr>\n");
-    echo("<td><a href=\"balance.php\">Associar Processos de Socorro a Eventos de Emergência</a></td>\n");
-    echo("</tr>\n");
-
-    echo("<tr>\n");
-    echo("<td><form action='listMeiosProc.php' method='post'>
-    <p>Listar Meios accionados num Processo de Socorro</p>
-    <p>Número de Processo de Socorro: <input type='text' name='numProcessoSocorro'/>
-    <input type='submit' value='Submit'/></p>
-    </form></td>");
-    echo("</tr>\n");
-
-    echo("<tr>\n");
-    echo("<td><form action='listMeiosLocal.php' method='post'>
-    <p>Listar Meios accionados em Processos de Socorro num dado local de incendio</p>
-    <p>Morada do Local: <input type='text' name='moradaLocal'/>
-    <input type='submit' value='Submit'/></p>
-    </form></td>")
-    echo("</tr>\n");
-
-    echo("</table>\n");
-
+    
 
     try 
     {
