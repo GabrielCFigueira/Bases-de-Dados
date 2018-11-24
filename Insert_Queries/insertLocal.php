@@ -20,7 +20,6 @@
 
         $db->beginTransaction(); 
 
-        echo("<p> "$table"</p>");
         if ($table == "Local") {
 
             $moradaLocal = $_POST['moradaLocal'];
