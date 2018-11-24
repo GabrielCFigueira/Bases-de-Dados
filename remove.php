@@ -8,18 +8,15 @@
     $table = $_REQUEST['table'];
 
 
-
-    $insertLocal = "insert into Local(moradaLocal) values(:moradaLocal)";
-    $insertEvento = "insert into EventoEmergencia(numTelefone, instanteChamada, nomePessoa, 
-moradaLocal, numProcessoSocorro) values(:numTelefone, :instanteChamada, :nomePessoa, 
-:moradaLocal, :numProcessoSocorro)"
-    $insertProcesso = "insert into ProcessoSocorro(numProcessoSocorro) values(:numProcessoSocorro)";
-    $insertMeio = "insert into Meio(numMeio, nomeMeio, nomeEntidade) values(:numMeio, :nomeMeio, 
-:nomeEntidade)";
-    $insertEntidade = "insert into EntidadeMeio(nomeEntidade) values(:nomeEntidade)";
-    $insertMeioCombate = "insert into MeioCombate(numMeio, nomeEntidade) values(:numMeio, :nomeEntidade);"
-    $insertMeioApoio = "insert into MeioApoio(numMeio, nomeEntidade) values(:numMeio, :nomeEntidade);"
-    $insertMeioSocorro = "insert into MeioSocorro(numMeio, nomeEntidade) values(:numMeio, :nomeEntidade);"
+    $removeLocal = "delete from Local where moradaLocal= :moradaLocal";
+    $removeEvento = "delete from EventoEmergencia where numTelefone = :numTelefone and 
+instanteChamada = :instanteChamada";
+    $removeProcesso = "delete from ProcessoSocorro where numProcessoSocorro = :numProcessoSocorro";
+    $removeMeio = "delete from Meio where numMeio = :numMeio and nomeEntidade = :nomeEntidade";
+    $removeEntidade = "delete from EntidadeMeio where nomeEntidade = :nomeEntidade";
+    $removeMeioCombate = "delete from MeioCombate where numMeio = :numMeio and nomeEntidade = :nomeEntidade"
+    $removeMeioApoio = "delete from MeioApoio where numMeio = :numMeio and nomeEntidade = :nomeEntidade"
+    $removeMeioSocorro = "delete from MeioSocorro where numMeio = :numMeio and nomeEntidade = :nomeEntidade"
 
 
     try 
@@ -36,10 +33,10 @@ moradaLocal, numProcessoSocorro) values(:numTelefone, :instanteChamada, :nomePes
 
         if ($table == "Local") {
 
-            $result = $db->prepare($insertLocal);
+            $result = $db->prepare($removeLocal);
             
             echo("<form action='index.html' method='post'>
-            <p>Inserir novo Local</p>
+            <p>Remover Local</p>
             <p>Morada do Local: <input type='text' name='moradaLocal'/>
             <input type='submit' value='Submit'/></p>
             </form>")
@@ -49,28 +46,24 @@ moradaLocal, numProcessoSocorro) values(:numTelefone, :instanteChamada, :nomePes
 
         } else  if ($table == "Evento") {
 
-            $result = $db->prepare($insertEvento);   
+            $result = $db->prepare($removeEvento);   
 
             echo("<form action='index.html' method='post'>
-            <p>Inserir novo Evento de Emergência</p>
+            <p>Remover Evento de Emergência</p>
             <p>Número de Telefone: <input type='text' name='numTelefone'/>
             <p>Instante da Chamada: <input type='text' name='instanteChamada'/>
-            <p>Nome da Pessoa: <input type='text' name='nomePessoa'/>
-            <p>Morada do Local: <input type='text' name='moradaLocal'/>
-            <p>Número de Processo de Socorro: <input type='text' name='numProcessoSocorro'/>
             <input type='submit' value='Submit'/></p>
             </form>")
 
-            $result->execute([':moradaLocal' => $moradaLocal, ':numTelefone' => $numTelefone, ':instanteChamada' => $instanteChamada,
-':nomePessoa' => $nomePessoa, ':numProcessoSocorro' => $numProcessoSocorro]);
+            $result->execute([':numTelefone' => $numTelefone, ':instanteChamada' => $instanteChamada]);
 
 
         } else  if ($table == "Processo") {
 
-            $result = $db->prepare($insertProcesso);
+            $result = $db->prepare($removeProcesso);
             
             echo("<form action='index.html' method='post'>
-            <p>Inserir novo Processo de Socorro</p>
+            <p>Remover Processo de Socorro</p>
             <p>Número de Processo Socorro: <input type='text' name='numProcessoSocorro'/>
             <input type='submit' value='Submit'/></p>
             </form>")
@@ -80,25 +73,24 @@ moradaLocal, numProcessoSocorro) values(:numTelefone, :instanteChamada, :nomePes
 
         } else  if ($table == "Meio") {
 
-            $result = $db->prepare($insertMeio);  
+            $result = $db->prepare($removeMeio);  
             
             echo("<form action='index.html' method='post'>
-            <p>Inserir novo Meio</p>
+            <p>Remover Meio</p>
             <p>Número do Meio: <input type='text' name='numMeio'/>
-            <p>Nome do Meio: <input type='text' name='nomeMeio'/>
             <p>Nome da Entidade Detentora do Meio: <input type='text' name='nomeEntidade'/>
             <input type='submit' value='Submit'/></p>
             </form>")
 
-            $result->execute([':numMeio' => $numMeio, ':nomeMeio' => $nomeMeio, ':nomeEntidade' => $nomeEntidade]);
+            $result->execute([':numMeio' => $numMeio, ':nomeEntidade' => $nomeEntidade]);
 
 
         } else  if ($table == "Entidade") {
 
-            $result = $db->prepare($insertEntidade);
+            $result = $db->prepare($removeEntidade);
             
             echo("<form action='index.html' method='post'>
-            <p>Inserir nova Entidade</p>
+            <p>Remover Entidade</p>
             <p>Nome da Entidade : <input type='text' name='nomeEntidade'/>
             <input type='submit' value='Submit'/></p>
             </form>")
@@ -108,10 +100,10 @@ moradaLocal, numProcessoSocorro) values(:numTelefone, :instanteChamada, :nomePes
 
         } else  if ($table == "MeioCombate") {
 
-            $result = $db->prepare($insertMeioCombate);   
+            $result = $db->prepare($removeMeioCombate);   
 
             echo("<form action='index.html' method='post'>
-            <p>Inserir novo Meio de Combate</p>
+            <p>Remover Meio de Combate</p>
             <p>Número do Meio: <input type='text' name='numMeio'/>
             <p>Nome do Meio: <input type='text' name='nomeMeio'/>
             <input type='submit' value='Submit'/></p>
@@ -122,10 +114,10 @@ moradaLocal, numProcessoSocorro) values(:numTelefone, :instanteChamada, :nomePes
 
         } else  if ($table == "MeioApoio") {
 
-            $result = $db->prepare($insertMeioApoio);   
+            $result = $db->prepare($removeMeioApoio);   
 
             echo("<form action='index.html' method='post'>
-            <p>Inserir novo Meio de Apoio</p>
+            <p>Remover Meio de Apoio</p>
             <p>Número do Meio: <input type='text' name='numMeio'/>
             <p>Nome do Meio: <input type='text' name='nomeMeio'/>
             <input type='submit' value='Submit'/></p>
@@ -136,10 +128,10 @@ moradaLocal, numProcessoSocorro) values(:numTelefone, :instanteChamada, :nomePes
 
         } else  if ($table == "MeioSocorro") {
 
-            $result = $db->prepare($insertMeioSocorro);     
+            $result = $db->prepare($removeMeioSocorro);     
 
             echo("<form action='index.html' method='post'>
-            <p>Inserir novo Meio de Socorro</p>
+            <p>Remover Meio de Socorro</p>
             <p>Número do Meio: <input type='text' name='numMeio'/>
             <p>Nome do Meio: <input type='text' name='nomeMeio'/>
             <input type='submit' value='Submit'/></p>
