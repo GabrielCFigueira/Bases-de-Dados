@@ -1,9 +1,22 @@
 <html>
     <head>
-        <title> Gestão Emergências </title>
+        <title> Gestão Florestal </title>
     </head>
     <body>
 <?php
+
+    function printQuery($result) {
+        echo("<table border='5'>"); 
+        $result->setFetchMode(PDO::FETCH_ASSOC);   
+        while($row = $result->fetch()){ 
+            echo("<tr>"); 
+            foreach($row as $key=>$val) { 
+                echo("<td> $key : $val </td>\n"); 
+            }
+            echo("</tr>");
+        }
+        echo("</table>");
+    }
 
     //insert queries
     $insertLocal = "insert into Local(moradaLocal) values(:moradaLocal)";
@@ -13,7 +26,7 @@ moradaLocal, numProcessoSocorro) values(:numTelefone, :instanteChamada, :nomePes
     $insertProcesso = "insert into ProcessoSocorro(numProcessoSocorro) values(:numProcessoSocorro)";
     $insertMeio = "insert into Meio(numMeio, nomeMeio, nomeEntidade) values(:numMeio, :nomeMeio, 
 :nomeEntidade)";
-    $insertEntidade = "insert into EntidadeMeio(nomeEntidade) values(:nomeEntidade=?)";
+    $insertEntidade = "insert into EntidadeMeio(nomeEntidade) values(:nomeEntidade)";
     $insertMeioCombate = "insert into MeioCombate(numMeio, nomeEntidade) values(:numMeio, :nomeEntidade);"
     $insertMeioApoio = "insert into MeioApoio(numMeio, nomeEntidade) values(:numMeio, :nomeEntidade);"
     $insertMeioSocorro = "insert into MeioSocorro(numMeio, nomeEntidade) values(:numMeio, :nomeEntidade);"
@@ -61,6 +74,44 @@ where numMeio = :oldnumMeio and nomeEntidade = :oldnomeEntidade"
     //listar os Meios de Socorro accionados em processos de Socorros originados num dado local de incendio
     $accioMeioSocorroLocal = null;
 
+
+    echo("<table border=\"0\" cellspacing=\"5\">\n");
+
+    echo("<tr>\n");
+    echo("<td><a href=\"balance.php\">Listar Processos Socorro</a></td>\n");
+    echo("</tr>\n");
+
+    echo("<tr>\n");
+    echo("<td><a href=\"balance.php\">Listar Meios</a></td>\n");
+    echo("</tr>\n");
+
+    echo("<tr>\n");
+    echo("<td><a href=\"balance.php\">Associar Processos de Socorro a Meios</a></td>\n");
+    echo("</tr>\n");
+
+    echo("<tr>\n");
+    echo("<td><a href=\"balance.php\">Associar Processos de Socorro a Eventos de Emergência</a></td>\n");
+    echo("</tr>\n");
+
+    echo("<tr>\n");
+    echo("<td><form action='listMeiosProc.php' method='post'>
+    <p>Listar Meios accionados num Processo de Socorro</p>
+    <p>Número de Processo de Socorro: <input type='text' name='numProcessoSocorro'/>
+    <input type='submit' value='Submit'/></p>
+    </form></td>");
+    echo("</tr>\n");
+
+    echo("<tr>\n");
+    echo("<td><form action='listMeiosLocal.php' method='post'>
+    <p>Listar Meios accionados em Processos de Socorro num dado local de incendio</p>
+    <p>Morada do Local: <input type='text' name='moradaLocal'/>
+    <input type='submit' value='Submit'/></p>
+    </form></td>")
+    echo("</tr>\n");
+
+    echo("</table>\n");
+
+
     try 
     {
         $user="ist186426";		// -> replace by the user name
@@ -79,4 +130,9 @@ where numMeio = :oldnumMeio and nomeEntidade = :oldnomeEntidade"
     {
         echo("<p>ERROR: {$e->getMessage()}</p>");
     }
+
+
+    ?>
+    </body>
+</html>
 
