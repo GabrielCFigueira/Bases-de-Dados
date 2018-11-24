@@ -23,6 +23,8 @@
 
         if ($table == "Local") {
 
+            echo("<p> funcionou</p>");
+
             $moradaLocal = $_REQUEST['moradaLocal'];
 
 
