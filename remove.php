@@ -14,9 +14,9 @@ instanteChamada = :instanteChamada";
     $removeProcesso = "delete from ProcessoSocorro where numProcessoSocorro = :numProcessoSocorro";
     $removeMeio = "delete from Meio where numMeio = :numMeio and nomeEntidade = :nomeEntidade";
     $removeEntidade = "delete from EntidadeMeio where nomeEntidade = :nomeEntidade";
-    $removeMeioCombate = "delete from MeioCombate where numMeio = :numMeio and nomeEntidade = :nomeEntidade"
-    $removeMeioApoio = "delete from MeioApoio where numMeio = :numMeio and nomeEntidade = :nomeEntidade"
-    $removeMeioSocorro = "delete from MeioSocorro where numMeio = :numMeio and nomeEntidade = :nomeEntidade"
+    $removeMeioCombate = "delete from MeioCombate where numMeio = :numMeio and nomeEntidade = :nomeEntidade";
+    $removeMeioApoio = "delete from MeioApoio where numMeio = :numMeio and nomeEntidade = :nomeEntidade";
+    $removeMeioSocorro = "delete from MeioSocorro where numMeio = :numMeio and nomeEntidade = :nomeEntidade";
 
 
     try 

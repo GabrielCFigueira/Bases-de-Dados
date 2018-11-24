@@ -12,14 +12,14 @@
     $insertLocal = "insert into Local(moradaLocal) values(:moradaLocal)";
     $insertEvento = "insert into EventoEmergencia(numTelefone, instanteChamada, nomePessoa, 
 moradaLocal, numProcessoSocorro) values(:numTelefone, :instanteChamada, :nomePessoa, 
-:moradaLocal, :numProcessoSocorro)"
+:moradaLocal, :numProcessoSocorro)";
     $insertProcesso = "insert into ProcessoSocorro(numProcessoSocorro) values(:numProcessoSocorro)";
     $insertMeio = "insert into Meio(numMeio, nomeMeio, nomeEntidade) values(:numMeio, :nomeMeio, 
 :nomeEntidade)";
     $insertEntidade = "insert into EntidadeMeio(nomeEntidade) values(:nomeEntidade)";
-    $insertMeioCombate = "insert into MeioCombate(numMeio, nomeEntidade) values(:numMeio, :nomeEntidade);"
-    $insertMeioApoio = "insert into MeioApoio(numMeio, nomeEntidade) values(:numMeio, :nomeEntidade);"
-    $insertMeioSocorro = "insert into MeioSocorro(numMeio, nomeEntidade) values(:numMeio, :nomeEntidade);"
+    $insertMeioCombate = "insert into MeioCombate(numMeio, nomeEntidade) values(:numMeio, :nomeEntidade)";
+    $insertMeioApoio = "insert into MeioApoio(numMeio, nomeEntidade) values(:numMeio, :nomeEntidade)";
+    $insertMeioSocorro = "insert into MeioSocorro(numMeio, nomeEntidade) values(:numMeio, :nomeEntidade)";
 
 
     try 
