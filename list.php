@@ -10,28 +10,28 @@
     function printQuery($result,$name) {
         echo("<table border='5'>");
 
-        if ($table == "Processo") {
+        if ($name == "Processo") {
             echo("<tr><th>Numero Processo Socorro</th></tr>\n");
         }
-        else if ($table == "Local") {
+        else if ($name == "Local") {
             echo("<tr><th>Morada Local</th></tr>\n");
         }
-        else if ($table == "Evento") {
+        else if ($name == "Evento") {
             echo("<tr><th>Numero Telefone</th><th>Instante Chamada</th><th>Nome Pessoa</th><th>Morada Local</th><th>Numero ProcessoSocorro</th></tr>\n");
         }
-        else if ($table == "Meio") {
+        else if ($name == "Meio") {
             echo("<tr><th>Numero Meio</th><th>Nome Meio</th><th>Nome Entidade</th></tr>\n");
         }
-        else if ($table == "MeioCombate") {
+        else if ($name == "MeioCombate") {
             echo("<tr><th>Numero Meio</th><th>Nome Meio</th><th>Nome Entidade</th></tr>\n");
         }
-        else if ($table == "MeioApoio") {
+        else if ($name == "MeioApoio") {
             echo("<tr><th>Numero Meio</th><th>Nome Meio</th><th>Nome Entidade</th></tr>\n");
         }
-        else if ($table == "MeioSocorro") {
+        else if ($name == "MeioSocorro") {
             echo("<tr><th>Numero Meio</th><th>Nome Meio</th><th>Nome Entidade</th></tr>\n");
         }
-        else if ($table == "Entidade") {
+        else if ($name == "Entidade") {
             echo("<tr><th>Nome Entidade</th></tr>\n");
         }
 
