@@ -75,14 +75,16 @@
       return $data;
     }
 
-    if ($table == "Meio_Acc_Proc"){ ?>
+    if ($table == "MeioAccProc"){ ?>
         <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); echo "?table=Meio_Acc_Proc";?>">
           Numero Processo Socorro: <input type="text" name="numprocessosocorro"/>
           <br>
           <input type="submit" name="submit" value="Submit">
         </form>
     <?php
-    }else if ($table == "MeioSocorro_Proc_Local"){ ?>
+    }
+
+    else if ($table == "MeioSocorroProcLocal"){ ?>
         <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); echo "?table=MeioSocorro_Proc_Local";?>">
           Morada: <input type="text" name="moradalocal"/>
           <br>

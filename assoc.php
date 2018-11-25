@@ -71,7 +71,8 @@ try
     }
     else if ($table == "EventoProcesso") {
 
-        $sql = "select numTelefone, instanteChamada, nomePessoa, moradaLocal, numProcessoSocorro from EventoEmergencia natural join ProcessoSocorro order by numTelefone, instanteChamada;";
+        $sql = "select numTelefone, instanteChamada, nomePessoa, moradaLocal, e.numProcessoSocorro from EventoEmergencia e 
+left outer join ProcessoSocorro p on e.numProcessoSocorro=p.numProcessoSocorro order by e.numTelefone, e.instanteChamada;";
         $result = $db->prepare($sql);
 
         $result->execute();
