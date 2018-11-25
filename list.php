@@ -82,9 +82,7 @@
           <input type="submit" name="submit" value="Submit">
         </form>
     <?php
-    }
-
-    else if ($table == "MeioSocorro_Proc_Local"){ ?>
+    }else if ($table == "MeioSocorro_Proc_Local"){ ?>
         <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); echo "?table=MeioSocorro_Proc_Local";?>">
           Morada: <input type="text" name="moradalocal"/>
           <br>
@@ -123,7 +121,7 @@
             $sql = "select numTelefone,instanteChamada,nomePessoa,moradaLocal,numProcessoSocorro,numMeio,nomeEntidade from Acciona natural join EventoEmergencia natural join MeioSocorro;";
         }
         else{
-            $sql = "select numTelefone,instanteChamada,nomePessoa,moradaLocal,numProcessoSocorro,numMeio,nomeEntidade from EventoEmergencia natural join Acciona natural join MeioSocorro where moradaLocal='$moradaLocal;";
+            $sql = "select numTelefone,instanteChamada,nomePessoa,moradaLocal,numProcessoSocorro,numMeio,nomeEntidade from EventoEmergencia natural join Acciona natural join MeioSocorro where moradaLocal='$moradaLocal';";
         }
         $result = $db->prepare($sql);
         $result->execute();
