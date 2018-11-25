@@ -5,12 +5,22 @@
         <link rel="icon" type="image/png" href="Postgresql.png"/>
     </head>
     <body>
+    <center>
+        <h1 id="sgbd">Sistema de Gestão de Incêndios Florestais</h1>
 <?php
 
 function printQuery($result,$name) {
-    echo("<table border='5'>");
+    if ($name == "MeioProcesso"){
+        echo("<div id='div_table_assoc_meio_proc'>");
+    }else if ($name == "EventoProcesso"){
+        echo("<div id='div_table_assoc_evento_proc'>");
+    }
+
+    echo("<table border='1'>");
     if ($name == "MeioProcesso") {
         echo("<tr><th>Numero Meio</th><th>Nome Meio</th><th>Nome Entidade</th><th>Número de Processo do Socorro</th></tr>\n");
+    }else if ($name == "EventoProcesso"){
+        echo("<tr><th>Numero Telefone</th><th>Instante Chamada</th><th>Nome Pessoa</th><th>Morada Local</th><th>Numero Processo Socorro</th></tr>\n");
     }
 
     $result->setFetchMode(PDO::FETCH_ASSOC);   
@@ -21,7 +31,7 @@ function printQuery($result,$name) {
         }
         echo("</tr>");
     }
-    echo("</table>");
+    echo("</table></div>");
 }
 
 $table = $_REQUEST['table'];
@@ -47,7 +57,7 @@ try
 
         $result->execute();
 
-        echo("<form id='form_style' action='InsertQueries/runInsertion.php' method='post'>
+        echo("<div id='div_input_assoc'><form id='form_style' action='InsertQueries/runInsertion.php' method='post'>
         <p><input type='hidden' name='table' value='$table'/></p>
         <p id='form_title'>Associar Meio a Processo de Socorro</p>
         <p>Número do Meio:</p> <input id='input_style' type='text' name='numMeio'/>
@@ -55,18 +65,18 @@ try
         <p>Número de Processo de Socorro:</p> <input id='input_style' type='text' name='numProcessoSocorro'/>
         <br>
         <input id='button_style' type='submit' value='Submit'/>
-        </form>");
+        </form></div>");
 
         printQuery($result, $table);
     }
     else if ($table == "EventoProcesso") {
 
-        $sql = "select numTelefone, instanteChamada, numProcessoSocorro from EventoEmergencia natural join ProcessoSocorro order by numTelefone, instanteChamada;";
+        $sql = "select numTelefone, instanteChamada, nomePessoa, moradaLocal, numProcessoSocorro from EventoEmergencia natural join ProcessoSocorro order by numTelefone, instanteChamada;";
         $result = $db->prepare($sql);
 
         $result->execute();
 
-        echo("<form id='form_style' action='InsertQueries/runInsertion.php' method='post'>
+        echo("<div id='div_input_assoc_evento_proc'><form id='form_style' action='InsertQueries/runInsertion.php' method='post'>
         <p><input type='hidden' name='table' value='$table'/></p>
         <p id='form_title'>Associar Evento de Emergência a Processo de Socorro</p>
         <p>Número de Telefone:</p> <input id='input_style' type='text' name='numTelefone'/>
@@ -74,7 +84,7 @@ try
         <p>Número de Processo de Socorro:</p> <input id='input_style' type='text' name='numProcessoSocorro'/>
         <br>
         <input id='button_style' type='submit' value='Submit'/>
-        </form>");
+        </form></div>");
 
         printQuery($result, $table);
     }
@@ -92,5 +102,6 @@ catch (PDOException $e)
 
 
 ?>
+</center>
     </body>
 </html>
