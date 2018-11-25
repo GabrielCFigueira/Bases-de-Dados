@@ -1,6 +1,8 @@
 <html>
     <head>
-        <title> Update </title>
+        <title> List </title>
+        <link rel="stylesheet" href="style.css"/>
+        <link rel="icon" type="image/png" href="Postgresql.png"/>
     </head>
     <body>
 <?php
