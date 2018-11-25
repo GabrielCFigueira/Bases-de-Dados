@@ -1,6 +1,6 @@
 ﻿<html>
     <head>
-        <title> Update </title>
+        <title> Insert </title>
     </head>
     <body>
 <?php
