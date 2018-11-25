@@ -110,6 +110,18 @@ values(:numTelefone, :instanteChamada, :nomePessoa, :moradaLocal, :numProcessoSo
             $result->execute([':numMeio' => $numMeio, ':nomeMeio' => $nomeMeio]);
 
 
+        } else  if ($table == "MeioProcesso") {
+
+            $numMeio = $_POST['numMeio'];
+            $nomeEntidade = $_POST['nomeEntidade'];
+            $numProcessoSocorro = $_POST['numProcessoSocorro'];
+
+
+            $sql = "insert into Acciona(numMeio, nomeEntidade, numProcessoSocorro) values(:numMeio, :nomeEntidade, :numProcessoSocorro);";
+            $result = $db->prepare($insertMeioCombate);
+            $result->execute([':numMeio' => $numMeio, ':nomeMeio' => $nomeMeio, ':numProcessoSocorro' => $numProcessoSocorro]);
+
+
         } else {
             #error message
         }
