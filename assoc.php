@@ -1,4 +1,4 @@
-<html>
+﻿<html>
     <head>
         <title> Update </title>
     </head>
@@ -34,7 +34,7 @@
 
 
 
-    if ($table == "Processo") {
+    if ($table == "MeioProcesso") {
 
         $sql = "select * from ProcessoSocorro;";
         $result = $db->prepare($sql);
@@ -43,66 +43,9 @@
 
         printQuery($result);
     }
-    else if ($table == "Local") {
+    else if ($table == "EventoProcesso") {
 
         $sql = "select * from Local;";
-        $result = $db->prepare($sql);
-
-        $result->execute();
-
-        printQuery($result);
-    }
-    else if ($table == "Evento") {
-
-        $sql = "select * from EventoEmergencia;";
-        $result = $db->prepare($sql);
-
-        $result->execute();
-
-        printQuery($result);
-    }
-    else if ($table == "Meio") {
-
-        $sql = "select numMeio, nomeMeio, nomeEntidade from Meio order by nomeEntidade;";
-        $result = $db->prepare($sql);
-
-        $result->execute();
-
-        printQuery($result);
-    }
-    else if ($table == "MeioCombate") {
-
-        $sql = "select numMeio, nomeMeio, nomeEntidade from MeioCombate natural join Meio order by nomeEntidade;";
-        $result = $db->prepare($sql);
-
-        $result->execute();
-
-        printQuery($result);
-    }
-
-    else if ($table == "MeioApoio") {
-
-        $sql = "select numMeio, nomeMeio, nomeEntidade from MeioApoio natural join Meio order by nomeEntidade;";
-        $result = $db->prepare($sql);
-
-        $result->execute();
-
-        printQuery($result);
-    }
-
-    else if ($table == "MeioSocorro") {
-
-        $sql = "select numMeio, nomeMeio, nomeEntidade from MeioSocorro natural join Meio order by nomeEntidade;";
-        $result = $db->prepare($sql);
-
-        $result->execute();
-
-        printQuery($result);
-    }
-
-    else if ($table == "Entidade") {
-
-        $sql = "select * from EntidadeMeio;";
         $result = $db->prepare($sql);
 
         $result->execute();

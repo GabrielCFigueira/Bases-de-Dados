@@ -32,8 +32,8 @@
 
         } else  if ($table == "Evento") {
 
-            $numTelefone = $_REQUEST['numTelefone'];
-            $instanteChamada = $_REQUEST['instanteChamada'];
+            $numTelefone = $_POST['numTelefone'];
+            $instanteChamada = $_POST['instanteChamada'];
 
 
             $sql = "delete from EventoEmergencia where numTelefone = :numTelefone and 
@@ -44,7 +44,7 @@
 
         } else  if ($table == "Processo") {
 
-            $numProcessoSocorro = $_REQUEST['numProcessoSocorro'];
+            $numProcessoSocorro = $_POST['numProcessoSocorro'];
 
 
             $sql = "delete from ProcessoSocorro where numProcessoSocorro = :numProcessoSocorro;";
@@ -54,8 +54,8 @@
 
         } else  if ($table == "Meio") {
 
-            $numMeio = $_REQUEST['numMeio'];
-            $nomeEntidade = $_REQUEST['nomeEntidade'];
+            $numMeio = $_POST['numMeio'];
+            $nomeEntidade = $_POST['nomeEntidade'];
 
 
             $sql = "delete from Meio where numMeio = :numMeio and nomeEntidade = :nomeEntidade";
@@ -65,7 +65,7 @@
 
         } else  if ($table == "Entidade") {
 
-            $nomeEntidade = $_REQUEST['nomeEntidade'];
+            $nomeEntidade = $_POST['nomeEntidade'];
 
             $sql = "delete from EntidadeMeio where nomeEntidade = :nomeEntidade";
             $result = $db->prepare($insertEntidade);
@@ -74,8 +74,8 @@
 
         } else  if ($table == "MeioCombate") {
 
-            $numMeio = $_REQUEST['numMeio'];
-            $nomeEntidade = $_REQUEST['nomeEntidade'];
+            $numMeio = $_POST['numMeio'];
+            $nomeEntidade = $_POST['nomeEntidade'];
 
 
             $sql = "delete from MeioCombate where numMeio = :numMeio and nomeEntidade = :nomeEntidade";
@@ -85,8 +85,8 @@
 
         } else  if ($table == "MeioApoio") {
 
-            $numMeio = $_REQUEST['numMeio'];
-            $nomeEntidade = $_REQUEST['nomeEntidade'];
+            $numMeio = $_POST['numMeio'];
+            $nomeEntidade = $_POST['nomeEntidade'];
 
 
             $sql = "delete from MeioApoio where numMeio = :numMeio and nomeEntidade = :nomeEntidade";
@@ -96,8 +96,8 @@
 
         } else  if ($table == "MeioSocorro") {
 
-            $numMeio = $_REQUEST['numMeio'];
-            $nomeEntidade = $_REQUEST['nomeEntidade'];
+            $numMeio = $_POST['numMeio'];
+            $nomeEntidade = $_POST['nomeEntidade'];
 
 
             $sql = "delete from MeioSocorro where numMeio = :numMeio and nomeEntidade = :nomeEntidade";

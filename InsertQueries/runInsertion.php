@@ -32,11 +32,11 @@
 
         } else  if ($table == "Evento") {
 
-            $numTelefone = $_REQUEST['numTelefone'];
-            $instanteChamada = $_REQUEST['instanteChamada'];
-            $nomePessoa = $_REQUEST['nomePessoa'];
-            $moradaLocal = $_REQUEST['moradaLocal'];
-            $numProcessoSocorro = $_REQUEST['numProcessoSocorro'];
+            $numTelefone = $_POST['numTelefone'];
+            $instanteChamada = $_POST['instanteChamada'];
+            $nomePessoa = $_POST['nomePessoa'];
+            $moradaLocal = $_POST['moradaLocal'];
+            $numProcessoSocorro = $_POST['numProcessoSocorro'];
 
 
             $sql = "insert into EventoEmergencia(numTelefone, instanteChamada, nomePessoa, moradaLocal, numProcessoSocorro) 
@@ -48,7 +48,7 @@ values(:numTelefone, :instanteChamada, :nomePessoa, :moradaLocal, :numProcessoSo
 
         } else  if ($table == "Processo") {
 
-            $numProcessoSocorro = $_REQUEST['numProcessoSocorro'];
+            $numProcessoSocorro = $_POST['numProcessoSocorro'];
 
 
             $sql = "insert into ProcessoSocorro(numProcessoSocorro) values(:numProcessoSocorro);";
@@ -58,9 +58,9 @@ values(:numTelefone, :instanteChamada, :nomePessoa, :moradaLocal, :numProcessoSo
 
         } else  if ($table == "Meio") {
 
-            $numMeio = $_REQUEST['numMeio'];
-            $nomeMeio = $_REQUEST['nomeMeio'];
-            $nomeEntidade = $_REQUEST['nomeEntidade'];
+            $numMeio = $_POST['numMeio'];
+            $nomeMeio = $_POST['nomeMeio'];
+            $nomeEntidade = $_POST['nomeEntidade'];
 
 
             $sql = "insert into Meio(numMeio, nomeMeio, nomeEntidade) values(:numMeio, :nomeMeio, :nomeEntidade);";
@@ -70,7 +70,7 @@ values(:numTelefone, :instanteChamada, :nomePessoa, :moradaLocal, :numProcessoSo
 
         } else  if ($table == "Entidade") {
 
-            $nomeEntidade = $_REQUEST['nomeEntidade'];
+            $nomeEntidade = $_POST['nomeEntidade'];
 
             $sql = "insert into EntidadeMeio(nomeEntidade) values(:nomeEntidade);";
             $result = $db->prepare($insertEntidade);
@@ -79,8 +79,8 @@ values(:numTelefone, :instanteChamada, :nomePessoa, :moradaLocal, :numProcessoSo
 
         } else  if ($table == "MeioCombate") {
 
-            $numMeio = $_REQUEST['numMeio'];
-            $nomeEntidade = $_REQUEST['nomeEntidade'];
+            $numMeio = $_POST['numMeio'];
+            $nomeEntidade = $_POST['nomeEntidade'];
 
 
             $sql = "insert into MeioCombate(numMeio, nomeEntidade) values(:numMeio, :nomeEntidade);";
@@ -90,8 +90,8 @@ values(:numTelefone, :instanteChamada, :nomePessoa, :moradaLocal, :numProcessoSo
 
         } else  if ($table == "MeioApoio") {
 
-            $numMeio = $_REQUEST['numMeio'];
-            $nomeEntidade = $_REQUEST['nomeEntidade'];
+            $numMeio = $_POST['numMeio'];
+            $nomeEntidade = $_POST['nomeEntidade'];
 
 
             $sql = "insert into MeioApoio(numMeio, nomeEntidade) values(:numMeio, :nomeEntidade);";
@@ -101,8 +101,8 @@ values(:numTelefone, :instanteChamada, :nomePessoa, :moradaLocal, :numProcessoSo
 
         } else  if ($table == "MeioSocorro") {
 
-            $numMeio = $_REQUEST['numMeio'];
-            $nomeEntidade = $_REQUEST['nomeEntidade'];
+            $numMeio = $_POST['numMeio'];
+            $nomeEntidade = $_POST['nomeEntidade'];
 
 
             $sql = "insert into MeioSocorro(numMeio, nomeEntidade) values(:numMeio, :nomeEntidade);";
