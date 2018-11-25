@@ -5,6 +5,9 @@
         <link rel="icon" type="image/png" href="Postgresql.png"/>
     </head>
     <body>
+        <center>
+            <h1 id="sgbd">Sistema de Gestão de Incêndios Florestais</h1>
+        </center>
 <?php
 
     function printQuery($result,$name) {
@@ -17,7 +20,7 @@
             echo("<tr><th>Morada Local</th></tr>\n");
         }
         else if ($name == "Evento") {
-            echo("<tr><th>Numero Telefone</th><th>Instante Chamada</th><th>Nome Pessoa</th><th>Morada Local</th><th>Numero ProcessoSocorro</th></tr>\n");
+            echo("<tr><th>Numero Telefone</th><th>Instante Chamada</th><th>Nome Pessoa</th><th>Morada Local</th><th>Numero Processo Socorro</th></tr>\n");
         }
         else if ($name == "Meio") {
             echo("<tr><th>Numero Meio</th><th>Nome Meio</th><th>Nome Entidade</th></tr>\n");
@@ -35,7 +38,7 @@
             echo("<tr><th>Nome Entidade</th></tr>\n");
         }
 
-        $result->setFetchMode(PDO::FETCH_ASSOC);   
+        $result->setFetchMode(PDO::FETCH_ASSOC);
         while($row = $result->fetch()){ 
             echo("<tr>"); 
             foreach($row as $key=>$val) { 
@@ -47,6 +50,28 @@
     }
 
     $table = $_REQUEST['table'];
+
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        if ($table == "Meio_Acc_Proc"){
+            $numProcesso = input($_POST["numprocessosocorro"]);
+        }
+    }
+
+    function input($data) {
+      $data = trim($data);
+      $data = stripslashes($data);
+      $data = htmlspecialchars($data);
+      return $data;
+    }
+
+    if ($table == "Meio_Acc_Proc"){ ?>
+        <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); echo "?table=Meio_Acc_Proc";?>">
+          Numero Processo Socorro: <input type="text" name="numprocessosocorro"/>
+          <br>
+          <input type="submit" name="submit" value="Submit">
+        </form>
+    <?php
+    }
 
 
     try 
@@ -60,7 +85,18 @@
         $db = new PDO("pgsql:host=$host;dbname=$dbname", $user, $password);
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
+    if ($table == "Meio_Acc_Proc"){
+        if ($numProcesso == ""){
+            $sql = "select * from Acciona;";
+        }
+        else{
+            $sql = "select * from Acciona where numProcessoSocorro='$numProcesso';";
+        }
+        $result = $db->prepare($sql);
+        $result->execute();
 
+        printQuery($result, $table);
+    }
 
     if ($table == "Processo") {
 
