@@ -7,13 +7,39 @@
     <body>
 <?php
 
-    function printQuery($result) {
-        echo("<table border='5'>"); 
+    function printQuery($result,$name) {
+        echo("<table border='5'>");
+
+        if ($table == "Processo") {
+            echo("<tr><th>Numero Processo Socorro</th></tr>\n");
+        }
+        else if ($table == "Local") {
+            echo("<tr><th>Morada Local</th></tr>\n");
+        }
+        else if ($table == "Evento") {
+            echo("<tr><th>Numero Telefone</th><th>Instante Chamada</th><th>Nome Pessoa</th><th>Morada Local</th><th>Numero ProcessoSocorro</th></tr>\n");
+        }
+        else if ($table == "Meio") {
+            echo("<tr><th>Numero Meio</th><th>Nome Meio</th><th>Nome Entidade</th></tr>\n");
+        }
+        else if ($table == "MeioCombate") {
+            echo("<tr><th>Numero Meio</th><th>Nome Meio</th><th>Nome Entidade</th></tr>\n");
+        }
+        else if ($table == "MeioApoio") {
+            echo("<tr><th>Numero Meio</th><th>Nome Meio</th><th>Nome Entidade</th></tr>\n");
+        }
+        else if ($table == "MeioSocorro") {
+            echo("<tr><th>Numero Meio</th><th>Nome Meio</th><th>Nome Entidade</th></tr>\n");
+        }
+        else if ($table == "Entidade") {
+            echo("<tr><th>Nome Entidade</th></tr>\n");
+        }
+
         $result->setFetchMode(PDO::FETCH_ASSOC);   
         while($row = $result->fetch()){ 
             echo("<tr>"); 
             foreach($row as $key=>$val) { 
-                echo("<td> $key : $val </td>\n"); 
+                echo("<td> $val </td>\n"); 
             }
             echo("</tr>");
         }
@@ -43,7 +69,7 @@
 
         $result->execute();
 
-        printQuery($result);
+        printQuery($result,$table);
     }
     else if ($table == "Local") {
 
@@ -52,7 +78,7 @@
 
         $result->execute();
 
-        printQuery($result);
+        printQuery($result,$table);
     }
     else if ($table == "Evento") {
 
@@ -61,7 +87,7 @@
 
         $result->execute();
 
-        printQuery($result);
+        printQuery($result,$table);
     }
     else if ($table == "Meio") {
 
@@ -70,7 +96,7 @@
 
         $result->execute();
 
-        printQuery($result);
+        printQuery($result,$table);
     }
     else if ($table == "MeioCombate") {
 
@@ -89,7 +115,7 @@
 
         $result->execute();
 
-        printQuery($result);
+        printQuery($result,$table);
     }
 
     else if ($table == "MeioSocorro") {
@@ -99,7 +125,7 @@
 
         $result->execute();
 
-        printQuery($result);
+        printQuery($result,$table);
     }
 
     else if ($table == "Entidade") {
@@ -109,7 +135,7 @@
 
         $result->execute();
 
-        printQuery($result);
+        printQuery($result,$table);
     }
     
     else {
