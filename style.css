@@ -24,13 +24,79 @@
 }
 
 #input_style:focus{
-    width: 450px;
+    width: 100%;
     border-color: #555555;
     
 }
 
+#input_style_list {
+    width: 200px;
+    padding: 10px 10px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 2px solid #dddddd;
+    border-radius: 50px;
+    outline: none;
+    font-size: 12px;
+    -webkit-transition: width .35s ease-in-out;
+    transition: width .35s ease-in-out;
+}
+
+#input_style_list:focus{
+    width: 270px;
+    border-color: #555555;
+}
+
+#input_style_soc{
+    width: 200px;
+    padding: 10px 10px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 2px solid #dddddd;
+    border-radius: 50px;
+    outline: none;
+    font-size: 12px;
+    -webkit-transition: width .35s ease-in-out;
+    transition: width .35s ease-in-out;
+}
+
+#input_style_soc:focus{
+    width: 90%;
+    border-color: #555555;
+}
+
 #form_style{
     max-width: 450px;
+    background: #FAFAFA;
+    padding: 20px;
+    margin: 20px auto;
+    box-shadow: 1px 1px 20px #555555;
+    border-radius: 10px;
+    border: 6px solid #555555;
+}
+
+#form_style_acc{
+    max-width: 490px;
+    background: #FAFAFA;
+    padding: 20px;
+    margin: 20px auto;
+    box-shadow: 1px 1px 20px #555555;
+    border-radius: 10px;
+    border: 6px solid #555555;
+}
+
+#form_style_soc{
+    max-width: 1030px;
+    background: #FAFAFA;
+    padding: 20px;
+    margin: 20px auto;
+    box-shadow: 1px 1px 20px #555555;
+    border-radius: 10px;
+    border: 6px solid #555555;
+}
+
+#form_style_evento_proc{
+    max-width: 420px;
     background: #FAFAFA;
     padding: 20px;
     margin: 20px auto;
@@ -45,20 +111,28 @@
     margin: 20px auto;
     box-shadow: 1px 1px 10px #555555;
     border-radius: 10px;
-    width: 450px;
+    width: 100%;
     color: #ffffff;
     font-size: 15px;
 }
 
 #button_style:hover{
     background: #009900;
+}
+
+#button_style_soc{
+    background: #006600;
     padding: 10px;
     margin: 20px auto;
     box-shadow: 1px 1px 10px #555555;
     border-radius: 10px;
-    width: 450px;
+    width: 100%;
     color: #ffffff;
     font-size: 15px;
+}
+
+#button_style_soc:hover{
+    background: #009900;
 }
 
 #form_title{
@@ -67,6 +141,42 @@
     padding-bottom: 10px;
     font-weight: bold;
     color: #444444;
+}
+
+#div_list_w_input{
+    max-width: 490px;
+    overflow: scroll;
+    max-height: 340pt;
+    background: #FAFAFA;
+    box-shadow: 1px 1px 20px #555555;
+    border-radius: 10px;
+    border: 6px solid #555555;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+#div_list_w_input_soc{
+    max-width: 1030px;
+    overflow: scroll;
+    max-height: 340pt;
+    background: #FAFAFA;
+    box-shadow: 1px 1px 20px #555555;
+    border-radius: 10px;
+    border: 6px solid #555555;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+#div_list_table{
+    width: fit-content;
+    overflow: scroll;
+    height: 400pt;
+    background: #FAFAFA;
+    box-shadow: 1px 1px 20px #555555;
+    border-radius: 10px;
+    border: 6px solid #555555;
+    margin: 20px auto;
+    padding: 20px;
 }
 
 #menu, #menu ul {
@@ -107,7 +217,7 @@
     /*max-width: 550px;*/
     background: #FAFAFA;
     padding: 20px;
-    margin: 20px auto;
+    margin: 20px;
     box-shadow: 1px 1px 20px #555555;
     border-radius: 10px;
     border: 6px solid #555555;
@@ -127,7 +237,7 @@
     /*max-width: 550px;*/
     background: #FAFAFA;
     padding: 20px;
-    margin: 20px auto;
+    margin: 20px;
     box-shadow: 1px 1px 20px #555555;
     border-radius: 10px;
     border: 6px solid #555555;

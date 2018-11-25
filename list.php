@@ -11,7 +11,15 @@
 <?php
 
     function printQuery($result,$name) {
-        echo("<table border='5'>");
+        if ($name == "MeioAccProc"){
+            echo("<div id='div_list_w_input'><table border='1' width='490'>");
+        }
+        else if ($name == "MeioSocorroProcLocal"){
+            echo("<div id='div_list_w_input_soc'><table border='1' width='1030'>");
+        }
+        else{
+            echo("<div id='div_list_table'><table border='1'>");
+        }
 
         if ($name == "Processo") {
             echo("<tr><th>Numero Processo Socorro</th></tr>\n");
@@ -37,10 +45,10 @@
         else if ($name == "Entidade") {
             echo("<tr><th>Nome Entidade</th></tr>\n");
         }
-        else if ($name == "Meio_Acc_Proc") {
+        else if ($name == "MeioAccProc") {
             echo("<tr><th>Numero Meio</th><th>Nome Entidade</th><th>Numero Processo Socorro</th></tr>\n");
         }
-        else if ($name == "MeioSocorro_Proc_Local") {
+        else if ($name == "MeioSocorroProcLocal") {
             echo("<tr><th>Numero Telefone</th><th>Instante de chamada</th><th>Nome Pessoa</th><th>Morada Local</th><th>Numero Processo Socorro</th><th>Numero de Meio</th><th>Nome Entidade</th></tr>\n");
         }
         
@@ -53,17 +61,17 @@
             }
             echo("</tr>");
         }
-        echo("</table>");
+        echo("</table></div>");
     }
 
     $table = $_REQUEST['table'];
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        if ($table == "Meio_Acc_Proc"){
+        if ($table == "MeioAccProc"){
             $numProcesso = input($_POST["numprocessosocorro"]);
         }
 
-        else if ($table == "MeioSocorro_Proc_Local"){
+        else if ($table == "MeioSocorroProcLocal"){
             $moradaLocal = input($_POST["moradalocal"]);
         }
     }
@@ -76,19 +84,19 @@
     }
 
     if ($table == "MeioAccProc"){ ?>
-        <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); echo "?table=Meio_Acc_Proc";?>">
-          Numero Processo Socorro: <input type="text" name="numprocessosocorro"/>
+        <form id="form_style_acc" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); echo "?table=MeioAccProc";?>">
+          Numero Processo Socorro:  <input id="input_style_list" type="text" name="numprocessosocorro"/>
           <br>
-          <input type="submit" name="submit" value="Submit">
+          <input id="button_style" type="submit" name="submit" value="Submit">
         </form>
     <?php
     }
 
     else if ($table == "MeioSocorroProcLocal"){ ?>
-        <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); echo "?table=MeioSocorro_Proc_Local";?>">
-          Morada: <input type="text" name="moradalocal"/>
+        <form id="form_style_soc" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); echo "?table=MeioSocorroProcLocal";?>">
+          Morada:  <input id="input_style_soc" type="text" name="moradalocal"/>
           <br>
-          <input type="submit" name="submit" value="Submit">
+          <input id="button_style_soc" type="submit" name="submit" value="Submit">
         </form>
     <?php
     }
@@ -174,7 +182,7 @@
 
         $result->execute();
 
-        printQuery($result);
+        printQuery($result,$table);
     }
 
     else if ($table == "MeioApoio") {
