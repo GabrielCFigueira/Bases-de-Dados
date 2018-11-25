@@ -37,6 +37,13 @@
         else if ($name == "Entidade") {
             echo("<tr><th>Nome Entidade</th></tr>\n");
         }
+        else if ($name == "Meio_Acc_Proc") {
+            echo("<tr><th>Numero Meio</th><th>Nome Entidade</th><th>Numero Processo Socorro</th></tr>\n");
+        }
+        else if ($name == "MeioSocorro_Proc_Local") {
+            echo("<tr><th>Numero Telefone</th><th>Instante de chamada</th><th>Nome Pessoa</th><th>Morada Local</th><th>Numero Processo Socorro</th><th>Numero de Meio</th><th>Nome Entidade</th></tr>\n");
+        }
+        
 
         $result->setFetchMode(PDO::FETCH_ASSOC);
         while($row = $result->fetch()){ 
@@ -55,6 +62,10 @@
         if ($table == "Meio_Acc_Proc"){
             $numProcesso = input($_POST["numprocessosocorro"]);
         }
+
+        else if ($table == "MeioSocorro_Proc_Local"){
+            $moradaLocal = input($_POST["moradalocal"]);
+        }
     }
 
     function input($data) {
@@ -67,6 +78,15 @@
     if ($table == "Meio_Acc_Proc"){ ?>
         <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); echo "?table=Meio_Acc_Proc";?>">
           Numero Processo Socorro: <input type="text" name="numprocessosocorro"/>
+          <br>
+          <input type="submit" name="submit" value="Submit">
+        </form>
+    <?php
+    }
+
+    else if ($table == "MeioSocorro_Proc_Local"){ ?>
+        <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); echo "?table=MeioSocorro_Proc_Local";?>">
+          Morada: <input type="text" name="moradalocal"/>
           <br>
           <input type="submit" name="submit" value="Submit">
         </form>
@@ -91,6 +111,19 @@
         }
         else{
             $sql = "select * from Acciona where numProcessoSocorro='$numProcesso';";
+        }
+        $result = $db->prepare($sql);
+        $result->execute();
+
+        printQuery($result, $table);
+    }
+
+    if ($table == "MeioSocorro_Proc_Local"){
+        if ($moradaLocal == ""){
+            $sql = "select numTelefone,instanteChamada,nomePessoa,moradaLocal,numProcessoSocorro,numMeio,nomeEntidade from Acciona natural join EventoEmergencia natural join MeioSocorro;";
+        }
+        else{
+            $sql = "select numTelefone,instanteChamada,nomePessoa,moradaLocal,numProcessoSocorro,numMeio,nomeEntidade from EventoEmergencia natural join Acciona natural join MeioSocorro where moradaLocal='$moradaLocal;";
         }
         $result = $db->prepare($sql);
         $result->execute();
