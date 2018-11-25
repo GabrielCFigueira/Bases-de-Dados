@@ -129,7 +129,7 @@ values(:numTelefone, :instanteChamada, :nomePessoa, :moradaLocal, :numProcessoSo
 
 
             $sql = "update EventoEmergencia set numProcessoSocorro = :numProcessoSocorro 
-where numTelefone = :numTelefone and numProcessoSocorro = :numProcessoSocorro";
+where numTelefone = :numTelefone and numProcessoSocorro = :numProcessoSocorro and instanteChamada = :instanteChamada;";
             $result = $db->prepare($sql);
             $result->execute([':instanteChamada' => $instanteChamada, ':numTelefone' => $numTelefone, ':numProcessoSocorro' => $numProcessoSocorro]);
 
