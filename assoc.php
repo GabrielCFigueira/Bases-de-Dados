@@ -77,7 +77,7 @@ left outer join ProcessoSocorro p on e.numProcessoSocorro=p.numProcessoSocorro o
 
         $result->execute();
 
-        echo("<div id='div_input_assoc_evento_proc'><form id='form_style' action='InsertQueries/runInsertion.php' method='post'>
+        echo("<div id='div_input_assoc_evento_proc'><form id='form_style_evento_proc' action='InsertQueries/runInsertion.php' method='post'>
         <p><input type='hidden' name='table' value='$table'/></p>
         <p id='form_title'>Associar Evento de Emergência a Processo de Socorro</p>
         <p>Número de Telefone:</p> <input id='input_style' type='text' name='numTelefone'/>
