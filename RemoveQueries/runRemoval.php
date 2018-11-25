@@ -68,7 +68,7 @@
             $nomeEntidade = $_POST['nomeEntidade'];
 
             $sql = "delete from EntidadeMeio where nomeEntidade = :nomeEntidade";
-            $result = $db->prepare($insertEntidade);
+            $result = $db->prepare($sql);
             $result->execute([':nomeEntidade' => $nomeEntidade]);
 
 
@@ -79,7 +79,7 @@
 
 
             $sql = "delete from MeioCombate where numMeio = :numMeio and nomeEntidade = :nomeEntidade";
-            $result = $db->prepare($insertMeioCombate);
+            $result = $db->prepare($sql);
             $result->execute([':numMeio' => $numMeio, ':nomeMeio' => $nomeMeio]);
 
 
@@ -90,7 +90,7 @@
 
 
             $sql = "delete from MeioApoio where numMeio = :numMeio and nomeEntidade = :nomeEntidade";
-            $result = $db->prepare($insertMeioCombate);
+            $result = $db->prepare($sql);
             $result->execute([':numMeio' => $numMeio, ':nomeMeio' => $nomeMeio]);
 
 
@@ -101,7 +101,7 @@
 
 
             $sql = "delete from MeioSocorro where numMeio = :numMeio and nomeEntidade = :nomeEntidade";
-            $result = $db->prepare($insertMeioCombate);
+            $result = $db->prepare($sql);
             $result->execute([':numMeio' => $numMeio, ':nomeMeio' => $nomeMeio]);
 
 
