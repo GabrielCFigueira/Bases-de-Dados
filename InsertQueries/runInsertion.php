@@ -73,7 +73,7 @@ values(:numTelefone, :instanteChamada, :nomePessoa, :moradaLocal, :numProcessoSo
             $nomeEntidade = $_POST['nomeEntidade'];
 
             $sql = "insert into EntidadeMeio(nomeEntidade) values(:nomeEntidade);";
-            $result = $db->prepare($insertEntidade);
+            $result = $db->prepare($sql);
             $result->execute([':nomeEntidade' => $nomeEntidade]);
 
 
@@ -84,7 +84,7 @@ values(:numTelefone, :instanteChamada, :nomePessoa, :moradaLocal, :numProcessoSo
 
 
             $sql = "insert into MeioCombate(numMeio, nomeEntidade) values(:numMeio, :nomeEntidade);";
-            $result = $db->prepare($insertMeioCombate);
+            $result = $db->prepare($sql);
             $result->execute([':numMeio' => $numMeio, ':nomeMeio' => $nomeMeio]);
 
 
@@ -95,7 +95,7 @@ values(:numTelefone, :instanteChamada, :nomePessoa, :moradaLocal, :numProcessoSo
 
 
             $sql = "insert into MeioApoio(numMeio, nomeEntidade) values(:numMeio, :nomeEntidade);";
-            $result = $db->prepare($insertMeioCombate);
+            $result = $db->prepare($sql);
             $result->execute([':numMeio' => $numMeio, ':nomeMeio' => $nomeMeio]);
 
 
@@ -106,7 +106,7 @@ values(:numTelefone, :instanteChamada, :nomePessoa, :moradaLocal, :numProcessoSo
 
 
             $sql = "insert into MeioSocorro(numMeio, nomeEntidade) values(:numMeio, :nomeEntidade);";
-            $result = $db->prepare($insertMeioCombate);
+            $result = $db->prepare($sql);
             $result->execute([':numMeio' => $numMeio, ':nomeMeio' => $nomeMeio]);
 
 
@@ -118,11 +118,23 @@ values(:numTelefone, :instanteChamada, :nomePessoa, :moradaLocal, :numProcessoSo
 
 
             $sql = "insert into Acciona(numMeio, nomeEntidade, numProcessoSocorro) values(:numMeio, :nomeEntidade, :numProcessoSocorro);";
-            $result = $db->prepare($insertMeioCombate);
+            $result = $db->prepare($sql);
             $result->execute([':numMeio' => $numMeio, ':nomeMeio' => $nomeMeio, ':numProcessoSocorro' => $numProcessoSocorro]);
 
 
-        } else {
+        } else  if ($table == "EventoProcesso") {
+            $instanteChamada = $_POST['instanteChamada'];
+            $numTelefone = $_POST['numTelefone'];
+            $numProcessoSocorro = $_POST['numProcessoSocorro'];
+
+
+            $sql = "update EventoEmergencia set numProcessoSocorro = :numProcessoSocorro 
+where numTelefone = :numTelefone and numProcessoSocorro = :numProcessoSocorro";
+            $result = $db->prepare($sql);
+            $result->execute([':instanteChamada' => $instanteChamada, ':numTelefone' => $numTelefone, ':numProcessoSocorro' => $numProcessoSocorro]);
+
+
+        }else {
             #error message
         }
 

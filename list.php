@@ -105,7 +105,7 @@
         $db = new PDO("pgsql:host=$host;dbname=$dbname", $user, $password);
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    if ($table == "Meio_Acc_Proc"){
+    if ($table == "MeioAccProc"){
         if ($numProcesso == ""){
             $sql = "select * from Acciona;";
         }
@@ -118,7 +118,7 @@
         printQuery($result, $table);
     }
 
-    if ($table == "MeioSocorro_Proc_Local"){
+    if ($table == "MeioSocorroProcLocal"){
         if ($moradaLocal == ""){
             $sql = "select numTelefone,instanteChamada,nomePessoa,moradaLocal,numProcessoSocorro,numMeio,nomeEntidade from Acciona natural join EventoEmergencia natural join MeioSocorro;";
         }
