@@ -6,7 +6,7 @@
     </head>
     <body>
         <center>
-            <h1 id="sgbd"><a id="link_sgbd">Sistema de Gestão de Incêndios Florestais</a></h1>
+            <h1 id="sgbd"><a id="link_sgbd"><a id="link_sgbd" href="../index.html">Sistema de Gestão de Incêndios Florestais</a></h1>
         </center>
         <ul id="menu">
             <li><a href="#">Locais</a>
