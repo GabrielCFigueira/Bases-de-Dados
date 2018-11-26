@@ -21,19 +21,20 @@ and instanteChamada <= '2018-09-21'
 group by nomeEntidade);
 
 --3.
-select distinct numProcessoSocorro from(
-    select numProcessoSocorro,count(1) as count1
-    from Acciona natural join EventoEmergencia
-    where year(instanteChamada)=2018
-    and moradaLocal='Oliveira do Hospital') 
-    group by numProcessoSocorro) as Acc_n
-    natural join(
-        select numProcessoSocorro,count(1) as count2 from Audita
-        natural join EventoEmergencia
-        where year(instanteChamada)=2018
-        and moradaLocal='Oliveira do Hospital') 
-        group by numProcessoSocorro) as Aud_n
-where Acc_n.count1>Aud_n.count2;
+select distinct numProcessoSocorro
+from (select numProcessoSocorro, count(1) as numAcc
+from Acciona
+natural join EventoEmergencia
+where moradaLocal = 'Oliveira do Hospital'
+and date_part('year', instanteChamada) = 2018
+group by numProcessoSocorro) as Acc_EE
+natural join (select numProcessoSocorro, count(1) as numAud
+from Audita
+natural join EventoEmergencia
+where moradaLocal = 'Oliveira do Hospital'
+and date_part('year', instanteChamada) = 2018
+group by numProcessoSocorro) as Aud_EE
+where Acc_EE.numAcc > Aud_EE.numAud;
 
 --4.
 select count(numSegmento) as totalSegmentos
@@ -52,17 +53,16 @@ select distinct numMeio
 from MeioCombate
 where numMeio not in (select numMeio
                       from MeioApoio
-                      natural join Acciona)
+                      natural join Acciona);
 
 --6.
 select nomeEntidade 
 from MeioCombate m_c1
 where not exists(
-    select numProcessoSocorro
+    select distinct numProcessoSocorro
     from ProcessoSocorro
     except
-    select numProcessoSocorro
-    from Acciona
+    select distinct numProcessoSocorro
+    from (Acciona
     natural join MeioCombate) m_c2
-where m_c2.nomeEntidade=m_c1.nomeEntidade
-);
+where m_c2.numMeio=m_c1.numMeio and m_c2.nomeEntidade=m_c1.nomeEntidade);
