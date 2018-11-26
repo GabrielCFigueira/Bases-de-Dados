@@ -123,7 +123,7 @@ values(:numTelefone, :instanteChamada, :nomePessoa, :moradaLocal, :numProcessoSo
 
 
         } else {
-            #error message
+            echo("<script>console.log(\"Unexpected table name\");</script>");
         }
 
         $db->commit();
