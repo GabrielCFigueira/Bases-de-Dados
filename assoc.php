@@ -52,7 +52,8 @@ try
 
     if ($table == "MeioProcesso") {
 
-        $sql = "select numMeio, nomeMeio, nomeEntidade, numProcessoSocorro from Meio natural join acciona order by nomeEntidade, numMeio;";
+        $sql = "select m.numMeio, m.nomeMeio, m.nomeEntidade, numProcessoSocorro from Meio m left outer join acciona a 
+on m.nomeEntidade = a.nomeEntidade and m.numMeio = a.numMeio order by nomeEntidade, numMeio;";
         $result = $db->prepare($sql);
 
         $result->execute();
