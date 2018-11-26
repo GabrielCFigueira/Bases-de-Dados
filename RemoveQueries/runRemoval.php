@@ -106,7 +106,7 @@
 
 
         } else {
-            #error message
+            echo("<script>console.log(\"Unexpected table name\");</script>");
         }
 
         $db->commit();
