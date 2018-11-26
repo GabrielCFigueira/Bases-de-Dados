@@ -80,7 +80,7 @@
 
             $sql = "delete from MeioCombate where numMeio = :numMeio and nomeEntidade = :nomeEntidade";
             $result = $db->prepare($sql);
-            $result->execute([':numMeio' => $numMeio, ':nomeMeio' => $nomeMeio]);
+            $result->execute([':numMeio' => $numMeio, ':nomeEntidade' => $nomeEntidade]);
 
 
         } else  if ($table == "MeioApoio") {
@@ -91,7 +91,7 @@
 
             $sql = "delete from MeioApoio where numMeio = :numMeio and nomeEntidade = :nomeEntidade";
             $result = $db->prepare($sql);
-            $result->execute([':numMeio' => $numMeio, ':nomeMeio' => $nomeMeio]);
+            $result->execute([':numMeio' => $numMeio, ':nomeEntidade' => $nomeEntidade]);
 
 
         } else  if ($table == "MeioSocorro") {
@@ -102,7 +102,7 @@
 
             $sql = "delete from MeioSocorro where numMeio = :numMeio and nomeEntidade = :nomeEntidade";
             $result = $db->prepare($sql);
-            $result->execute([':numMeio' => $numMeio, ':nomeMeio' => $nomeMeio]);
+            $result->execute([':numMeio' => $numMeio, ':nomeEntidade' => $nomeEntidade]);
 
 
         } else {

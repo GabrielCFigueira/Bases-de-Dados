@@ -21,62 +21,43 @@ try
 
 
 
-    if ($table == "MeioCombate") {
+    if ($table == "EditarMeioCombate") {
 
         $newNumMeio = $_POST['newNumMeio'];
-        $newNomeMeio = $_POST['newNomeMeio'];
         $newNomeEntidade = $_POST['newNomeEntidade'];
-        $oldNumMeio = $_POST['oldNumMeio'];
-        $oldNomeEntidade = $_POST['oldNomeEntidade'];
+        $oldNumMeio = $_REQUEST['numMeio'];
+        $oldNomeEntidade = $_REQUEST['nomeEntidade'];
 
-        $sql = "update MeioCombate set numMeio = :newnumMeio and nomeEntidade = :newnomeEntidade
-and nomeMeio = :newNomeMeio where numMeio = :oldnumMeio and nomeEntidade = :oldnomeEntidade;";
+        $sql = "update MeioCombate set numMeio = :newNumMeio, nomeEntidade = :newNomeEntidade where numMeio = :oldNumMeio and nomeEntidade = :oldNomeEntidade;";
         $result = $db->prepare($sql);
-        $result->execute([':newNumMeio' => $newNumMeio, ':newNomeMeio' => $newNomeMeio, ':newNomeEntidade' =>
+        $result->execute([':newNumMeio' => $newNumMeio, ':newNomeEntidade' =>
 $newNomeEntidade, ':oldNumMeio' => $oldNumMeio, ':oldNomeEntidade' => $oldNomeEntidade]);
 
 
-    } else  if ($table == "MeioApoio") {
+    } else  if ($table == "EditarMeioApoio") {
 
         $newNumMeio = $_POST['newNumMeio'];
-        $newNomeMeio = $_POST['newNomeMeio'];
         $newNomeEntidade = $_POST['newNomeEntidade'];
-        $oldNumMeio = $_POST['oldNumMeio'];
-        $oldNomeEntidade = $_POST['oldNomeEntidade'];
+        $oldNumMeio = $_REQUEST['numMeio'];
+        $oldNomeEntidade = $_REQUEST['nomeEntidade'];
 
-        $sql = "update MeioApoio set numMeio = :newnumMeio and nomeEntidade = :newnomeEntidade
-and nomeMeio = :newNomeMeio where numMeio = :oldnumMeio and nomeEntidade = :oldnomeEntidade;";
+        $sql = "update MeioApoio set numMeio = :newNumMeio, nomeEntidade = :newNomeEntidade where numMeio = :oldNumMeio and nomeEntidade = :oldNomeEntidade;";
         $result = $db->prepare($sql);
-        $result->execute([':newNumMeio' => $newNumMeio, ':newNomeMeio' => $newNomeMeio, ':newNomeEntidade' =>
+        $result->execute([':newNumMeio' => $newNumMeio, ':newNomeEntidade' =>
 $newNomeEntidade, ':oldNumMeio' => $oldNumMeio, ':oldNomeEntidade' => $oldNomeEntidade]);
 
 
-    } else  if ($table == "MeioSocorro") {
+    } else  if ($table == "EditarMeioSocorro") {
 
         $newNumMeio = $_POST['newNumMeio'];
-        $newNomeMeio = $_POST['newNomeMeio'];
         $newNomeEntidade = $_POST['newNomeEntidade'];
-        $oldNumMeio = $_POST['oldNumMeio'];
-        $oldNomeEntidade = $_POST['oldNomeEntidade'];
+        $oldNumMeio = $_REQUEST['numMeio'];
+        $oldNomeEntidade = $_REQUEST['nomeEntidade'];
 
-        $sql = "update MeioSocorro set numMeio = :newnumMeio and nomeEntidade = :newnomeEntidade
-and nomeMeio = :newNomeMeio where numMeio = :oldnumMeio and nomeEntidade = :oldnomeEntidade;";
+        $sql = "update MeioSocorro set numMeio = :newNumMeio, nomeEntidade = :newNomeEntidade where numMeio = :oldNumMeio and nomeEntidade = :oldNomeEntidade;";
         $result = $db->prepare($sql);
-        $result->execute([':newNumMeio' => $newNumMeio, ':newNomeMeio' => $newNomeMeio, ':newNomeEntidade' =>
+        $result->execute([':newNumMeio' => $newNumMeio, ':newNomeEntidade' =>
 $newNomeEntidade, ':oldNumMeio' => $oldNumMeio, ':oldNomeEntidade' => $oldNomeEntidade]);
-
-
-    }
-    else  if ($table == "EventoProcesso") {
-        $instanteChamada = $_POST['instanteChamada'];
-        $numTelefone = $_POST['numTelefone'];
-        $numProcessoSocorro = $_POST['numProcessoSocorro'];
-
-
-        $sql = "update EventoEmergencia set numProcessoSocorro = :numProcessoSocorro 
-where numTelefone = :numTelefone and instanteChamada = :instanteChamada;";
-        $result = $db->prepare($sql);
-        $result->execute([':instanteChamada' => $instanteChamada, ':numTelefone' => $numTelefone, ':numProcessoSocorro' => $numProcessoSocorro]);
 
 
     }

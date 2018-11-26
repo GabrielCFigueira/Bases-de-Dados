@@ -1,6 +1,6 @@
 ﻿<html>
     <head>
-        <title> Inserir </title>
+        <title> Insert </title>
         <link rel="stylesheet" href="../style.css"/>
         <link rel="icon" type="image/png" href="../Postgresql.png"/>
     </head>
@@ -82,99 +82,73 @@
         </ul>
 <?php
 
+    function printQuery($result,$table) {
+        if ($table == "EditarMeioCombate"  || $table == "EditarMeioApoio" || $table == "EditarMeioSocorro"){
+            echo("<div id='div_50_percent'><div id='div_table_edit_meios'>");
+        }
+
+        echo("<table border='1'>");
+        if ($table == "EditarMeioCombate"  || $table == "EditarMeioApoio" || $table == "EditarMeioSocorro"){
+            echo("<tr><th colspan=2>Correspondências</th></tr><tr><th>Numero Meio</th><th>Nome Entidade</th></tr>\n");
+        }
+
+        $result->setFetchMode(PDO::FETCH_ASSOC);   
+        while($row = $result->fetch()){ 
+            echo("<tr>"); 
+            foreach($row as $key=>$val) { 
+                echo("<td> $val </td>\n"); 
+            }
+            echo("</tr>");
+        }
+        echo("</table></div></div>");
+    }
+
     $table = $_REQUEST['table'];
 
-    if ($table == "Local") {
+    try {
+        $user="ist186426";      // -> replace by the user name
+        $host="db.ist.utl.pt";          // -> server where postgres is running
+        $port=5432;         // -> default port where Postgres is installed
+        $password="gqck3074";           // -> replace with the password
+        $dbname = $user;        // -> by default the name of the database is the name of the user
+        
+        $db = new PDO("pgsql:host=$host;dbname=$dbname", $user, $password);
+        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        echo("<form id='form_style' action='runInsertion.php' method='post'>
-        <p><input type='hidden' name='table' value='$table'/></p>
-        <p id='form_title'>Inserir novo Local</p>
-        <p>Morada do Local:</p> <input id='input_style' type='text' name='moradaLocal'/>
-        <br>
-        <input id='button_style' type='submit' value='Submit'/>
-        </form>");
+        if ($table == "EditarMeioCombate"  || $table == "EditarMeioApoio" || $table == "EditarMeioSocorro") {
 
-    } else  if ($table == "Evento") {
+            $numMeio = $_REQUEST['numMeio'];
+            $nomeEntidade = $_REQUEST['nomeEntidade'];
 
-        echo("<form id='form_style' action='runInsertion.php' method='post'>
-        <p><input type='hidden' name='table' value='$table'/></p>
-        <p id='form_title'>Inserir novo Evento de Emergência</p>
-        <p>Número de Telefone:</p> <input id='input_style' type='text' name='numTelefone'/>
-        <p>Instante da Chamada:</p> <input id='input_style' type='text' name='instanteChamada'/>
-        <p>Nome da Pessoa:</p> <input id='input_style' type='text' name='nomePessoa'/>
-        <p>Morada do Local:</p> <input id='input_style' type='text' name='moradaLocal'/>
-        <p>Número de Processo de Socorro:</p> <input id='input_style' type='text' name='numProcessoSocorro'/>
-        <br>
-        <input id='button_style' type='submit' value='Submit'/>
-        </form>");
+            echo("<div id='div_50_percent'><div id='div_update_meios'><form id='form_style' action='runUpdate.php?table=$table&numMeio=$numMeio&nomeEntidade=$nomeEntidade' method='post'><p><input type='hidden' name='table' value='$table'/></p>");
+            if ($table == "EditarMeioCombate"){
+                echo("<p id='form_title'>Editar Meio de Combate</p>");
+            }else if ($table == "EditarMeioApoio"){
+                echo("<p id='form_title'>Editar Meio de Apoio</p>");
+            }else if($table == "EditarMeioSocorro"){
+                echo("<p id='form_title'>Editar Meio de Socorro</p>");
+            }
+            echo("<p>Número do Meio:</p> <input id='input_style' type='text' name='newNumMeio' value='$numMeio'/>
+            <p>Nome Entidade:</p> <input id='input_style' type='text' name='newNomeEntidade' value='$nomeEntidade'/>
+            <br>
+            <input id='button_style' type='submit' value='Submit'/>
+            </form></div></div>");
 
-    } else  if ($table == "Processo") {
+            $sql = "select numMeio, nomeEntidade from Meio group by numMeio, nomeEntidade order by numMeio, nomeEntidade;";
+            $result = $db->prepare($sql);
 
-        echo("<form id='form_style' action='runInsertion.php' method='post'>
-        <p><input type='hidden' name='table' value='$table'/></p>
-        <p id='form_title'>Inserir novo Processo de Socorro</p>
-        <p>Número de Processo Socorro:</p> <input id='input_style' type='text' name='numProcessoSocorro'/>
-        <br>
-        <input id='button_style' type='submit' value='Submit'/>
-        </form>");
+            $result->execute();
 
-    } else  if ($table == "Meio") {
-    
-        echo("<form id='form_style' action='runInsertion.php' method='post'>
-        <p><input type='hidden' name='table' value='$table'/></p>
-        <p id='form_title'>Inserir novo Meio</p>
-        <p>Número do Meio:</p> <input id='input_style' type='text' name='numMeio'/>
-        <p>Nome do Meio:</p> <input id='input_style' type='text' name='nomeMeio'/>
-        <p>Nome da Entidade Detentora do Meio:</p> <input id='input_style' type='text' name='nomeEntidade'/>
-        <br>
-        <input id='button_style' type='submit' value='Submit'/>
-        </form>");
+            printQuery($result, $table);
 
-    } else  if ($table == "Entidade") {
+        } else {
+            echo("<script>console.log(\"Unexpected table name\");</script>");
+        }
 
-        echo("<form id='form_style' action='runInsertion.php' method='post'>
-        <p><input type='hidden' name='table' value='$table'/></p>
-        <p id='form_title'>Inserir nova Entidade</p>
-        <p>Nome da Entidade:</p> <input id='input_style' type='text' name='nomeEntidade'/>
-        <br>
-        <input id='button_style' type='submit' value='Submit'/>
-        </form>");
-
-    } else  if ($table == "MeioCombate") {
-
-        echo("<form id='form_style' action='runInsertion.php' method='post'>
-        <p><input type='hidden' name='table' value='$table'/></p>
-        <p id='form_title'>Inserir novo Meio de Combate</p>
-        <p>Número do Meio:</p> <input id='input_style' type='text' name='numMeio'/>
-        <p>Nome Entidade:</p> <input id='input_style' type='text' name='nomeEntidade'/>
-        <br>
-        <input id='button_style' type='submit' value='Submit'/>
-        </form>");
-
-    } else  if ($table == "MeioApoio") {
-
-        echo("<form id='form_style' action='runInsertion.php' method='post'>
-        <p><input type='hidden' name='table' value='$table'/></p>
-        <p id='form_title'>Inserir novo Meio de Apoio</p>
-        <p>Número do Meio:</p> <input id='input_style' type='text' name='numMeio'/>
-        <p>Nome Entidade:</p> <input id='input_style' type='text' name='nomeEntidade'/>
-        <br>
-        <input id='button_style' type='submit' value='Submit'/>
-        </form>");
-
-    } else  if ($table == "MeioSocorro") {
-
-        echo("<form id='form_style' action='runInsertion.php' method='post'>
-        <p><input type='hidden' name='table' value='$table'/></p>
-        <p id='form_title'>Inserir novo Meio de Socorro</p>
-        <p>Número do Meio:</p> <input id='input_style' type='text' name='numMeio'/>
-        <p>Nome Entidade:</p> <input id='input_style' type='text' name='nomeEntidade'/>
-        <br>
-        <input id='button_style' type='submit' value='Submit'/>
-        </form>");
-
-    } else {
-        echo("<script>console.log(\"Unexpected table name\");</script>");
+        $db = null;
+        
+    } catch (Exception $e) {
+        echo("<p>ERROR: {$e->getMessage()}</p>");
     }
 
 
