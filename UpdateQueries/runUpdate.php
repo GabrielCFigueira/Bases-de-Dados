@@ -1,12 +1,8 @@
 <html>
     <head>
-        <title> Update </title>
-        <link rel="stylesheet" href="style.css"/>
-        <link rel="icon" type="image/png" href="Postgresql.png"/>
+        <title> Insert </title>
     </head>
     <body>
-    <center>
-        <h1 id="sgbd">Sistema de Gestão de Incêndios Florestais</h1>
 <?php
 
 $table = $_REQUEST['table'];
@@ -78,7 +74,7 @@ $newNomeEntidade, ':oldNumMeio' => $oldNumMeio, ':oldNomeEntidade' => $oldNomeEn
 
 
         $sql = "update EventoEmergencia set numProcessoSocorro = :numProcessoSocorro 
-where numTelefone = :numTelefone and numProcessoSocorro = :numProcessoSocorro and instanteChamada = :instanteChamada;";
+where numTelefone = :numTelefone and instanteChamada = :instanteChamada;";
         $result = $db->prepare($sql);
         $result->execute([':instanteChamada' => $instanteChamada, ':numTelefone' => $numTelefone, ':numProcessoSocorro' => $numProcessoSocorro]);
 
