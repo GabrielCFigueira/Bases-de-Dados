@@ -17,19 +17,6 @@ drop table SegmentoVideo cascade;
 drop table Video cascade;
 drop table Camara cascade;
 
-
-CREATE OR REPLACE FUNCTION  checkEventProc()
-RETURNS TRIGGER
-AS $$
-BEGIN
-    IF NEW.numProcessoSocorro not in(SELECT numProcessoSocorro from EventoEmergencia) THEN
-        RAISERROR('Nao e possivel existir processo de socorro nao estando associado a nenhum evento de emergencia',16,1);
-    END IF;
-END;
-$BODY$ LANGUAGE plpgsqpl;
-
-CREATE TRIGGER checkEvent BEFORE INSERT,UPDATE ON ProcessoSocorro FOR EACH ROW EXECUTE PROCEDURE checkEventProc();
-
 create table Camara(
     numCamara integer not null /*unique*/,
     constraint pk_Camara primary key(numCamara)
@@ -129,7 +116,7 @@ create table Transporta(
 create table Alocado(
     numMeio integer not null,
     nomeEntidade varchar(200) not null,
-    numHoras interval not null,
+    numHoras integer not null,
     numProcessoSocorro integer not null,
     constraint pk_Alocado primary key(numMeio, nomeEntidade, numProcessoSocorro),
     constraint fk_Alocado_MeioApoio foreign key(numMeio, nomeEntidade) references MeioApoio(numMeio, nomeEntidade),
@@ -161,7 +148,9 @@ create table Audita(
     texto text not null,
     constraint pk_Audita primary key(idCoordenador ,numMeio, nomeEntidade, numProcessoSocorro),
     constraint fk_Audita_Coordenador foreign key(idCoordenador) references Coordenador(idCoordenador),
-    constraint fk_Audita_Acciona foreign key(numMeio, nomeEntidade, numProcessoSocorro) references Acciona(numMeio, nomeEntidade, numProcessoSocorro)
+    constraint fk_Audita_Acciona foreign key(numMeio, nomeEntidade, numProcessoSocorro) references Acciona(numMeio, nomeEntidade, numProcessoSocorro),
+    check (dataHoraInicio < dataHoraFim),
+    check (dataAuditoria > now())
 );
 
 create table Solicita(

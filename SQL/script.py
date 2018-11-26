@@ -1,7 +1,7 @@
 import random
 import datetime
 
-f = open("INSERTS_BD3.sql","w")
+f = open("populate.sql","w")
 
 lista_localidades = ['Oliveira do Hospital','Monchique','Abadia de Bouro','Abas da Raposeira','Aboá','Agra (Amorim)','Agra de Bouças',
 'Águas Férreas (Póvoa de Varzim)','Águias (Brotas)','Aires (Setúbal)','Alcaniça','Alcorriol','Aldeia (Aguçadoura)',
@@ -349,6 +349,7 @@ dicionario_video_Inicio_camara = {}
 dicionario_video_Inicio_Fim = {}
 dicionario_meioApoio = {}
 dicionario_meioSocorro = {}
+dicionario_meioCombate = {}
 dicionario_Acciona_numMeio_nomeEntidade = {}
 dicionario_Acciona_numMeio_numProcessoSocorro = {}
 
@@ -364,9 +365,10 @@ iteracoes_vigia = 300
 iteracoes_eventoemergencia = 150
 iteracoes_video = 150
 iteracoes_segmentovideo = 3
-iteracoes_acciona = 200
+iteracoes_acciona = 300
 iteracoes_audita = 120
 iteracoes_solicita = 120
+iteracoes_transporta_alocado = 100
 
 def Camara():
     f.write("----------------------------------------\n")
@@ -440,33 +442,56 @@ def Meio_Seleciona(string, dici):
         
         index1 = int(random.uniform(0,iteracoes_meio//iteracoes_minimas))
         nomeEntidade = dici[randM][index1]
+
+        if string == "MeioCombate":
+            while nomeEntidade in dicionario_meioApoio[randM]:
+                index1 = int(random.uniform(0,iteracoes_meio//iteracoes_minimas))
+                nomeEntidade = dici[randM][index1]
+
         f.write("insert into "+string+"(numMeio, nomeEntidade) values(" + str(randM) + ", '" + nomeEntidade + "');\n")
         if string == "MeioApoio":
-            dicionario_meioApoio[randM] = [nomeEntidade]
+            if randM not in dicionario_meioApoio.keys():
+                dicionario_meioApoio[randM] = [nomeEntidade]
+            else:
+                dicionario_meioApoio[randM] += [nomeEntidade]
         elif string == "MeioSocorro":
-            dicionario_meioSocorro[randM] = [nomeEntidade]
-        
+            if randM not in dicionario_meioSocorro.keys():
+                dicionario_meioSocorro[randM] = [nomeEntidade]
+            else:
+                dicionario_meioSocorro[randM] += [nomeEntidade]
+        elif string == "MeioCombate":
+            if randM not in dicionario_meioCombate.keys():
+                dicionario_meioCombate[randM] = [nomeEntidade]
+            else:
+                dicionario_meioCombate[randM] += [nomeEntidade]
+
         index2 = int(random.uniform(0,iteracoes_meio//iteracoes_minimas))
         while index1 == index2:
             index2 = int(random.uniform(0,iteracoes_meio//iteracoes_minimas))
 
         nomeEntidade = dici[randM][index2]
-        f.write("insert into "+string+"(numMeio, nomeEntidade) values(" + str(randM) + ", '" + nomeEntidade + "');\n")
-        if string == "MeioApoio":
-            dicionario_meioApoio[randM] += [nomeEntidade]
-        elif string == "MeioSocorro":
-            dicionario_meioSocorro[randM] += [nomeEntidade]
-        
-        index3 = int(random.uniform(0,iteracoes_meio//iteracoes_minimas))
-        while index1 == index3 or index2 == index3:
-            index3 = int(random.uniform(0,iteracoes_meio//iteracoes_minimas))
 
-        nomeEntidade = dici[randM][index3]
+        if string == "MeioCombate":
+            while nomeEntidade in dicionario_meioApoio[randM] or index1==index2:
+                index2 = int(random.uniform(0,iteracoes_meio//iteracoes_minimas))
+                nomeEntidade = dici[randM][index2]
+
         f.write("insert into "+string+"(numMeio, nomeEntidade) values(" + str(randM) + ", '" + nomeEntidade + "');\n")
         if string == "MeioApoio":
-            dicionario_meioApoio[randM] += [nomeEntidade]
+            if randM not in dicionario_meioApoio.keys():
+                dicionario_meioApoio[randM] = [nomeEntidade]
+            else:
+                dicionario_meioApoio[randM] += [nomeEntidade]
         elif string == "MeioSocorro":
-            dicionario_meioSocorro[randM] += [nomeEntidade]
+            if randM not in dicionario_meioSocorro.keys():
+                dicionario_meioSocorro[randM] = [nomeEntidade]
+            else:
+                dicionario_meioSocorro[randM] += [nomeEntidade]
+        elif string == "MeioCombate":
+            if randM not in dicionario_meioCombate.keys():
+                dicionario_meioCombate[randM] = [nomeEntidade]
+            else:
+                dicionario_meioCombate[randM] += [nomeEntidade]
 
 def Vigia():
     global lista_camaras_reforco_Vigia_Monchique
@@ -673,7 +698,8 @@ def SegmentoVideo():
         for i in range( limite ):
             time_to_insert = int(random.uniform(0,interval+1))
             interval -= time_to_insert
-            if i == limite-1 and total == 1:
+            if i == limite-1:
+                interval += time_to_insert
                 f.write("insert into SegmentoVideo(numSegmento, duracao, dataHoraInicio, numCamara) values(" + str(k) + ", '" + str(interval//3600) + ":" + str((interval%3600)//60) + ":" + str((interval%3600)%60) + "', '" + str(key) + "', " + str(camara) + ");\n")
                 k += 1
             else:
@@ -684,29 +710,7 @@ def SegmentoVideo():
                 elif interval != 0:
                     f.write("insert into SegmentoVideo(numSegmento, duracao, dataHoraInicio, numCamara) values(" + str(k) + ", '" + str(time_to_insert//3600) + ":" + str((time_to_insert%3600)//60) + ":" + str((time_to_insert%3600)%60) + "', '" + str(key) + "', " + str(camara) + ");\n")
                     k += 1
-        """
-
-        for i in range(iteracoes_segmentovideo):
-            hora = int(random.uniform(0, 21))
-            minutos = int(random.uniform(0, 60))
-            segundos = int(random.uniform(0, 60))
-            if int(random.uniform(1,101)) % 3 == 0:
-                f.write("insert into SegmentoVideo(numSegmento, duracao, dataHoraInicio, numCamara) values(" + str(k) + ", '" + str(hora) + ":" + str(minutos) + ":" + str(segundos) + "', '" + str(e) + "', " + str(dicionario_video[e][int(random.uniform(0,len(dicionario_video[e])))]) + ");\n")
-                k += 1
-            else:
-                if flag_insert_Monchique:
-                    if int(random.uniform(1,101)) % 3 == 0:
-                        camara = lista_camaras_dicionario_Vigia_Monchique[index_camara]
-                        e = dicionario_reforco_Vigia_Monchique[camara]
-                        camara = dicionario_video_Inicio_camara[e][int(random.uniform(0,len(dicionario_video_Inicio_camara[e])))]
-                        
-                        if index_camara == len(lista_camaras_dicionario_Vigia_Monchique)-1:
-                            flag_insert_Monchique = False
-
-                        f.write("insert into SegmentoVideo(numSegmento, duracao, dataHoraInicio, numCamara) values(" + str(k) + ", '" + str(hora) + ":" + str(minutos) + ":" + str(segundos) + "', '" + str(e) + "', " + str(camara) + ");\n")
-                        index_camara += 1
-                        k += 1
-    """
+    
     #print("SegmentosVideos duração superior a 60 segundos - Monchique: " + str(index_camara))
 
 def Transporta():
@@ -725,9 +729,80 @@ def Alocado():
 
     for key in dicionario_meioApoio:
         nomeEntidade = dicionario_meioApoio[key][int(random.uniform(0,len(dicionario_meioApoio[key])))]
-        horas = int(random.uniform(0,24))
-        minutos = int(random.uniform(0,60))
-        f.write("insert into Alocado(numMeio, nomeEntidade, numHoras, numProcessoSocorro) values(" + str(key) + ", '" + str(nomeEntidade) + "', '" + str(horas) + ":" + str(minutos) + "', " + str(int(random.uniform(1,iteracoes_minimas+1))) + ");\n")
+        horas = int(random.uniform(0,101))
+        #horas = int(random.uniform(0,24))
+        #minutos = int(random.uniform(0,60))
+        f.write("insert into Alocado(numMeio, nomeEntidade, numHoras, numProcessoSocorro) values(" + str(key) + ", '" + str(nomeEntidade) + "', '" + str(horas) + "', " + str(int(random.uniform(1,iteracoes_minimas+1))) + ");\n")
+
+
+def Transporta_acciona():
+    f.write("\n\n----------------------------------------\n")
+    f.write("-- Transporta - Values\n")
+    f.write("----------------------------------------\n")
+
+    dicio_usado = {}
+    dicio_usado_Proc = {}
+    lista = list(dicionario_meioSocorro.keys())
+    print(len(lista))
+    for e in lista:
+        dicio_usado[e] = []
+
+    for i in range(iteracoes_transporta_alocado):
+        key = lista[int(random.uniform(0,len(lista)))]
+
+        nomeEntidade = dicionario_meioSocorro[key][int(random.uniform(0,len(dicionario_meioSocorro[key])))]
+
+        index_numProcesso = dicionario_Acciona_numMeio_nomeEntidade[key].index(nomeEntidade)
+
+        while nomeEntidade in dicio_usado[key]:
+            key = lista[int(random.uniform(0,len(lista)))]
+
+            nomeEntidade = dicionario_meioSocorro[key][int(random.uniform(0,len(dicionario_meioSocorro[key])))]
+
+            index_numProcesso = dicionario_Acciona_numMeio_nomeEntidade[key].index(nomeEntidade)
+
+        dicio_usado[key] += [nomeEntidade]
+        
+        numProcessoSocorro = dicionario_Acciona_numMeio_numProcessoSocorro[key][index_numProcesso]
+
+        f.write("insert into Transporta(numMeio, nomeEntidade, numVitimas, numProcessoSocorro) values(" + str(key) + ", '" + str(nomeEntidade) + "', " + str(int(random.uniform(1,201))) + ", " + str(numProcessoSocorro) + ");\n")
+
+
+def Alocado_acciona():
+    f.write("\n\n----------------------------------------\n")
+    f.write("-- Alocado - Values\n")
+    f.write("----------------------------------------\n")
+    
+    dicio_usado = {}
+    dicio_usado_Proc = {}
+    lista = list(dicionario_meioApoio.keys())
+    print(len(lista))
+    for e in lista:
+        dicio_usado[e] = []
+
+    for i in range(iteracoes_transporta_alocado):
+        key = lista[int(random.uniform(0,len(lista)))]
+
+        nomeEntidade = dicionario_meioApoio[key][int(random.uniform(0,len(dicionario_meioApoio[key])))]
+
+        index_numProcesso = dicionario_Acciona_numMeio_nomeEntidade[key].index(nomeEntidade)
+
+        while nomeEntidade in dicio_usado[key]:
+            key = lista[int(random.uniform(0,len(lista)))]
+
+            nomeEntidade = dicionario_meioApoio[key][int(random.uniform(0,len(dicionario_meioApoio[key])))]
+
+            index_numProcesso = dicionario_Acciona_numMeio_nomeEntidade[key].index(nomeEntidade)
+
+        dicio_usado[key] += [nomeEntidade]
+        
+        numProcessoSocorro = dicionario_Acciona_numMeio_numProcessoSocorro[key][index_numProcesso]
+
+        horas = int(random.uniform(0,101))
+        #horas = int(random.uniform(0,24))
+        #minutos = int(random.uniform(0,60))
+        f.write("insert into Alocado(numMeio, nomeEntidade, numHoras, numProcessoSocorro) values(" + str(key) + ", '" + str(nomeEntidade) + "', '" + str(horas) + "', " + str(numProcessoSocorro) + ");\n")
+
 
 def Acciona(dici):
     f.write("\n\n----------------------------------------\n")
@@ -743,7 +818,7 @@ def Acciona(dici):
 
     for i in range(iteracoes_acciona):
         numMeio = int(random.uniform(1,iteracoes_minimas+1))
-        while lista_conta_meio[numMeio-1] == 5 or len(dici_usado[numMeio]) == (iteracoes_meio//iteracoes_minimas):
+        while lista_conta_meio[numMeio-1] == (iteracoes_meio//iteracoes_minimas) or len(dici_usado[numMeio]) == (iteracoes_meio//iteracoes_minimas):
             numMeio = int(random.uniform(1,iteracoes_minimas+1))
         
         nomeEntidade = dici[numMeio][int(random.uniform(0,len(dici[numMeio])))]
@@ -761,6 +836,7 @@ def Acciona(dici):
             numProcessoSocorro = int(random.uniform(1,iteracoes_minimas+1))
 
         f.write("insert into Acciona(numMeio, nomeEntidade, numProcessoSocorro) values(" + str(numMeio) + ", '" + str(nomeEntidade) + "', " + str(numProcessoSocorro) + ");\n")
+
         if numMeio in dicionario_Acciona_numMeio_nomeEntidade.keys():
             dicionario_Acciona_numMeio_nomeEntidade[numMeio] += [nomeEntidade]
             dicionario_Acciona_numMeio_numProcessoSocorro[numMeio] += [numProcessoSocorro]
@@ -771,6 +847,94 @@ def Acciona(dici):
         lista_conta_meio[numMeio-1]+=1
     
     print("Oliveira do Hospital - Acciona: " + str(count_Oliveira))
+
+def Acciona_Transporta_Acciona(dici):
+    global dicionario_meioApoio, dicionario_meioSocorro
+    f.write("\n\n----------------------------------------\n")
+    f.write("-- Acciona - Values\n")
+    f.write("----------------------------------------\n")
+    dici_usado = {}
+    lista_conta_meio = []
+    index_reforco = len(lista_numProcessos_reforco_Acciona_Audita)-1
+    count_Oliveira = 0
+
+    lista_meioApoio = list(dicionario_meioApoio.keys())
+    lista_meioSocorro = list(dicionario_meioSocorro.keys())
+
+    index_meioApoio = 0
+    index_meioSocorro = 0
+
+    new_dicio_meioApoio = {}
+    new_dicio_meioSocorro = {}
+
+    for i in range(iteracoes_minimas):
+        dici_usado[i+1] = []
+        lista_conta_meio += [0]
+
+    for i in range(iteracoes_acciona):
+        numMeio = int(random.uniform(1,iteracoes_minimas+1))
+        while lista_conta_meio[numMeio-1] == (iteracoes_meio//iteracoes_minimas) or len(dici_usado[numMeio]) == (iteracoes_meio//iteracoes_minimas):
+            numMeio = int(random.uniform(1,iteracoes_minimas+1))
+        
+        nomeEntidade = dici[numMeio][int(random.uniform(0,len(dici[numMeio])))]
+        
+        while nomeEntidade in dici_usado[numMeio]:
+            nomeEntidade = dici[numMeio][int(random.uniform(0,len(dici[numMeio])))]
+        
+        dici_usado[numMeio] += [nomeEntidade]
+
+        if int(random.uniform(1,1001))%20 == 0 and index_reforco != 0:
+            numProcessoSocorro = lista_numProcessos_reforco_Acciona_Audita[index_reforco]+1
+            index_reforco -= 1
+            count_Oliveira += 1
+        else:
+            numProcessoSocorro = int(random.uniform(1,iteracoes_minimas+1))
+
+        if numMeio in dicionario_meioCombate.keys() and nomeEntidade in dicionario_meioCombate[numMeio] and int(random.uniform(1,1001))%20 == 0:
+            for i in range(iteracoes_minimas):
+                numProcessoSocorro = i+1
+                f.write("insert into Acciona(numMeio, nomeEntidade, numProcessoSocorro) values(" + str(numMeio) + ", '" + str(nomeEntidade) + "', " + str(numProcessoSocorro) + ");\n")
+
+                if numMeio in dicionario_Acciona_numMeio_nomeEntidade.keys():
+                    if nomeEntidade not in dicionario_Acciona_numMeio_nomeEntidade[numMeio]:
+                        dicionario_Acciona_numMeio_nomeEntidade[numMeio] += [nomeEntidade]
+                        dicionario_Acciona_numMeio_numProcessoSocorro[numMeio] += [numProcessoSocorro]
+                else:
+                    dicionario_Acciona_numMeio_nomeEntidade[numMeio] = [nomeEntidade]
+                    dicionario_Acciona_numMeio_numProcessoSocorro[numMeio] = [numProcessoSocorro]
+        else:
+            f.write("insert into Acciona(numMeio, nomeEntidade, numProcessoSocorro) values(" + str(numMeio) + ", '" + str(nomeEntidade) + "', " + str(numProcessoSocorro) + ");\n")
+
+            if numMeio in dicionario_Acciona_numMeio_nomeEntidade.keys():
+                dicionario_Acciona_numMeio_nomeEntidade[numMeio] += [nomeEntidade]
+                dicionario_Acciona_numMeio_numProcessoSocorro[numMeio] += [numProcessoSocorro]
+            else:
+                dicionario_Acciona_numMeio_nomeEntidade[numMeio] = [nomeEntidade]
+                dicionario_Acciona_numMeio_numProcessoSocorro[numMeio] = [numProcessoSocorro]
+        
+        if numMeio in lista_meioApoio and nomeEntidade in dicionario_meioApoio[numMeio]:
+            if numMeio in new_dicio_meioApoio.keys():
+                new_dicio_meioApoio[numMeio] += [nomeEntidade]
+            else:
+                new_dicio_meioApoio[numMeio] = [nomeEntidade]
+            
+            index_meioApoio += 1
+
+        if numMeio in lista_meioSocorro and nomeEntidade in dicionario_meioSocorro[numMeio]:
+            if numMeio in new_dicio_meioSocorro.keys():
+                new_dicio_meioSocorro[numMeio] += [nomeEntidade]
+            else:
+                new_dicio_meioSocorro[numMeio] = [nomeEntidade]
+            index_meioSocorro += 1
+        
+        lista_conta_meio[numMeio-1]+=1
+    
+    dicionario_meioApoio = new_dicio_meioApoio
+    dicionario_meioSocorro = new_dicio_meioSocorro
+    
+    print("Oliveira do Hospital - Acciona: " + str(count_Oliveira))
+    print(index_meioApoio)
+    print(index_meioSocorro)
 
 def Audita():
     f.write("\n\n----------------------------------------\n")
@@ -937,16 +1101,19 @@ EntidadeMeio()
 Local()
 ProcessoSocorro()
 dicio = Meio()
-Meio_Seleciona("MeioCombate",dicio)
 Meio_Seleciona("MeioApoio",dicio)
+Meio_Seleciona("MeioCombate",dicio)
 Meio_Seleciona("MeioSocorro",dicio)
 Vigia()
 EventoEmergencia()
 Video()
 SegmentoVideo()
-Transporta()
-Alocado()
-Acciona(dicio)
+#Transporta()
+#Alocado()
+#Acciona(dicio)
+Acciona_Transporta_Acciona(dicio)
+Transporta_acciona()
+Alocado_acciona()
 Audita()
 Solicita()
 
