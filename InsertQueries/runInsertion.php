@@ -85,7 +85,7 @@ values(:numTelefone, :instanteChamada, :nomePessoa, :moradaLocal, :numProcessoSo
 
             $sql = "insert into MeioCombate(numMeio, nomeEntidade) values(:numMeio, :nomeEntidade);";
             $result = $db->prepare($sql);
-            $result->execute([':numMeio' => $numMeio, ':nomeMeio' => $nomeMeio]);
+            $result->execute([':numMeio' => $numMeio, ':nomeEntidade' => $nomeEntidade]);
 
 
         } else  if ($table == "MeioApoio") {
@@ -96,7 +96,7 @@ values(:numTelefone, :instanteChamada, :nomePessoa, :moradaLocal, :numProcessoSo
 
             $sql = "insert into MeioApoio(numMeio, nomeEntidade) values(:numMeio, :nomeEntidade);";
             $result = $db->prepare($sql);
-            $result->execute([':numMeio' => $numMeio, ':nomeMeio' => $nomeMeio]);
+            $result->execute([':numMeio' => $numMeio, ':nomeEntidade' => $nomeEntidade]);
 
 
         } else  if ($table == "MeioSocorro") {
@@ -107,7 +107,7 @@ values(:numTelefone, :instanteChamada, :nomePessoa, :moradaLocal, :numProcessoSo
 
             $sql = "insert into MeioSocorro(numMeio, nomeEntidade) values(:numMeio, :nomeEntidade);";
             $result = $db->prepare($sql);
-            $result->execute([':numMeio' => $numMeio, ':nomeMeio' => $nomeMeio]);
+            $result->execute([':numMeio' => $numMeio, ':nomeEntidade' => $nomeEntidade]);
 
 
         } else  if ($table == "MeioProcesso") {
@@ -122,19 +122,7 @@ values(:numTelefone, :instanteChamada, :nomePessoa, :moradaLocal, :numProcessoSo
             $result->execute([':numMeio' => $numMeio, ':nomeMeio' => $nomeMeio, ':numProcessoSocorro' => $numProcessoSocorro]);
 
 
-        } else  if ($table == "EventoProcesso") {
-            $instanteChamada = $_POST['instanteChamada'];
-            $numTelefone = $_POST['numTelefone'];
-            $numProcessoSocorro = $_POST['numProcessoSocorro'];
-
-
-            $sql = "update EventoEmergencia set numProcessoSocorro = :numProcessoSocorro 
-where numTelefone = :numTelefone and numProcessoSocorro = :numProcessoSocorro and instanteChamada = :instanteChamada;";
-            $result = $db->prepare($sql);
-            $result->execute([':instanteChamada' => $instanteChamada, ':numTelefone' => $numTelefone, ':numProcessoSocorro' => $numProcessoSocorro]);
-
-
-        }else {
+        } else {
             #error message
         }
 
