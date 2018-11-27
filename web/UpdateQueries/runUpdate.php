@@ -87,18 +87,40 @@ $table = $_REQUEST['table'];
 
 try 
 {
-    $user="ist186426";		// -> replace by the user name
-    $host="db.ist.utl.pt";	        // -> server where postgres is running
-    $port=5432;			// -> default port where Postgres is installed
-    $password="gqck3074";	        // -> replace with the password
-    $dbname = $user;		// -> by default the name of the database is the name of the user
+    include "../connect.php";
     
     $db = new PDO("pgsql:host=$host;dbname=$dbname", $user, $password);
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
+    if ($table == "MeioProcesso") {
+
+        $numMeio = $_POST['numMeio'];
+        $nomeEntidade = $_POST['nomeEntidade'];
+        $numProcessoSocorro = $_REQUEST['numProcessoSocorro'];
+
+        $sql = "insert into Acciona(numMeio,nomeEntidade,numProcessoSocorro) values(:numMeio,:nomeEntidade,:numProcessoSocorro)";
+        $result = $db->prepare($sql);
+        $result->execute([':numMeio' =>
+$numMeio, ':nomeEntidade' => $nomeEntidade, ':numProcessoSocorro' => $numProcessoSocorro]);
+
+        echo("<p id='list_name_success'>Processo associado com sucesso!</p>");
 
 
-    if ($table == "EditarMeioCombate") {
+    }else if ($table == "EventoProcesso") {
+
+        $numTelefone = $_POST['numTelefone'];
+        $instanteChamada = $_POST['instanteChamada'];
+        $numProcessoSocorro = $_REQUEST['numProcessoSocorro'];
+
+        $sql = "update EventoEmergencia set numProcessoSocorro = :numProcessoSocorro where numTelefone = :numTelefone and instanteChamada = :instanteChamada;";
+        $result = $db->prepare($sql);
+        $result->execute([':numProcessoSocorro' => $numProcessoSocorro, ':numTelefone' =>
+$numTelefone, ':instanteChamada' => $instanteChamada]);
+
+        echo("<p id='list_name_success'>Processo associado com sucesso!</p>");
+
+
+    }else if ($table == "EditarMeioCombate") {
 
         $newNumMeio = $_POST['newNumMeio'];
         $newNomeEntidade = $_POST['newNomeEntidade'];
