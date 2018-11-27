@@ -176,3 +176,18 @@ RETURN NEW;
 END;
 $BODY$ LANGUAGE plpgsql;
 CREATE TRIGGER chk_proc BEFORE INSERT ON ProcessoSocorro FOR EACH ROW EXECUTE PROCEDURE chk_proc_existance();
+
+
+CREATE OR REPLACE FUNCTION chk_proc_delete()
+RETURNS TRIGGER AS $BODY$
+DECLARE n_count INTEGER;
+BEGIN
+SELECT count(1) INTO n_count FROM(SELECT numProcessoSocorro FROM EventoEmergencia as e where e.numProcessoSocorro=OLD.numProcessoSocorro) as t;
+IF n_count = 0 THEN RAISE EXCEPTION 'nonexistent event %', n_count
+USING HINT = 'Existem processos nao asssociados a eventos de emrgencia. irao ser eliminados';
+DELETE FROM ProcessoSocorro WHERE numProcessoSocorro=OLD.numProcessoSocorro;
+END IF;
+RETURN OLD;
+END;
+$BODY$ LANGUAGE plpgsql;
+CREATE TRIGGER chk_proc_d AFTER UPDATE,DELETE ON EventoEmergencia FOR EACH ROW EXECUTE PROCEDURE chk_proc_delete();
