@@ -241,6 +241,9 @@ values(:numTelefone, :instanteChamada, :nomePessoa, :moradaLocal, :numProcessoSo
             case 23503:
                 echo("Chave estrangeira inexistente");
                 break;
+            case 22P02:
+                echo("Campo inválido");
+                break;
         }
         $db->rollBack();
         //echo("<p>ERROR: {$e->getMessage()}</p>");
