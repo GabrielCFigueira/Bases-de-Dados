@@ -234,9 +234,16 @@ values(:numTelefone, :instanteChamada, :nomePessoa, :moradaLocal, :numProcessoSo
     }
     catch (PDOException $e)
     {
-
+        switch($e->getCode()){
+            case 23505:
+                echo("Chave duplicada. O elemento nao foi inserido");
+                break;
+            case 23503:
+                echo("Chave estrangeira inexistente");
+                break;
+        }
         $db->rollBack();
-        echo("<p>ERROR: {$e->getMessage()}</p>");
+        //echo("<p>ERROR: {$e->getMessage()}</p>");
 
     }
 
