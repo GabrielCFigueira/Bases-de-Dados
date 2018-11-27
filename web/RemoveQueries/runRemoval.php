@@ -197,7 +197,8 @@
         } else {
             echo("<script>console.log(\"Unexpected table name\");</script>");
         }
-
+        if($result->rowCount()==0)
+            echo($table." nao foi removido porque ja nao existe");
         $db->commit();
         $db = null;
 

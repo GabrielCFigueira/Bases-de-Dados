@@ -173,8 +173,19 @@ $newNomeEntidade, ':oldNumMeio' => $oldNumMeio, ':oldNomeEntidade' => $oldNomeEn
     $db = null;
 } 
 catch (PDOException $e)
-{
-    echo("<p>ERROR: {$e->getMessage()}</p>");
+{    
+    switch($e->getCode()){
+    case 23505:
+        echo("Chave duplicada. O elemento nao foi inserido");
+        break;
+    case 23503:
+        echo("Chave estrangeira inexistente");
+        break;
+    case 22P02:
+        echo("Campo inválido");
+        break;
+}
+    //echo("<p>ERROR: {$e->getMessage()}</p>");
 }
 
 
