@@ -92,6 +92,8 @@ try
     $db = new PDO("pgsql:host=$host;dbname=$dbname", $user, $password);
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
+    $db->beginTransaction();
+
     if ($table == "MeioProcesso") {
 
         $numMeio = $_POST['numMeio'];
@@ -170,19 +172,21 @@ $newNomeEntidade, ':oldNumMeio' => $oldNumMeio, ':oldNomeEntidade' => $oldNomeEn
         echo("<script>console.log(\"Unexpected table name\");</script>");
     }
 
+    $db->commit();
     $db = null;
 } 
 catch (PDOException $e)
-{    
+{
+    $db->rollBack();
     switch($e->getCode()){
-    case 23505:
-        echo("<p id='error'>Chave duplicada. O elemento nao foi inserido</p>");
+    case "23505":
+        echo("<p id='error'>Chave duplicada. O elemento não foi inserido.</p>");
         break;
-    case 23503:
-        echo("<p id='error'>Chave estrangeira inexistente</p>");
+    case "23503":
+        echo("<p id='error'>Chave estrangeira inexistente.</p>");
         break;
-    case 22P02:
-        echo("<p id='error'>Campo inválido</p>");
+    case "22P02":
+        echo("<p id='error'>Campo inválido.</p>");
         break;
 }
     //echo("<p>ERROR: {$e->getMessage()}</p>");

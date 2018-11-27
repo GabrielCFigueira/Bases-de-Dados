@@ -307,6 +307,16 @@
     text-align: center;
 }
 
+#error{
+    font-family: 'Open Sans', sans-serif;
+    color: #dd0000;
+    text-decoration: none;
+    font-size: 30px;
+    font-weight: 800;
+    text-shadow: #EDEDED 3px 2px 0;
+    text-align: center;
+}
+
 #menu:before,
 #menu:after {
     content: "";
