@@ -54,7 +54,7 @@ create table Vigia(
 
 create table ProcessoSocorro(
     numProcessoSocorro integer not null,
-    constraint pk_ProcessoSocorro primary key(numProcessoSocorro)
+    constraint pk_ProcessoSocorro primary key(numProcessoSocorro) DEFERRABLE INITIALLY DEFERRED
 );
 
 create table EventoEmergencia(
@@ -65,7 +65,7 @@ create table EventoEmergencia(
     numProcessoSocorro integer,
     constraint pk_EventoEmergencia primary key(numTelefone, instanteChamada),
     constraint fk_EventoEmergencia_Local foreign key(moradaLocal) references Local(moradaLocal),
-    constraint fk_EventoEmergencia_ProcessoSocorro foreign key(numProcessoSocorro) references ProcessoSocorro(numProcessoSocorro) DEFERRABLE,
+    constraint fk_EventoEmergencia_ProcessoSocorro foreign key(numProcessoSocorro) references ProcessoSocorro(numProcessoSocorro) DEFERRABLE INITIALLY DEFERRED,
     unique(numTelefone, nomePessoa)
 );
 
@@ -150,7 +150,7 @@ create table Audita(
     constraint fk_Audita_Coordenador foreign key(idCoordenador) references Coordenador(idCoordenador),
     constraint fk_Audita_Acciona foreign key(numMeio, nomeEntidade, numProcessoSocorro) references Acciona(numMeio, nomeEntidade, numProcessoSocorro),
     check (dataHoraInicio < dataHoraFim),
-    check (dataAuditoria <= now())
+    check (dataAuditoria > now())
 );
 
 create table Solicita(
@@ -164,15 +164,6 @@ create table Solicita(
     constraint fk_Solicita_Video foreign key(dataHoraInicioVideo, numCamara) references Video(dataHoraInicio, numCamara)
 );
 
-CREATE OR REPLACE FUNCTION chk_proc_existance()
-RETURNS TRIGGER AS $BODY$
-DECLARE n_count INTEGER;
-BEGIN
-SELECT count(1) INTO n_count FROM(SELECT numProcessoSocorro FROM EventoEmergencia as e where e.numProcessoSocorro=NEW.numProcessoSocorro) as t;
-IF n_count = 0 THEN RAISE EXCEPTION 'nonexistent process %', n_count
-USING HINT = 'O processo de socorro tem de estar associado a um Evento de Emergencia';
-END IF;
-RETURN NEW;
-END;
-$BODY$ LANGUAGE plpgsql;
-CREATE TRIGGER chk_proc BEFORE INSERT ON ProcessoSocorro FOR EACH ROW EXECUTE PROCEDURE chk_proc_existance();
+
+/************    TRIGGERS ************/
+CREATE OR REPLACE FUNCTION chk_proc_existance() RETURNS VOID AS $BODY$ DECLARE n_count INTEGER; BEGIN SELECT count(1) INTO n_count FROM(SELECT numProcessoSocorro FROM EventoEmergencia as e where e.numProcessoSocorro=NEW.numProcessoSocorro) as t; IF n_count = 0 THEN RAISE EXCEPTION 'nonexistent process %', n_count USING HINT = 'O processo de socorro tem de estar associado a um Evento de Emergencia'; END IF; END; $BODY$ LANGUAGE plpgsql; CREATE TRIGGER chk_proc BEFORE INSERT ON ProcessoSocorro FOR EACH ROW EXECUTE PROCEDURE chk_proc_existance();
