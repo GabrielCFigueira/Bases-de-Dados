@@ -236,13 +236,13 @@ values(:numTelefone, :instanteChamada, :nomePessoa, :moradaLocal, :numProcessoSo
     {
         switch($e->getCode()){
             case 23505:
-                echo("Chave duplicada. O elemento nao foi inserido");
+                echo("<p id='error'>Chave duplicada. O elemento nao foi inserido</p>");
                 break;
             case 23503:
-                echo("Chave estrangeira inexistente");
+                echo("<p id='error'>Chave estrangeira inexistente</p>");
                 break;
             case 22P02:
-                echo("Campo inválido");
+                echo("<p id='error'>Campo inválido</p>");
                 break;
         }
         $db->rollBack();
