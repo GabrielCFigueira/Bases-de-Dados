@@ -174,6 +174,7 @@
 
 #div_list_table{
     width: fit-content;
+    width: -moz-fit-content;
     overflow: scroll;
     height: 400pt;
     background: #FAFAFA;
@@ -289,6 +290,16 @@
 #list_name{
     font-family: 'Open Sans', sans-serif;
     color: #555;
+    text-decoration: none;
+    font-size: 30px;
+    font-weight: 800;
+    text-shadow: #EDEDED 3px 2px 0;
+    text-align: center;
+}
+
+#list_name_success{
+    font-family: 'Open Sans', sans-serif;
+    color: #008800;
     text-decoration: none;
     font-size: 30px;
     font-weight: 800;
