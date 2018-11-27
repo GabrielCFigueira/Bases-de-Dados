@@ -163,3 +163,18 @@ create table Solicita(
     constraint fk_Solicita_Coordenador foreign key(idCoordenador) references Coordenador(idCoordenador),
     constraint fk_Solicita_Video foreign key(dataHoraInicioVideo, numCamara) references Video(dataHoraInicio, numCamara)
 );
+
+
+/************    TRIGGERS ************/
+    CREATE OR REPLACE FUNCTION	chk_proc_existance()		
+    RETURNS TRIGGER AS	$BODY$	
+    DECLARE n_count INTEGER;
+    BEGIN
+        SELECT count(1) INTO n_count FROM(SELECT numProcessoSocorro FROM EventoEmergencia as e where e.numProcessoSocorro=NEW.numProcessoSocorro);
+        IF n_count = 0 THEN
+            RAISE EXCEPTION	'nonexistent process %',	n_count	
+			USING HINT	=	'O processo de socorro tem de estar associado a um Evento de Emergencia';	
+    END;	
+    $BODY$	LANGUAGE	plpgsql;	
+    CREATE	TRIGGER	chk_proc BEFORE	INSERT ON	ProcessoSocorro		
+    FOR	EACH	ROW	EXECUTE	PROCEDURE	chk_proc_existance();
