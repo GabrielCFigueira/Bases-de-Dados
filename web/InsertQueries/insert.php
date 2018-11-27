@@ -114,6 +114,11 @@
         <p><input type='hidden' name='table' value='$table'/></p>
         <p id='form_title'>Inserir novo Processo de Socorro</p>
         <p>Número de Processo Socorro:</p> <input id='input_style' type='text' name='numProcessoSocorro'/>
+        <p id='form_title'>Insira um Evento de Emergência</p>
+        <p>Número de Telefone:</p> <input id='input_style' type='text' name='numTelefone'/>
+        <p>Instante da Chamada:</p> <input id='input_style' type='text' name='instanteChamada'/>
+        <p>Nome da Pessoa:</p> <input id='input_style' type='text' name='nomePessoa'/>
+        <p>Morada do Local:</p> <input id='input_style' type='text' name='moradaLocal'/>
         <br>
         <input id='button_style' type='submit' value='Submit'/>
         </form>");
