@@ -102,8 +102,6 @@
             $result = $db->prepare($sql);
             $result->execute([':moradaLocal' => $moradaLocal]);
 
-            echo("<p id='list_name_success'>Local removido com sucesso!</p>");
-
 
         } else  if ($table == "Evento") {
 
@@ -116,7 +114,7 @@
             $result = $db->prepare($sql);   
             $result->execute([':numTelefone' => $numTelefone, ':instanteChamada' => $instanteChamada]);
 
-            echo("<p id='list_name_success'>Evento de Emergência removido com sucesso!</p>");
+            $table = "Evento de Emergência";
 
 
         } else  if ($table == "Processo") {
@@ -128,7 +126,7 @@
             $result = $db->prepare($sql);
             $result->execute([':numProcessoSocorro' => $numProcessoSocorro]);
 
-            echo("<p id='list_name_success'>Processo de Socorro removido com sucesso!</p>");
+            $table = "Processo de Socorro";
 
 
         } else  if ($table == "Meio") {
@@ -141,7 +139,6 @@
             $result = $db->prepare($sql);
             $result->execute([':numMeio' => $numMeio, ':nomeEntidade' => $nomeEntidade]);
 
-            echo("<p id='list_name_success'>Meio removido com sucesso!</p>");
 
 
         } else  if ($table == "Entidade") {
@@ -152,7 +149,6 @@
             $result = $db->prepare($sql);
             $result->execute([':nomeEntidade' => $nomeEntidade]);
 
-            echo("<p id='list_name_success'>Entidade removida com sucesso!</p>");
 
 
         } else  if ($table == "MeioCombate") {
@@ -165,7 +161,7 @@
             $result = $db->prepare($sql);
             $result->execute([':numMeio' => $numMeio, ':nomeEntidade' => $nomeEntidade]);
 
-            echo("<p id='list_name_success'>Meio de Combate removido com sucesso!</p>");
+            $table = "Meio de Combate";
 
 
         } else  if ($table == "MeioApoio") {
@@ -178,7 +174,7 @@
             $result = $db->prepare($sql);
             $result->execute([':numMeio' => $numMeio, ':nomeEntidade' => $nomeEntidade]);
 
-            echo("<p id='list_name_success'>Meio de Apoio removido com sucesso!</p>");
+            $table = "Meio de Apoio";
 
 
         } else  if ($table == "MeioSocorro") {
@@ -191,14 +187,16 @@
             $result = $db->prepare($sql);
             $result->execute([':numMeio' => $numMeio, ':nomeEntidade' => $nomeEntidade]);
 
-            echo("<p id='list_name_success'>Meio de Socorro removido com sucesso!</p>");
+            $table = "Meio de Socorro";
 
 
         } else {
             echo("<script>console.log(\"Unexpected table name\");</script>");
         }
         if($result->rowCount()==0)
-            echo($table." nao foi removido porque ja nao existe");
+            echo("<p id='error'>".$table." nao foi removido porque ja nao existe");
+        else
+            echo("<p id='list_name_success'>".$table." removido com sucesso!</p>");
         $db->commit();
         $db = null;
 
