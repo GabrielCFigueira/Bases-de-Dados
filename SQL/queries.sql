@@ -42,7 +42,7 @@ from (select numSegmento
 from Vigia
 natural join Video
 natural join SegmentoVideo
-where duracao > '00:59:00'
+where duracao > '00:01:00'
 and moradaLocal = 'Monchique'
 and date_part('year', dataHoraInicio) = '2018'
 and date_part('month', dataHoraInicio) = '08'

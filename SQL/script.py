@@ -443,10 +443,10 @@ def Meio_Seleciona(string, dici):
         index1 = int(random.uniform(0,iteracoes_meio//iteracoes_minimas))
         nomeEntidade = dici[randM][index1]
 
-        if string == "MeioCombate":
-            while nomeEntidade in dicionario_meioApoio[randM]:
-                index1 = int(random.uniform(0,iteracoes_meio//iteracoes_minimas))
-                nomeEntidade = dici[randM][index1]
+        #if string == "MeioCombate":
+            #while nomeEntidade in dicionario_meioApoio[randM]:
+                #index1 = int(random.uniform(0,iteracoes_meio//iteracoes_minimas))
+                #nomeEntidade = dici[randM][index1]
 
         f.write("insert into "+string+"(numMeio, nomeEntidade) values(" + str(randM) + ", '" + nomeEntidade + "');\n")
         if string == "MeioApoio":
@@ -471,10 +471,10 @@ def Meio_Seleciona(string, dici):
 
         nomeEntidade = dici[randM][index2]
 
-        if string == "MeioCombate":
-            while nomeEntidade in dicionario_meioApoio[randM] or index1==index2:
-                index2 = int(random.uniform(0,iteracoes_meio//iteracoes_minimas))
-                nomeEntidade = dici[randM][index2]
+        #if string == "MeioCombate":
+            #while nomeEntidade in dicionario_meioApoio[randM] or index1==index2:
+                #index2 = int(random.uniform(0,iteracoes_meio//iteracoes_minimas))
+                #nomeEntidade = dici[randM][index2]
 
         f.write("insert into "+string+"(numMeio, nomeEntidade) values(" + str(randM) + ", '" + nomeEntidade + "');\n")
         if string == "MeioApoio":
@@ -595,14 +595,14 @@ def EventoEmergencia():
             count_Oliveira += 1
             lista_numProcessos_reforco_Acciona_Audita += [numProc]
 
-        if int(random.uniform(0,200))%3 == 0:
+        """if int(random.uniform(0,200))%3 == 0:
             f.write("insert into EventoEmergencia(numTelefone, instanteChamada, nomePessoa, moradaLocal, numProcessoSocorro) values('" + 
             str(int(random.uniform(910000000, 930000000))) + "', '" + str(datetime.datetime(ano, mes, dia, hora, minutos))  + "', '" +
             lista_nomes[rand_nomes] + "', '" + lista_localidades[rand_loc] + "', NULL);\n")
-        else:
-            f.write("insert into EventoEmergencia(numTelefone, instanteChamada, nomePessoa, moradaLocal, numProcessoSocorro) values('" + 
-            str(int(random.uniform(910000000, 930000000))) + "', '" + str(datetime.datetime(ano, mes, dia, hora, minutos))  + "', '" +
-            lista_nomes[rand_nomes] + "', '" + lista_localidades[rand_loc] + "', " + str(numProc+1) + ");\n")
+        else:"""
+        f.write("insert into EventoEmergencia(numTelefone, instanteChamada, nomePessoa, moradaLocal, numProcessoSocorro) values('" + 
+        str(int(random.uniform(910000000, 930000000))) + "', '" + str(datetime.datetime(ano, mes, dia, hora, minutos))  + "', '" +
+        lista_nomes[rand_nomes] + "', '" + lista_localidades[rand_loc] + "', " + str(numProc+1) + ");\n")
     
     print("Oliveira do Hospital - EventoEmergencia: " + str(count_Oliveira))
 
@@ -973,7 +973,7 @@ def Audita():
 
         processoSocorro = dicionario_Acciona_numMeio_numProcessoSocorro[numMeio][index]
 
-        ano = int(random.uniform(2017, 2019))
+        ano = int(random.uniform(2016, 2018))
         mes = int(random.uniform(1, 13))
         dia = int(random.uniform(1, 28))
         hora = int(random.uniform(0, 24))
@@ -982,7 +982,7 @@ def Audita():
         Inicio = datetime.datetime(ano, mes, dia, hora, minutos)
 
         while Inicio in temp:
-            ano = int(random.uniform(2017, 2019))
+            ano = int(random.uniform(2016, 2018))
             mes = int(random.uniform(1, 13))
             dia = int(random.uniform(1, 28))
             hora = int(random.uniform(0, 24))
@@ -992,7 +992,7 @@ def Audita():
 
         temp += [Inicio]
 
-        ano = int(random.uniform(2017, 2019))
+        ano = int(random.uniform(2016, 2018))
         mes = int(random.uniform(1, 13))
         dia = int(random.uniform(1, 28))
         hora = int(random.uniform(0, 24))
@@ -1000,22 +1000,22 @@ def Audita():
         Fim = datetime.datetime(ano, mes, dia, hora, minutos)
 
         while Fim <= Inicio:
-            ano = int(random.uniform(2017, 2019))
+            ano = int(random.uniform(2016, 2018))
             mes = int(random.uniform(1, 13))
             dia = int(random.uniform(1, 28))
             hora = int(random.uniform(0, 24))
             minutos = int(random.uniform(0, 60))
             Fim = datetime.datetime(ano, mes, dia, hora, minutos)
         
-        ano = int(random.uniform(2018, 2020))
+        ano = int(random.uniform(2018, 2019))
         mes = int(random.uniform(1, 13))
         dia = int(random.uniform(1, 28))
         hora = int(random.uniform(0, 24))
         minutos = int(random.uniform(0, 60))
         dataAuditoria = datetime.datetime(ano, mes, dia, hora, minutos)
 
-        while dataAuditoria <= datetime.datetime.now():
-            ano = int(random.uniform(2018, 2020))
+        while dataAuditoria > datetime.datetime.now():
+            ano = int(random.uniform(2018, 2019))
             mes = int(random.uniform(1, 13))
             dia = int(random.uniform(1, 28))
             hora = int(random.uniform(0, 24))
@@ -1100,12 +1100,22 @@ Coordenador()
 EntidadeMeio()
 Local()
 ProcessoSocorro()
+EventoEmergencia()
+#f.write("\n\n----------------------------------------\n")
+#f.write("-- TRANSACTION --\n")
+#f.write("----------------------------------------\n")
+#f.write("START TRANSACTION;\n")
+#f.write("SET CONSTRAINTS fk_eventoemergencia_processosocorro DEFERRED;\n")
+#EventoEmergencia()
+#ProcessoSocorro()
+#f.write("\n\n----------------------------------------\n")
+#f.write("COMMIT;\n")
+#f.write("----------------------------------------\n")
 dicio = Meio()
 Meio_Seleciona("MeioApoio",dicio)
 Meio_Seleciona("MeioCombate",dicio)
 Meio_Seleciona("MeioSocorro",dicio)
 Vigia()
-EventoEmergencia()
 Video()
 SegmentoVideo()
 #Transporta()

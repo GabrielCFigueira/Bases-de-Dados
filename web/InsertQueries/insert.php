@@ -9,66 +9,48 @@
             <h1 id="sgbd"><a id="link_sgbd" href="../index.html">Sistema de Gestão de Incêndios Florestais</a></h1>
         </center>
         <ul id="menu">
-            <li><a href="#">Locais</a>
+            <li><a href="../list.php?table=Local">Locais</a>
                 <ul>
                     <li><a href="../InsertQueries/insert.php?table=Local">Inserir</a></li>
-                    <li><a href="../RemoveQueries/remove.php?table=Local">Remover</a></li>
-                    <li><a href="../list.php?table=Local">Listar</a></li>
                 </ul>
             </li>
             <li>
-                <a href="#">Eventos de Emergência</a>
+                <a href="../list.php?table=Evento">Eventos de Emergência</a>
                 <ul>
                     <li><a href="../InsertQueries/insert.php?table=Evento">Inserir</a></li>
-                    <li><a href="../RemoveQueries/remove.php?table=Evento">Remover</a></li>
-                    <li><a href="../list.php?table=Evento">Listar</a></li>
                     <li><a href="../assoc.php?table=EventoProcesso">Associar Processo</a></li>
                 </ul>
             </li>
-            <li><a href="#">Processos de Socorro</a>
+            <li><a href="../list.php?table=Processo">Processos de Socorro</a>
                 <ul>
-                    <li><a href="../InsertQueries/insert.php?table=Processo">Inserir</a></li>
-                    <li><a href="../RemoveQueries/remove.php?table=Processo">Remover</a></li>
-                    <li><a href="../list.php?table=Processo">Listar</a></li>
+                    <li><a href="../InsertQueries/insert.php?table=Evento">Inserir</a></li>
                 </ul>
             </li>
-            <li><a href="#">Meios</a>
+            <li><a href="../list.php?table=Meio">Meios</a>
                 <ul>
                     <li><a href="../InsertQueries/insert.php?table=Meio">Inserir</a></li>
-                    <li><a href="../RemoveQueries/remove.php?table=Meio">Remover</a></li>
-                    <li><a href="../list.php?table=Meio">Listar</a></li>
-                    <li><a href="#">Combate</a>
+                    <li><a href="">Listar</a></li>
+                    <li><a href="../list.php?table=MeioCombate">Combate</a>
                         <ul>
                             <li><a href="../InsertQueries/insert.php?table=MeioCombate">Inserir</a></li>
-                            <li><a href="../list.php?table=EditarMeioCombate">Editar</a></li>
-                            <li><a href="../RemoveQueries/remove.php?table=MeioCombate">Remover</a></li>
-                            <li><a href="../list.php?table=MeioCombate">Listar</a></li>
                         </ul>
                     </li>
-                    <li><a href="#">Apoio</a>
+                    <li><a href="../list.php?table=MeioApoio">Apoio</a>
                         <ul>
                             <li><a href="../InsertQueries/insert.php?table=MeioApoio">Inserir</a></li>
-                            <li><a href="../list.php?table=EditarMeioApoio">Editar</a></li>
-                            <li><a href="../RemoveQueries/remove.php?table=MeioApoio">Remover</a></li>
-                            <li><a href="../list.php?table=MeioApoio">Listar</a></li>
                         </ul>
                     </li>
-                    <li><a href="#">Socorro</a>
+                    <li><a href="../list.php?table=MeioSocorro">Socorro</a>
                         <ul>
                             <li><a href="../InsertQueries/insert.php?table=MeioSocorro">Inserir</a></li>
-                            <li><a href="../list.php?table=EditarMeioSocorro">Editar</a></li>
-                            <li><a href="../RemoveQueries/remove.php?table=MeioSocorro">Remover</a></li>
-                            <li><a href="../list.php?table=MeioSocorro">Listar</a></li>
                         </ul>
                     </li>
                     <li><a href="../assoc.php?table=MeioProcesso">Associar Processo</a></li>
                 </ul>
             </li>
-            <li><a href="#">Entidades</a>
+            <li><a href="../list.php?table=Entidade">Entidades</a>
                 <ul>
                     <li><a href="../InsertQueries/insert.php?table=Entidade">Inserir</a></li>
-                    <li><a href="../RemoveQueries/remove.php?table=Entidade">Remover</a></li>
-                    <li><a href="../list.php?table=Entidade">Listar</a></li>
                 </ul>
             </li>
             <li><a href="#">Listagens</a>
@@ -104,21 +86,6 @@
         <p>Nome da Pessoa:</p> <input id='input_style' type='text' name='nomePessoa'/>
         <p>Morada do Local:</p> <input id='input_style' type='text' name='moradaLocal'/>
         <p>Número de Processo de Socorro:</p> <input id='input_style' type='text' name='numProcessoSocorro'/>
-        <br>
-        <input id='button_style' type='submit' value='Submit'/>
-        </form>");
-
-    } else  if ($table == "Processo") {
-
-        echo("<form id='form_style' action='runInsertion.php' method='post'>
-        <p><input type='hidden' name='table' value='$table'/></p>
-        <p id='form_title'>Inserir novo Processo de Socorro</p>
-        <p>Número de Processo Socorro:</p> <input id='input_style' type='text' name='numProcessoSocorro'/>
-        <p id='form_title'>Insira um Evento de Emergência</p>
-        <p>Número de Telefone:</p> <input id='input_style' type='text' name='numTelefone'/>
-        <p>Instante da Chamada:</p> <input id='input_style' type='text' name='instanteChamada'/>
-        <p>Nome da Pessoa:</p> <input id='input_style' type='text' name='nomePessoa'/>
-        <p>Morada do Local:</p> <input id='input_style' type='text' name='moradaLocal'/>
         <br>
         <input id='button_style' type='submit' value='Submit'/>
         </form>");

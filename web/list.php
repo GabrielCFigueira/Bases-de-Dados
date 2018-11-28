@@ -9,66 +9,47 @@
             <h1 id="sgbd"><a id="link_sgbd" href="index.html">Sistema de Gestão de Incêndios Florestais</a></h1>
         </center>
         <ul id="menu">
-            <li><a href="#">Locais</a>
+            <li><a href="list.php?table=Local">Locais</a>
                 <ul>
                     <li><a href="InsertQueries/insert.php?table=Local">Inserir</a></li>
-                    <li><a href="RemoveQueries/remove.php?table=Local">Remover</a></li>
-                    <li><a href="list.php?table=Local">Listar</a></li>
                 </ul>
             </li>
             <li>
-                <a href="#">Eventos de Emergência</a>
+                <a href="list.php?table=Evento">Eventos de Emergência</a>
                 <ul>
                     <li><a href="InsertQueries/insert.php?table=Evento">Inserir</a></li>
-                    <li><a href="RemoveQueries/remove.php?table=Evento">Remover</a></li>
-                    <li><a href="list.php?table=Evento">Listar</a></li>
                     <li><a href="assoc.php?table=EventoProcesso">Associar Processo</a></li>
                 </ul>
             </li>
-            <li><a href="#">Processos de Socorro</a>
+            <li><a href="list.php?table=Processo">Processos de Socorro</a>
                 <ul>
-                    <li><a href="InsertQueries/insert.php?table=Processo">Inserir</a></li>
-                    <li><a href="RemoveQueries/remove.php?table=Processo">Remover</a></li>
-                    <li><a href="list.php?table=Processo">Listar</a></li>
+                    <li><a href="InsertQueries/insert.php?table=Evento">Inserir</a></li>
                 </ul>
             </li>
-            <li><a href="#">Meios</a>
+            <li><a href="list.php?table=Meio">Meios</a>
                 <ul>
                     <li><a href="InsertQueries/insert.php?table=Meio">Inserir</a></li>
-                    <li><a href="RemoveQueries/remove.php?table=Meio">Remover</a></li>
-                    <li><a href="list.php?table=Meio">Listar</a></li>
-                    <li><a href="#">Combate</a>
+                    <li><a href="list.php?table=MeioCombate">Combate</a>
                         <ul>
                             <li><a href="InsertQueries/insert.php?table=MeioCombate">Inserir</a></li>
-                            <li><a href="list.php?table=EditarMeioCombate">Editar</a></li>
-                            <li><a href="RemoveQueries/remove.php?table=MeioCombate">Remover</a></li>
-                            <li><a href="list.php?table=MeioCombate">Listar</a></li>
                         </ul>
                     </li>
-                    <li><a href="#">Apoio</a>
+                    <li><a href="list.php?table=MeioApoio">Apoio</a>
                         <ul>
                             <li><a href="InsertQueries/insert.php?table=MeioApoio">Inserir</a></li>
-                            <li><a href="list.php?table=EditarMeioApoio">Editar</a></li>
-                            <li><a href="RemoveQueries/remove.php?table=MeioApoio">Remover</a></li>
-                            <li><a href="list.php?table=MeioApoio">Listar</a></li>
                         </ul>
                     </li>
-                    <li><a href="#">Socorro</a>
+                    <li><a href="list.php?table=MeioSocorro">Socorro</a>
                         <ul>
                             <li><a href="InsertQueries/insert.php?table=MeioSocorro">Inserir</a></li>
-                            <li><a href="list.php?table=EditarMeioSocorro">Editar</a></li>
-                            <li><a href="RemoveQueries/remove.php?table=MeioSocorro">Remover</a></li>
-                            <li><a href="list.php?table=MeioSocorro">Listar</a></li>
                         </ul>
                     </li>
                     <li><a href="assoc.php?table=MeioProcesso">Associar Processo</a></li>
                 </ul>
             </li>
-            <li><a href="#">Entidades</a>
+            <li><a href="list.php?table=Entidade">Entidades</a>
                 <ul>
                     <li><a href="InsertQueries/insert.php?table=Entidade">Inserir</a></li>
-                    <li><a href="RemoveQueries/remove.php?table=Entidade">Remover</a></li>
-                    <li><a href="list.php?table=Entidade">Listar</a></li>
                 </ul>
             </li>
             <li><a href="#">Listagens</a>
@@ -86,44 +67,35 @@
 
         if ($name == "Processo") {
             echo("<p id='list_name'>Processos de Socorro</p><div id='div_list_table'><table border='1'>
-                <tr><th>Numero Processo Socorro</th></tr>\n");
+                <tr><th>Numero Processo Socorro</th><th>Opção</th></tr>\n");
         }
         else if ($name == "Local") {
             echo("<p id='list_name'>Locais</p><div id='div_list_table'><table border='1'>
-                <tr><th>Morada Local</th></tr>\n");
+                <tr><th>Morada Local</th><th>Opção</th></tr>\n");
         }
         else if ($name == "Evento") {
-            echo("<p id='list_name'>Eventos de Emergência</p><div id='div_list_table'><table border='1'><tr><th>Numero Telefone</th><th>Instante Chamada</th><th>Nome Pessoa</th><th>Morada Local</th><th>Numero Processo Socorro</th></tr>\n");
+            echo("<p id='list_name'>Eventos de Emergência</p><div id='div_list_table'><table border='1'><tr><th>Numero Telefone</th><th>Instante Chamada</th><th>Nome Pessoa</th><th>Morada Local</th><th>Numero Processo Socorro</th><th>Opção</th></tr>\n");
         }
         else if ($name == "Meio") {
-            echo("<p id='list_name'>Meios</p><div id='div_list_table'><table border='1'><tr><th>Numero Meio</th><th>Nome Meio</th><th>Nome Entidade</th></tr>\n");
+            echo("<p id='list_name'>Meios</p><div id='div_list_table'><table border='1'><tr><th>Numero Meio</th><th>Nome Meio</th><th>Nome Entidade</th><th>Opção</th></tr>\n");
         }
         else if ($name == "MeioCombate") {
-            echo("<p id='list_name'>Meios de Combate</p><div id='div_list_table'><table border='1'><tr><th>Numero Meio</th><th>Nome Meio</th><th>Nome Entidade</th></tr>\n");
+            echo("<p id='list_name'>Meios de Combate</p><div id='div_list_table'><table border='1'><tr><th>Numero Meio</th><th>Nome Meio</th><th>Nome Entidade</th><th colspan=2>Opção</th></tr>\n");
         }
         else if ($name == "MeioApoio"){
-            echo("<p id='list_name'>Meios de Apoio</p><div id='div_list_table'><table border='1'><tr><th>Numero Meio</th><th>Nome Meio</th><th>Nome Entidade</th></tr>\n");
+            echo("<p id='list_name'>Meios de Apoio</p><div id='div_list_table'><table border='1'><tr><th>Numero Meio</th><th>Nome Meio</th><th>Nome Entidade</th><th colspan=2>Opção</th></tr>\n");
         }
         else if ($name == "MeioSocorro"){
-            echo("<p id='list_name'>Meios de Socorro</p><div id='div_list_table'><table border='1'><tr><th>Numero Meio</th><th>Nome Meio</th><th>Nome Entidade</th></tr>\n");
+            echo("<p id='list_name'>Meios de Socorro</p><div id='div_list_table'><table border='1'><tr><th>Numero Meio</th><th>Nome Meio</th><th>Nome Entidade</th><th colspan=2>Opção</th></tr>\n");
         }
         else if ($name == "Entidade") {
-            echo("<p id='list_name'>Entidades</p><div id='div_list_table'><table border='1'><tr><th>Nome Entidade</th></tr>\n");
+            echo("<p id='list_name'>Entidades</p><div id='div_list_table'><table border='1'><tr><th>Nome Entidade</th><th>Opção</th></tr>\n");
         }
         else if ($name == "MeioAccProc") {
             echo("<div id='div_list_w_input'><table border='1' width='490'><tr><th>Numero Meio</th><th>Nome Entidade</th><th>Numero Processo Socorro</th></tr>\n");
         }
         else if ($name == "MeioSocorroProcLocal") {
             echo("<div id='div_list_w_input_soc'><table border='1' width='1030'><tr><th>Numero Telefone</th><th>Instante de chamada</th><th>Nome Pessoa</th><th>Morada Local</th><th>Numero Processo Socorro</th><th>Numero de Meio</th><th>Nome Entidade</th></tr>\n");
-        }
-        else if ($name == "EditarMeioCombate"){
-            echo("<p id='list_name'>Meios de Combate</p><div id='div_list_table'><table border='1'><tr><th>Numero Meio</th><th>Nome Meio</th><th>Nome Entidade</th><th>Opção</th></tr>\n");
-        }
-        else if ($name == "EditarMeioApoio"){
-            echo("<p id='list_name'>Meios de Apoio</p><div id='div_list_table'><table border='1'><tr><th>Numero Meio</th><th>Nome Meio</th><th>Nome Entidade</th><th>Opção</th></tr>\n");
-        }
-        else if($name == "EditarMeioSocorro"){
-            echo("<p id='list_name'>Meios de Socorro</p><div id='div_list_table'><table border='1'><tr><th>Numero Meio</th><th>Nome Meio</th><th>Nome Entidade</th><th>Opção</th></tr>\n");
         }
         
 
@@ -134,8 +106,23 @@
                 echo("<td> $val </td>\n"); 
             }
 
-            if ($name == "EditarMeioCombate" || $name == "EditarMeioApoio" || $name == "EditarMeioSocorro"){
-                echo("<td><a id='edit' href='UpdateQueries/update.php?table=$name&numMeio=".$row["nummeio"]."&nomeEntidade=".$row["nomeentidade"]."'>Editar</a></td>");
+            if ($name == "Processo") {
+                echo("<td><a id='edit' href='RemoveQueries/runRemoval.php?table=$name&numProcessoSocorro=".$row["numprocessosocorro"]."'>Remover</a></td>");
+            }
+            else if ($name == "Local") {
+               echo("<td><a id='edit' href='RemoveQueries/runRemoval.php?table=$name&moradaLocal=".$row["moradalocal"]."'>Remover</a></td>");
+            }
+            else if ($name == "Evento") {
+                echo("<td><a id='edit' href='RemoveQueries/runRemoval.php?table=$name&numTelefone=".$row["numtelefone"]."&instanteChamada=".$row["instantechamada"]."'>Remover</a></td>");
+            }
+            else if ($name == "Meio") {
+                echo("<td><a id='edit' href='RemoveQueries/runRemoval.php?table=$name&numMeio=".$row["nummeio"]."&nomeEntidade=".$row["nomeentidade"]."'>Remover</a></td>");
+            }
+            else if ($name == "Entidade") {
+                echo("<td><a id='edit' href='RemoveQueries/runRemoval.php?table=$name&nomeEntidade=".$row["nomeentidade"]."'>Remover</a></td>");
+            }
+            else if ($name == "MeioCombate" || $name == "MeioApoio" || $name == "MeioSocorro"){
+                echo("<td><a id='edit' href='UpdateQueries/update.php?table=$name&numMeio=".$row["nummeio"]."&nomeEntidade=".$row["nomeentidade"]."'>Editar</a></td><td><a id='edit' href='RemoveQueries/runRemoval.php?table=$name&numMeio=".$row["nummeio"]."&nomeEntidade=".$row["nomeentidade"]."'>Remover</a></td>");
             }
             echo("</tr>");
         }
