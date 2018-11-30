@@ -82,9 +82,9 @@ function assocProcess($numProcessoSocorro) {
         while($row = $result->fetch()){ 
             foreach($row as $key=>$val) {
             	if ($val == $numProcessoSocorro)
-            		echo("<option value=$val selected > $val </option>\n");
+            		echo("<option value='$val' selected > $val </option>\n");
             	else
-                	echo("<option value=$val> $val </option>\n");
+                	echo("<option value='$val'> $val </option>\n");
             }
         }
 
@@ -121,7 +121,7 @@ try
     	$numTelefone = $_REQUEST['numTelefone'];
         $instanteChamada = $_REQUEST['instanteChamada'];
         $numProcessoSocorro = $_REQUEST['numProcessoSocorro'];
-        
+
         echo("<form id='form_style_evento_proc' action='UpdateQueries/runUpdate.php' method='post'>
         <input type='hidden' name='table' value='$table'/>
         <input type='hidden' name='numTelefone' value='$numTelefone'/>

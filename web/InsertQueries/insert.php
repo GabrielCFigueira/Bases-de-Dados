@@ -72,7 +72,7 @@
         $result->setFetchMode(PDO::FETCH_ASSOC);
         while($row = $result->fetch()){ 
             foreach($row as $key=>$val) {
-                echo("<option value=$val> $val </option>\n");
+                echo("<option value='$val'> $val </option>\n");
             }
         }
 
