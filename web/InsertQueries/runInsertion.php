@@ -159,9 +159,6 @@
             case "23503":
                 echo("<p id='error'>Chave estrangeira inexistente.</p>");
                 break;
-            case "22P02":
-                echo("<p id='error'>Campo inválido.</p>");
-                break;
             default:
                 echo("<p id='error'>Campo inválido.</p>");
                 break;

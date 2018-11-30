@@ -21,6 +21,28 @@
 
             $moradaLocal = $_REQUEST['moradaLocal'];
 
+            $sql = "select numProcessoSocorro from EventoEmergencia where moradaLocal = :moradaLocal;";
+            $result = $db->prepare($sql);
+            $result->execute([':moradaLocal' => $moradaLocal]);
+
+            $result->setFetchMode(PDO::FETCH_ASSOC);
+            while($row = $result->fetch()){ 
+                $numProcessoSocorro = $row['numprocessosocorro'];
+                $sql1 = "select * from EventoEmergencia where numProcessoSocorro=:numProcessoSocorro;";
+                $sql2 = "select * from EventoEmergencia where numProcessoSocorro=:numProcessoSocorro and moradaLocal=:moradaLocal;";
+                $result1 = $db->prepare($sql1);
+                $result1->execute([':numProcessoSocorro' => $numProcessoSocorro]);
+                $result2 = $db->prepare($sql2);
+                $result2->execute([':numProcessoSocorro' => $numProcessoSocorro, ':moradaLocal' => $moradaLocal]);
+                $count = $result1->rowCount() - $result2->rowCount();
+
+                if($count==0){
+                    $sqlDel = "delete from ProcessoSocorro where numProcessoSocorro = :numProcessoSocorro;";
+                    $resultDel = $db->prepare($sqlDel);
+                    $resultDel->execute([':numProcessoSocorro' => $numProcessoSocorro]);
+                    echo("<p id='list_name_success'>O processo número $numProcessoSocorro foi eliminado!</p>");
+                }
+            }
 
             $sql = "delete from Local where moradaLocal= :moradaLocal;";
             $result = $db->prepare($sql);
@@ -150,9 +172,6 @@
                 break;
             case "23503":
                 echo("<p id='error'>Chave estrangeira inexistente.</p>");
-                break;
-            case "22P02":
-                echo("<p id='error'>Campo inválido.</p>");
                 break;
             default:
                 echo("<p id='error'>Campo inválido.</p>");
