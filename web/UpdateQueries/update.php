@@ -1,67 +1,13 @@
 ﻿<html>
     <head>
-        <title> Insert </title>
-        <link rel="stylesheet" href="../style.css"/>
-        <link rel="icon" type="image/png" href="../database.png"/>
+        <title> Actualizar </title>
+        <link rel="stylesheet" href="../css/style.css"/>
+        <link rel="icon" type="image/png" href="../img/database.png"/>
     </head>
     <body>
-        <center>
-            <h1 id="sgbd"><a id="link_sgbd" href="../index.html">Sistema de Gestão de Incêndios Florestais</a></h1>
-        </center>
-        <ul id="menu">
-            <li><a href="../list.php?table=Local">Locais</a>
-                <ul>
-                    <li><a href="../InsertQueries/insert.php?table=Local">Inserir</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="../list.php?table=Evento">Eventos de Emergência</a>
-                <ul>
-                    <li><a href="../InsertQueries/insert.php?table=Evento">Inserir</a></li>
-                    <li><a href="../list.php?table=EventoProcesso">Associar Processo</a></li>
-                </ul>
-            </li>
-            <li><a href="../list.php?table=Processo">Processos de Socorro</a>
-                <ul>
-                    <li><a href="../InsertQueries/insert.php?table=Processo">Inserir</a></li>
-                </ul>
-            </li>
-            <li><a href="../list.php?table=Meio">Meios</a>
-                <ul>
-                    <li><a href="../InsertQueries/insert.php?table=Meio">Inserir</a></li>
-                    <li><a href="../list.php?table=MeioCombate">Combate</a>
-                        <ul>
-                            <li><a href="../InsertQueries/insert.php?table=MeioCombate">Inserir</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="../list.php?table=MeioApoio">Apoio</a>
-                        <ul>
-                            <li><a href="../InsertQueries/insert.php?table=MeioApoio">Inserir</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="../list.php?table=MeioSocorro">Socorro</a>
-                        <ul>
-                            <li><a href="../InsertQueries/insert.php?table=MeioSocorro">Inserir</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="../list.php?table=MeioProcesso">Associar Processo</a></li>
-                </ul>
-            </li>
-            <li><a href="../list.php?table=Entidade">Entidades</a>
-                <ul>
-                    <li><a href="../InsertQueries/insert.php?table=Entidade">Inserir</a></li>
-                </ul>
-            </li>
-            <li><a href="#">Listagens</a>
-                <ul>
-                    <li><a href="../list.php?table=MeioAccProc">Meios acionados num processo de socorro</a></li>
-                    <li><a href="../list.php?table=MeioSocorroProcLocal">
-                    Meios de socorro em processos de socorro originados num dado local de incêndio</a>
-                    </li>
-                </ul>
-            </li>
-        </ul>
 <?php
+    
+    include "../menu/submenu.html";
 
     function printQuery($result,$table) {
         if ($table == "MeioCombate"  || $table == "MeioApoio" || $table == "MeioSocorro"){

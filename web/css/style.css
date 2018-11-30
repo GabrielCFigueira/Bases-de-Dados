@@ -63,7 +63,7 @@
 }
 
 #input_style_list:focus{
-    width: 270px;
+    width: 75%;
     border-color: #555555;
 }
 
@@ -96,7 +96,7 @@
 }
 
 #form_style_acc{
-    max-width: 490px;
+    max-width: 800px;
     background: #FAFAFA;
     padding: 20px;
     margin: 20px auto;
@@ -164,7 +164,7 @@
 }
 
 #div_list_w_input{
-    max-width: 490px;
+    max-width: 800px;
     overflow: scroll;
     max-height: 280pt;
     background: #FAFAFA;

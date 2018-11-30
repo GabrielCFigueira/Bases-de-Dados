@@ -1,67 +1,13 @@
 ﻿<html>
     <head>
         <title> Listar </title>
-        <link rel="stylesheet" href="style.css"/>
-        <link rel="icon" type="image/png" href="database.png"/>
+        <link rel="stylesheet" href="css/style.css"/>
+        <link rel="icon" type="image/png" href="img/database.png"/>
     </head>
     <body>
-        <center>
-            <h1 id="sgbd"><a id="link_sgbd" href="index.html">Sistema de Gestão de Incêndios Florestais</a></h1>
-        </center>
-        <ul id="menu">
-            <li><a href="list.php?table=Local">Locais</a>
-                <ul>
-                    <li><a href="InsertQueries/insert.php?table=Local">Inserir</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="list.php?table=Evento">Eventos de Emergência</a>
-                <ul>
-                    <li><a href="InsertQueries/insert.php?table=Evento">Inserir</a></li>
-                    <li><a href="list.php?table=EventoProcesso">Associar Processo</a></li>
-                </ul>
-            </li>
-            <li><a href="list.php?table=Processo">Processos de Socorro</a>
-                <ul>
-                    <li><a href="InsertQueries/insert.php?table=Processo">Inserir</a></li>
-                </ul>
-            </li>
-            <li><a href="list.php?table=Meio">Meios</a>
-                <ul>
-                    <li><a href="InsertQueries/insert.php?table=Meio">Inserir</a></li>
-                    <li><a href="list.php?table=MeioCombate">Combate</a>
-                        <ul>
-                            <li><a href="InsertQueries/insert.php?table=MeioCombate">Inserir</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="list.php?table=MeioApoio">Apoio</a>
-                        <ul>
-                            <li><a href="InsertQueries/insert.php?table=MeioApoio">Inserir</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="list.php?table=MeioSocorro">Socorro</a>
-                        <ul>
-                            <li><a href="InsertQueries/insert.php?table=MeioSocorro">Inserir</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="list.php?table=MeioProcesso">Associar Processo</a></li>
-                </ul>
-            </li>
-            <li><a href="list.php?table=Entidade">Entidades</a>
-                <ul>
-                    <li><a href="InsertQueries/insert.php?table=Entidade">Inserir</a></li>
-                </ul>
-            </li>
-            <li><a href="#">Listagens</a>
-                <ul>
-                    <li><a href="list.php?table=MeioAccProc">Meios acionados num processo de socorro</a></li>
-                    <li><a href="list.php?table=MeioSocorroProcLocal">
-                    Meios de socorro em processos de socorro originados num dado local de incêndio</a>
-                    </li>
-                </ul>
-            </li>
-        </ul>
 <?php
+	
+	include "menu/menu.html";
 
     function printQuery($result,$name) {
 
@@ -92,7 +38,7 @@
             echo("<p id='list_name'>Entidades</p><div id='div_list_table'><table border='1'><tr><th>Nome Entidade</th><th>Opção</th></tr>\n");
         }
         else if ($name == "MeioAccProc") {
-            echo("<div id='div_list_w_input'><table border='1' width='490'><tr><th>Número Meio</th><th>Nome Entidade</th><th>Numero Processo Socorro</th></tr>\n");
+            echo("<div id='div_list_w_input'><table border='1' width='800'><tr><th>Número Meio</th><th>Nome Entidade</th><th>Numero Processo Socorro</th></tr>\n");
         }
         else if ($name == "MeioSocorroProcLocal") {
             echo("<div id='div_list_w_input_soc'><table border='1' width='1030'><tr><th>Numero Telefone</th><th>Instante de chamada</th><th>Nome Pessoa</th><th>Morada Local</th><th>Numero Processo Socorro</th><th>Numero de Meio</th><th>Nome Entidade</th></tr>\n");
@@ -188,84 +134,84 @@
     {
         include "connect.php";
 
-    if ($table == "MeioAccProc"){
-        if ($numProcesso == "")
-            $sql = "select * from Acciona order by numMeio, nomeEntidade;";
-        else
-            $sql = "select * from Acciona where numProcessoSocorro='$numProcesso' order by numMeio, nomeEntidade;";        
+	    if ($table == "MeioAccProc"){
+	        if ($numProcesso == "")
+	            $sql = "select * from Acciona order by numMeio, nomeEntidade;";
+	        else
+	            $sql = "select * from Acciona where numProcessoSocorro='$numProcesso' order by numMeio, nomeEntidade;";        
 
-    }else if ($table == "MeioSocorroProcLocal"){
-        if ($moradaLocal == "")
-            $sql = "select numTelefone,instanteChamada,nomePessoa,moradaLocal,numProcessoSocorro,numMeio,nomeEntidade from Acciona natural join EventoEmergencia natural join MeioSocorro;";
-        else
-            $sql = "select numTelefone,instanteChamada,nomePessoa,moradaLocal,numProcessoSocorro,numMeio,nomeEntidade from EventoEmergencia natural join Acciona natural join MeioSocorro where moradaLocal='$moradaLocal';";
+	    }else if ($table == "MeioSocorroProcLocal"){
+	        if ($moradaLocal == "")
+	            $sql = "select numTelefone,instanteChamada,nomePessoa,moradaLocal,numProcessoSocorro,numMeio,nomeEntidade from Acciona natural join EventoEmergencia natural join MeioSocorro;";
+	        else
+	            $sql = "select numTelefone,instanteChamada,nomePessoa,moradaLocal,numProcessoSocorro,numMeio,nomeEntidade from EventoEmergencia natural join Acciona natural join MeioSocorro where moradaLocal='$moradaLocal';";
 
-    }
-    else if ($table == "Processo") {
+	    }
+	    else if ($table == "Processo") {
 
-        $sql = "select * from ProcessoSocorro;";
+	        $sql = "select * from ProcessoSocorro;";
 
-    }
-    else if ($table == "Local") {
+	    }
+	    else if ($table == "Local") {
 
-        $sql = "select * from Local order by moradaLocal;";
+	        $sql = "select * from Local order by moradaLocal;";
 
-    }
-    else if ($table == "Evento") {
+	    }
+	    else if ($table == "Evento") {
 
-        $sql = "select * from EventoEmergencia order by numTelefone, instanteChamada;";
+	        $sql = "select * from EventoEmergencia order by numTelefone, instanteChamada;";
 
-    }
-    else if ($table == "Meio") {
+	    }
+	    else if ($table == "Meio") {
 
-        $sql = "select numMeio, nomeMeio, nomeEntidade from Meio order by numMeio, nomeEntidade;";
+	        $sql = "select numMeio, nomeMeio, nomeEntidade from Meio order by numMeio, nomeEntidade;";
 
-    }
-    else if ($table == "MeioCombate") {
+	    }
+	    else if ($table == "MeioCombate") {
 
-        $sql = "select numMeio, nomeMeio, nomeEntidade from MeioCombate natural join Meio order by numMeio, nomeEntidade;";
+	        $sql = "select numMeio, nomeMeio, nomeEntidade from MeioCombate natural join Meio order by numMeio, nomeEntidade;";
 
-    }
-    else if ($table == "MeioApoio") {
+	    }
+	    else if ($table == "MeioApoio") {
 
-        $sql = "select numMeio, nomeMeio, nomeEntidade from MeioApoio natural join Meio order by numMeio, nomeEntidade;";
+	        $sql = "select numMeio, nomeMeio, nomeEntidade from MeioApoio natural join Meio order by numMeio, nomeEntidade;";
 
-    }
-    else if ($table == "MeioSocorro") {
+	    }
+	    else if ($table == "MeioSocorro") {
 
-        $sql = "select numMeio, nomeMeio, nomeEntidade from MeioSocorro natural join Meio order by numMeio, nomeEntidade;";
+	        $sql = "select numMeio, nomeMeio, nomeEntidade from MeioSocorro natural join Meio order by numMeio, nomeEntidade;";
 
-    }
-    else if ($table == "Entidade") {
+	    }
+	    else if ($table == "Entidade") {
 
-        $sql = "select * from EntidadeMeio;";
+	        $sql = "select * from EntidadeMeio;";
 
-    }
-    else if ($table == "EventoProcesso"){
+	    }
+	    else if ($table == "EventoProcesso"){
 
-    	$sql = "select numTelefone, instanteChamada, nomePessoa, moradaLocal, e.numProcessoSocorro from EventoEmergencia e left outer join ProcessoSocorro p on e.numProcessoSocorro=p.numProcessoSocorro order by e.numTelefone, e.instanteChamada;";
+	    	$sql = "select numTelefone, instanteChamada, nomePessoa, moradaLocal, e.numProcessoSocorro from EventoEmergencia e left outer join ProcessoSocorro p on e.numProcessoSocorro=p.numProcessoSocorro order by e.numTelefone, e.instanteChamada;";
 
-    }
-    else if ($table == "MeioProcesso"){
+	    }
+	    else if ($table == "MeioProcesso"){
 
-    	$sql = "select m.numMeio, m.nomeMeio, m.nomeEntidade, numProcessoSocorro from Meio m left outer join acciona a on m.nomeEntidade = a.nomeEntidade and m.numMeio = a.numMeio order by numMeio, nomeEntidade;";
+	    	$sql = "select m.numMeio, m.nomeMeio, m.nomeEntidade, numProcessoSocorro from Meio m left outer join acciona a on m.nomeEntidade = a.nomeEntidade and m.numMeio = a.numMeio order by numMeio, nomeEntidade;";
 
 
-    } else {
-        echo("<script>console.log(\"Unexpected table name\");</script>");
-    }
+	    } else {
+	        echo("<script>console.log(\"Unexpected table name\");</script>");
+	    }
 
-    $result = $db->prepare($sql);
-    $result->execute();
+	    $result = $db->prepare($sql);
+	    $result->execute();
 
-    printQuery($result, $table);
+	    printQuery($result, $table);
 
-    $db = null;
-} 
-catch (PDOException $e)
-{
-    echo("<p>ERROR: {$e->getMessage()}</p>");
-}
+	    $db = null;
+	} 
+	catch (PDOException $e)
+	{
+	    echo("<p>ERROR: {$e->getMessage()}</p>");
+	}
 
 
 ?>
