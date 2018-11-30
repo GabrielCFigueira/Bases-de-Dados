@@ -133,7 +133,7 @@
                 echo("<td><a id='edit' href='UpdateQueries/update.php?table=$name&numMeio=".$row["nummeio"]."&nomeEntidade=".$row["nomeentidade"]."'>Editar</a></td><td><a id='remove' href='RemoveQueries/runRemoval.php?table=$name&numMeio=".$row["nummeio"]."&nomeEntidade=".$row["nomeentidade"]."'>Remover</a></td>");
             }
             else if ($name == "EventoProcesso"){
-            	echo("<td><a id='edit' href='assoc.php?table=$name&numTelefone=".$row["numtelefone"]."&instanteChamada=".$row["instantechamada"]."&numProcessoSocorro=".$row["numprocessosocorro"]."'>Associar</a></td>");
+            	echo("<td><a id='edit' href='assoc.php?table=$name&numTelefone=".$row["numtelefone"]."&instanteChamada=".$row["instantechamada"]."&numProcessoSocorro=".$row["numprocessosocorro"]."&nomePessoa=".$row["nomepessoa"]."&moradaLocal=".$row["moradalocal"]."'>Associar</a></td>");
 		    }
 		    else if ($name == "MeioProcesso"){
 		    	if(empty($row["numprocessosocorro"]))
@@ -213,7 +213,7 @@
     }
     else if ($table == "Evento") {
 
-        $sql = "select * from EventoEmergencia;";
+        $sql = "select * from EventoEmergencia order by numTelefone, instanteChamada;";
 
     }
     else if ($table == "Meio") {

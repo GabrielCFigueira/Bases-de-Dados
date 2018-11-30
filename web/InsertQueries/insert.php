@@ -88,7 +88,7 @@
         echo("<form id='form_style' action='runInsertion.php' method='post'>
         <p><input type='hidden' name='table' value='$table'/></p>
         <p id='form_title'>Inserir novo Local</p>
-        <p>Morada do Local:</p> <input id='input_style' type='text' name='moradaLocal'/>
+        <p><b>Morada do Local:</b></p> <input id='input_style' type='text' name='moradaLocal'/>
         <br>
         <input id='button_style' type='submit' value='Submeter'/>
         </form>");
@@ -98,12 +98,12 @@
         echo("<form id='form_style' action='runInsertion.php' method='post'>
         <p><input type='hidden' name='table' value='$table'/></p>
         <p id='form_title'>Inserir novo Processo de Socorro</p>
-        <p>Número de Processo Socorro:</p> <input id='input_style' type='text' name='numProcessoSocorro'/>
+        <p><b>Número de Processo Socorro:</b></p> <input id='input_style' type='text' name='numProcessoSocorro'/>
         <p id='form_title'>Insira um Evento de Emergência</p>
-        <p>Número de Telefone:</p> <input id='input_style' type='text' name='numTelefone'/>
-        <p>Instante da Chamada:</p> <input id='input_style' type='text' name='instanteChamada'/>
-        <p>Nome da Pessoa:</p> <input id='input_style' type='text' name='nomePessoa'/>
-        <p>Morada do Local:</p>");
+        <p><b>Número de Telefone:</b></p> <input id='input_style' type='text' name='numTelefone'/>
+        <p><b>Instante da Chamada:</b></p> <input id='input_style' type='text' name='instanteChamada'/>
+        <p><b>Nome da Pessoa:</b></p> <input id='input_style' type='text' name='nomePessoa'/>
+        <p><b>Morada do Local:</b></p>");
 
         $sql = "select * from local order by moradaLocal;";
         $result = $db->prepare($sql);
@@ -120,10 +120,10 @@
         echo("<form id='form_style' action='runInsertion.php' method='post'>
         <p><input type='hidden' name='table' value='$table'/></p>
         <p id='form_title'>Inserir novo Evento de Emergência</p>
-        <p>Número de Telefone:</p> <input id='input_style' type='text' name='numTelefone'/>
-        <p>Instante da Chamada:</p> <input id='input_style' type='text' name='instanteChamada'/>
-        <p>Nome da Pessoa:</p> <input id='input_style' type='text' name='nomePessoa'/>
-        <p>Morada do Local:</p>");
+        <p><b>Número de Telefone:</b></p> <input id='input_style' type='text' name='numTelefone'/>
+        <p><b>Instante da Chamada:</b></p> <input id='input_style' type='text' name='instanteChamada'/>
+        <p><b>Nome da Pessoa:</b></p> <input id='input_style' type='text' name='nomePessoa'/>
+        <p><b>Morada do Local:</b></p>");
 
         $sql = "select * from local order by moradaLocal;";
         $result = $db->prepare($sql);
@@ -131,7 +131,7 @@
         
         select_html($result, "moradaLocal");
 
-        echo("<p>Número de Processo de Socorro:</p>");
+        echo("<p><b>Número de Processo de Socorro:</b></p>");
 
         $sql = "select * from processosocorro order by numprocessosocorro;";
         $result = $db->prepare($sql);
@@ -148,9 +148,9 @@
         echo("<form id='form_style' action='runInsertion.php' method='post'>
         <p><input type='hidden' name='table' value='$table'/></p>
         <p id='form_title'>Inserir novo Meio</p>
-        <p>Número do Meio:</p> <input id='input_style' type='text' name='numMeio'/>
-        <p>Nome do Meio:</p> <input id='input_style' type='text' name='nomeMeio'/>
-        <p>Nome da Entidade Detentora do Meio:</p>");
+        <p><b>Número do Meio:</b></p> <input id='input_style' type='text' name='numMeio'/>
+        <p><b>Nome do Meio:</b></p> <input id='input_style' type='text' name='nomeMeio'/>
+        <p><b>Nome da Entidade Detentora do Meio:</b></p>");
 
         $sql = "select * from entidademeio order by nomeentidade;";
         $result = $db->prepare($sql);
@@ -167,7 +167,7 @@
         echo("<form id='form_style' action='runInsertion.php' method='post'>
         <p><input type='hidden' name='table' value='$table'/></p>
         <p id='form_title'>Inserir nova Entidade</p>
-        <p>Nome da Entidade:</p> <input id='input_style' type='text' name='nomeEntidade'/>
+        <p><b>Nome da Entidade:</b></p> <input id='input_style' type='text' name='nomeEntidade'/>
         <br>
         <input id='button_style' type='submit' value='Submeter'/>
         </form>");
@@ -177,8 +177,8 @@
         echo("<form id='form_style' action='runInsertion.php' method='post'>
         <p><input type='hidden' name='table' value='$table'/></p>
         <p id='form_title'>Inserir novo Meio de Combate</p>
-        <p>Número do Meio:</p> <input id='input_style' type='text' name='numMeio'/>
-        <p>Nome Entidade:</p> <input id='input_style' type='text' name='nomeEntidade'/>
+        <p><b>Número do Meio:</b></p> <input id='input_style' type='text' name='numMeio'/>
+        <p><b>Nome Entidade:</b></p> <input id='input_style' type='text' name='nomeEntidade'/>
         <br>
         <input id='button_style' type='submit' value='Submeter'/>
         </form>");
@@ -188,8 +188,8 @@
         echo("<form id='form_style' action='runInsertion.php' method='post'>
         <p><input type='hidden' name='table' value='$table'/></p>
         <p id='form_title'>Inserir novo Meio de Apoio</p>
-        <p>Número do Meio:</p> <input id='input_style' type='text' name='numMeio'/>
-        <p>Nome Entidade:</p> <input id='input_style' type='text' name='nomeEntidade'/>
+        <p><b>Número do Meio:</b></p> <input id='input_style' type='text' name='numMeio'/>
+        <p><b>Nome Entidade:</b></p> <input id='input_style' type='text' name='nomeEntidade'/>
         <br>
         <input id='button_style' type='submit' value='Submeter'/>
         </form>");
@@ -199,8 +199,8 @@
         echo("<form id='form_style' action='runInsertion.php' method='post'>
         <p><input type='hidden' name='table' value='$table'/></p>
         <p id='form_title'>Inserir novo Meio de Socorro</p>
-        <p>Número do Meio:</p> <input id='input_style' type='text' name='numMeio'/>
-        <p>Nome Entidade:</p> <input id='input_style' type='text' name='nomeEntidade'/>
+        <p><b>Número do Meio:</b></p> <input id='input_style' type='text' name='numMeio'/>
+        <p><b>Nome Entidade:</b></p> <input id='input_style' type='text' name='nomeEntidade'/>
         <br>
         <input id='button_style' type='submit' value='Submeter'/>
         </form>");

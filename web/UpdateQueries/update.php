@@ -102,8 +102,8 @@
             }else if($table == "MeioSocorro"){
                 echo("<p id='form_title'>Editar Meio de Socorro</p>");
             }
-            echo("<p>Número do Meio:</p> <input id='input_style' type='text' name='newNumMeio' value='$numMeio'/>
-            <p>Nome Entidade:</p> <input id='input_style' type='text' name='newNomeEntidade' value='$nomeEntidade'/>
+            echo("<p><b>Número do Meio:</b></p> <input id='input_style' type='text' name='newNumMeio' value='$numMeio'/>
+            <p><b>Nome Entidade:</b></p> <input id='input_style' type='text' name='newNomeEntidade' value='$nomeEntidade'/>
             <br>
             <input id='button_style' type='submit' value='Submeter'/>
             </form></div></div>");

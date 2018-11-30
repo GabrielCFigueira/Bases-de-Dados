@@ -165,15 +165,18 @@ catch (PDOException $e)
 {
     $db->rollBack();
     switch($e->getCode()){
-    case "23505":
-        echo("<p id='error'>Chave duplicada. O elemento não foi inserido.</p>");
-        break;
-    case "23503":
-        echo("<p id='error'>Chave estrangeira inexistente.</p>");
-        break;
-    case "22P02":
-        echo("<p id='error'>Campo inválido.</p>");
-        break;
+        case "23505":
+            echo("<p id='error'>Chave duplicada. O elemento não foi inserido.</p>");
+            break;
+        case "23503":
+            echo("<p id='error'>Chave estrangeira inexistente.</p>");
+            break;
+        case "22P02":
+            echo("<p id='error'>Campo inválido.</p>");
+            break;
+        default:
+            echo("<p id='error'>Campo inválido.</p>");
+            break;
     }
 }
 

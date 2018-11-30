@@ -208,6 +208,9 @@
             case "22P02":
                 echo("<p id='error'>Campo inválido.</p>");
                 break;
+            default:
+                echo("<p id='error'>Campo inválido.</p>");
+                break;
         }
     }
 

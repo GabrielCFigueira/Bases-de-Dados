@@ -121,6 +121,8 @@ try
     	$numTelefone = $_REQUEST['numTelefone'];
         $instanteChamada = $_REQUEST['instanteChamada'];
         $numProcessoSocorro = $_REQUEST['numProcessoSocorro'];
+        $nomePessoa = $_REQUEST['nomePessoa'];
+        $moradaLocal = $_REQUEST['moradaLocal'];
 
         echo("<form id='form_style_evento_proc' action='UpdateQueries/runUpdate.php' method='post'>
         <input type='hidden' name='table' value='$table'/>
@@ -130,6 +132,8 @@ try
         <p id='form_title'>Associar Processo de Socorro a Evento de Emergência</p>
         <p><b>Número de Telefone:</b> $numTelefone</p>
         <p><b>Instante da Chamada:</b> $instanteChamada</p>
+        <p><b>Nome Pessoa:</b> $nomePessoa</p>
+        <p><b>Morada Local:</b> $moradaLocal</p>
         <p><b>Número de Processo de Socorro:</b></p>");
 
         assocProcess($numProcessoSocorro);
