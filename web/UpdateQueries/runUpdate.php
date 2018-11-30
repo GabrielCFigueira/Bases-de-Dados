@@ -2,7 +2,7 @@
     <head>
         <title> Insert </title>
         <link rel="stylesheet" href="../style.css"/>
-        <link rel="icon" type="image/png" href="../Postgresql.png"/>
+        <link rel="icon" type="image/png" href="../database.png"/>
     </head>
     <body>
         <center>
@@ -18,18 +18,17 @@
                 <a href="../list.php?table=Evento">Eventos de Emergência</a>
                 <ul>
                     <li><a href="../InsertQueries/insert.php?table=Evento">Inserir</a></li>
-                    <li><a href="../assoc.php?table=EventoProcesso">Associar Processo</a></li>
+                    <li><a href="../list.php?table=EventoProcesso">Associar Processo</a></li>
                 </ul>
             </li>
             <li><a href="../list.php?table=Processo">Processos de Socorro</a>
                 <ul>
-                    <li><a href="../InsertQueries/insert.php?table=Evento">Inserir</a></li>
+                    <li><a href="../InsertQueries/insert.php?table=Processo">Inserir</a></li>
                 </ul>
             </li>
             <li><a href="../list.php?table=Meio">Meios</a>
                 <ul>
                     <li><a href="../InsertQueries/insert.php?table=Meio">Inserir</a></li>
-                    <li><a href="">Listar</a></li>
                     <li><a href="../list.php?table=MeioCombate">Combate</a>
                         <ul>
                             <li><a href="../InsertQueries/insert.php?table=MeioCombate">Inserir</a></li>
@@ -45,7 +44,7 @@
                             <li><a href="../InsertQueries/insert.php?table=MeioSocorro">Inserir</a></li>
                         </ul>
                     </li>
-                    <li><a href="../assoc.php?table=MeioProcesso">Associar Processo</a></li>
+                    <li><a href="../list.php?table=MeioProcesso">Associar Processo</a></li>
                 </ul>
             </li>
             <li><a href="../list.php?table=Entidade">Entidades</a>
@@ -70,9 +69,6 @@ $table = $_REQUEST['table'];
 try 
 {
     include "../connect.php";
-    
-    $db = new PDO("pgsql:host=$host;dbname=$dbname", $user, $password);
-    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     $db->beginTransaction();
 
@@ -84,8 +80,7 @@ try
 
         $sql = "insert into Acciona(numMeio,nomeEntidade,numProcessoSocorro) values(:numMeio,:nomeEntidade,:numProcessoSocorro)";
         $result = $db->prepare($sql);
-        $result->execute([':numMeio' =>
-$numMeio, ':nomeEntidade' => $nomeEntidade, ':numProcessoSocorro' => $numProcessoSocorro]);
+        $result->execute([':numMeio' => $numMeio, ':nomeEntidade' => $nomeEntidade, ':numProcessoSocorro' => $numProcessoSocorro]);
 
         echo("<p id='list_name_success'>Processo associado com sucesso!</p>");
 
@@ -95,12 +90,7 @@ $numMeio, ':nomeEntidade' => $nomeEntidade, ':numProcessoSocorro' => $numProcess
         $numTelefone = $_POST['numTelefone'];
         $instanteChamada = $_POST['instanteChamada'];
         $numProcessoSocorro = $_POST['numProcessoSocorro'];
-
-        $sql = "select numprocessosocorro from EventoEmergencia where numTelefone = :numTelefone and instanteChamada = :instanteChamada;";
-        $result = $db->prepare($sql);
-        $result->execute([':numTelefone' => $numTelefone, ':instanteChamada' => $instanteChamada]);
-        $result->setFetchMode(PDO::FETCH_ASSOC);
-        $oldnumProcessoSocorro = $result->fetch()["numprocessosocorro"];
+        $oldnumProcessoSocorro = $_POST['oldNumProcessoSocorro'];
 
         $sql = "select 1 from EventoEmergencia where numProcessoSocorro=:numProcessoSocorro;";
         $result = $db->prepare($sql);
@@ -130,8 +120,7 @@ $numMeio, ':nomeEntidade' => $nomeEntidade, ':numProcessoSocorro' => $numProcess
 
         $sql = "update MeioCombate set numMeio = :newNumMeio, nomeEntidade = :newNomeEntidade where numMeio = :oldNumMeio and nomeEntidade = :oldNomeEntidade;";
         $result = $db->prepare($sql);
-        $result->execute([':newNumMeio' => $newNumMeio, ':newNomeEntidade' =>
-$newNomeEntidade, ':oldNumMeio' => $oldNumMeio, ':oldNomeEntidade' => $oldNomeEntidade]);
+        $result->execute([':newNumMeio' => $newNumMeio, ':newNomeEntidade' => $newNomeEntidade, ':oldNumMeio' => $oldNumMeio, ':oldNomeEntidade' => $oldNomeEntidade]);
 
         echo("<p id='list_name_success'>Meio de Combate actualizado com sucesso!</p>");
 
@@ -145,8 +134,7 @@ $newNomeEntidade, ':oldNumMeio' => $oldNumMeio, ':oldNomeEntidade' => $oldNomeEn
 
         $sql = "update MeioApoio set numMeio = :newNumMeio, nomeEntidade = :newNomeEntidade where numMeio = :oldNumMeio and nomeEntidade = :oldNomeEntidade;";
         $result = $db->prepare($sql);
-        $result->execute([':newNumMeio' => $newNumMeio, ':newNomeEntidade' =>
-$newNomeEntidade, ':oldNumMeio' => $oldNumMeio, ':oldNomeEntidade' => $oldNomeEntidade]);
+        $result->execute([':newNumMeio' => $newNumMeio, ':newNomeEntidade' => $newNomeEntidade, ':oldNumMeio' => $oldNumMeio, ':oldNomeEntidade' => $oldNomeEntidade]);
 
         echo("<p id='list_name_success'>Meio de Apoio actualizado com sucesso!</p>");
 
@@ -160,8 +148,7 @@ $newNomeEntidade, ':oldNumMeio' => $oldNumMeio, ':oldNomeEntidade' => $oldNomeEn
 
         $sql = "update MeioSocorro set numMeio = :newNumMeio, nomeEntidade = :newNomeEntidade where numMeio = :oldNumMeio and nomeEntidade = :oldNomeEntidade;";
         $result = $db->prepare($sql);
-        $result->execute([':newNumMeio' => $newNumMeio, ':newNomeEntidade' =>
-$newNomeEntidade, ':oldNumMeio' => $oldNumMeio, ':oldNomeEntidade' => $oldNomeEntidade]);
+        $result->execute([':newNumMeio' => $newNumMeio, ':newNomeEntidade' => $newNomeEntidade, ':oldNumMeio' => $oldNumMeio, ':oldNomeEntidade' => $oldNomeEntidade]);
 
         echo("<p id='list_name_success'>Meio de Socorro actualizado com sucesso!</p>");
 
@@ -187,8 +174,7 @@ catch (PDOException $e)
     case "22P02":
         echo("<p id='error'>Campo inválido.</p>");
         break;
-}
-    //echo("<p>ERROR: {$e->getMessage()}</p>");
+    }
 }
 
 

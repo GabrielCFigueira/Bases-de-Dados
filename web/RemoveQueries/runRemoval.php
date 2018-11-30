@@ -2,7 +2,7 @@
     <head>
         <title> Remover </title>
         <link rel="stylesheet" href="../style.css"/>
-        <link rel="icon" type="image/png" href="../Postgresql.png"/>
+        <link rel="icon" type="image/png" href="../database.png"/>
     </head>
     <body>
         <center>
@@ -18,18 +18,17 @@
                 <a href="../list.php?table=Evento">Eventos de Emergência</a>
                 <ul>
                     <li><a href="../InsertQueries/insert.php?table=Evento">Inserir</a></li>
-                    <li><a href="../assoc.php?table=EventoProcesso">Associar Processo</a></li>
+                    <li><a href="../list.php?table=EventoProcesso">Associar Processo</a></li>
                 </ul>
             </li>
             <li><a href="../list.php?table=Processo">Processos de Socorro</a>
                 <ul>
-                    <li><a href="../InsertQueries/insert.php?table=Evento">Inserir</a></li>
+                    <li><a href="../InsertQueries/insert.php?table=Processo">Inserir</a></li>
                 </ul>
             </li>
             <li><a href="../list.php?table=Meio">Meios</a>
                 <ul>
                     <li><a href="../InsertQueries/insert.php?table=Meio">Inserir</a></li>
-                    <li><a href="">Listar</a></li>
                     <li><a href="../list.php?table=MeioCombate">Combate</a>
                         <ul>
                             <li><a href="../InsertQueries/insert.php?table=MeioCombate">Inserir</a></li>
@@ -45,7 +44,7 @@
                             <li><a href="../InsertQueries/insert.php?table=MeioSocorro">Inserir</a></li>
                         </ul>
                     </li>
-                    <li><a href="../assoc.php?table=MeioProcesso">Associar Processo</a></li>
+                    <li><a href="../list.php?table=MeioProcesso">Associar Processo</a></li>
                 </ul>
             </li>
             <li><a href="../list.php?table=Entidade">Entidades</a>
@@ -69,9 +68,6 @@
     try 
     {
         include "../connect.php";
-        
-        $db = new PDO("pgsql:host=$host;dbname=$dbname", $user, $password);
-        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         $db->beginTransaction(); 
 
@@ -201,7 +197,6 @@
     }
     catch (PDOException $e)
     {
-
         $db->rollBack();
         switch($e->getCode()){
             case "23505":
@@ -214,7 +209,6 @@
                 echo("<p id='error'>Campo inválido.</p>");
                 break;
         }
-
     }
 
 ?>

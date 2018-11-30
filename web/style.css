@@ -15,8 +15,23 @@
     color: inherit;
 }
 
+#combo_style {
+    width: 50%;
+    padding: 10px 10px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 2px solid #dddddd;
+    border-radius: 50px;
+    outline: none;
+    font-size: 12px;
+    height: 28pt;
+    -webkit-transition: width .35s ease-in-out;
+    transition: width .35s ease-in-out;
+    background-color: #ffffff;
+}
+
 #input_style {
-    width: 200px;
+    width: 50%;
     padding: 10px 10px;
     margin: 8px 0;
     box-sizing: border-box;
@@ -151,7 +166,7 @@
 #div_list_w_input{
     max-width: 490px;
     overflow: scroll;
-    max-height: 340pt;
+    max-height: 280pt;
     background: #FAFAFA;
     box-shadow: 1px 1px 20px #555555;
     border-radius: 10px;
@@ -163,7 +178,7 @@
 #div_list_w_input_soc{
     max-width: 1030px;
     overflow: scroll;
-    max-height: 340pt;
+    max-height: 280pt;
     background: #FAFAFA;
     box-shadow: 1px 1px 20px #555555;
     border-radius: 10px;
@@ -176,7 +191,7 @@
     width: fit-content;
     width: -moz-fit-content;
     overflow: scroll;
-    height: 400pt;
+    max-height: 350pt;
     background: #FAFAFA;
     box-shadow: 1px 1px 20px #555555;
     border-radius: 10px;
@@ -192,10 +207,22 @@
 }
 
 #edit:hover {
-    text-decoration: underline;
-    color: blue;
+    text-decoration: none;
+    color: #0186ba;
+    font-style: italic;
 }
 
+#remove{
+    text-decoration: underline;
+    color: black;
+    font-weight: bold;
+}
+
+#remove:hover {
+    text-decoration: none;
+    color: #dd3333;
+    font-style: italic;
+}
 
 #menu, #menu ul {
     margin: 0;
@@ -221,14 +248,6 @@
     padding: 100px;
 }
 
-#div_input_assoc{
-    float: left;
-    margin-left: inherit;
-    margin-right: 10px;
-    width: 50%;
-    text-align: left;
-}
-
 #div_table_assoc_meio_proc{
     overflow: scroll;
     height: 340pt;
@@ -240,13 +259,6 @@
     border-radius: 10px;
     border: 6px solid #555555;
     float: left;
-}
-
-#div_input_assoc_evento_proc{
-    float: left;
-    margin-left: 10px;
-    margin-right: 10px;
-    text-align: left;
 }
 
 #div_table_assoc_evento_proc{

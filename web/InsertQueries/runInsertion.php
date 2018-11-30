@@ -2,7 +2,7 @@
     <head>
         <title> Inserir </title>
         <link rel="stylesheet" href="../style.css"/>
-        <link rel="icon" type="image/png" href="../Postgresql.png"/>
+        <link rel="icon" type="image/png" href="../database.png"/>
     </head>
     <body>
         <center>
@@ -18,18 +18,17 @@
                 <a href="../list.php?table=Evento">Eventos de Emergência</a>
                 <ul>
                     <li><a href="../InsertQueries/insert.php?table=Evento">Inserir</a></li>
-                    <li><a href="../assoc.php?table=EventoProcesso">Associar Processo</a></li>
+                    <li><a href="../list.php?table=EventoProcesso">Associar Processo</a></li>
                 </ul>
             </li>
             <li><a href="../list.php?table=Processo">Processos de Socorro</a>
                 <ul>
-                    <li><a href="../InsertQueries/insert.php?table=Evento">Inserir</a></li>
+                    <li><a href="../InsertQueries/insert.php?table=Processo">Inserir</a></li>
                 </ul>
             </li>
             <li><a href="../list.php?table=Meio">Meios</a>
                 <ul>
                     <li><a href="../InsertQueries/insert.php?table=Meio">Inserir</a></li>
-                    <li><a href="">Listar</a></li>
                     <li><a href="../list.php?table=MeioCombate">Combate</a>
                         <ul>
                             <li><a href="../InsertQueries/insert.php?table=MeioCombate">Inserir</a></li>
@@ -45,7 +44,7 @@
                             <li><a href="../InsertQueries/insert.php?table=MeioSocorro">Inserir</a></li>
                         </ul>
                     </li>
-                    <li><a href="../assoc.php?table=MeioProcesso">Associar Processo</a></li>
+                    <li><a href="../list.php?table=MeioProcesso">Associar Processo</a></li>
                 </ul>
             </li>
             <li><a href="../list.php?table=Entidade">Entidades</a>
@@ -69,9 +68,6 @@
     try 
     {
         include "../connect.php";
-        
-        $db = new PDO("pgsql:host=$host;dbname=$dbname", $user, $password);
-        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         $db->beginTransaction(); 
 
@@ -87,7 +83,7 @@
             echo("<p id='list_name_success'>Local inserido com sucesso!</p>");
 
 
-        } else  if ($table == "Evento") {
+        } else  if ($table == "Processo") {
 
             $numTelefone = $_POST['numTelefone'];
             $instanteChamada = $_POST['instanteChamada'];
@@ -95,27 +91,32 @@
             $moradaLocal = $_POST['moradaLocal'];
             $numProcessoSocorro = $_POST['numProcessoSocorro'];
 
-            $sql = "select 1 from ProcessoSocorro where numProcessoSocorro=:numProcessoSocorro;";
+            $sql = "insert into ProcessoSocorro(numProcessoSocorro) values(:numProcessoSocorro);";
             $result = $db->prepare($sql);
             $result->execute([':numProcessoSocorro' => $numProcessoSocorro]);
-            $count = $result->rowCount();
 
-            if($count == 0){
-                $sql = "insert into ProcessoSocorro(numProcessoSocorro) values(:numProcessoSocorro);";
-                $result = $db->prepare($sql);
-                $result->execute([':numProcessoSocorro' => $numProcessoSocorro]);
+            echo("<p id='list_name_success'>Processo de Socorro inserido com sucesso!</p>");
 
-                echo("<p id='list_name_success'>Processo de Socorro inserido com sucesso!</p>");
-            }
-
-            $sql = "insert into EventoEmergencia(numTelefone, instanteChamada, nomePessoa, moradaLocal, numProcessoSocorro) 
-values(:numTelefone, :instanteChamada, :nomePessoa, :moradaLocal, :numProcessoSocorro);";
+            $sql = "insert into EventoEmergencia(numTelefone, instanteChamada, nomePessoa, moradaLocal, numProcessoSocorro) values(:numTelefone, :instanteChamada, :nomePessoa, :moradaLocal, :numProcessoSocorro);";
             $result = $db->prepare($sql);   
-            $result->execute([':moradaLocal' => $moradaLocal, ':numTelefone' => $numTelefone, ':instanteChamada' => $instanteChamada,
-':nomePessoa' => $nomePessoa, ':numProcessoSocorro' => $numProcessoSocorro]);
+            $result->execute([':moradaLocal' => $moradaLocal, ':numTelefone' => $numTelefone, ':instanteChamada' => $instanteChamada, ':nomePessoa' => $nomePessoa, ':numProcessoSocorro' => $numProcessoSocorro]);
 
             echo("<p id='list_name_success'>Evento de Emergência inserido com sucesso!</p>");
 
+
+        } else  if ($table == "Evento"){
+
+            $numTelefone = $_POST['numTelefone'];
+            $instanteChamada = $_POST['instanteChamada'];
+            $nomePessoa = $_POST['nomePessoa'];
+            $moradaLocal = $_POST['moradaLocal'];
+            $numProcessoSocorro = $_POST['numProcessoSocorro'];
+
+            $sql = "insert into EventoEmergencia(numTelefone, instanteChamada, nomePessoa, moradaLocal, numProcessoSocorro) values(:numTelefone, :instanteChamada, :nomePessoa, :moradaLocal, :numProcessoSocorro);";
+            $result = $db->prepare($sql);   
+            $result->execute([':moradaLocal' => $moradaLocal, ':numTelefone' => $numTelefone, ':instanteChamada' => $instanteChamada, ':nomePessoa' => $nomePessoa, ':numProcessoSocorro' => $numProcessoSocorro]);
+
+            echo("<p id='list_name_success'>Evento de Emergência inserido com sucesso!</p>");
 
         } else  if ($table == "Meio") {
 
@@ -189,8 +190,7 @@ values(:numTelefone, :instanteChamada, :nomePessoa, :moradaLocal, :numProcessoSo
 
             $sql = "insert into Acciona(numMeio,nomeEntidade,numProcessoSocorro) values(:numMeio,:nomeEntidade,:numProcessoSocorro)";
             $result = $db->prepare($sql);
-            $result->execute([':numMeio' =>
-    $numMeio, ':nomeEntidade' => $nomeEntidade, ':numProcessoSocorro' => $numProcessoSocorro]);
+            $result->execute([':numMeio' => $numMeio, ':nomeEntidade' => $nomeEntidade, ':numProcessoSocorro' => $numProcessoSocorro]);
 
             echo("<p id='list_name_success'>Processo associado com sucesso!</p>");
 
@@ -206,7 +206,6 @@ values(:numTelefone, :instanteChamada, :nomePessoa, :moradaLocal, :numProcessoSo
     catch (PDOException $e)
     {
         $db->rollBack();
-        //echo("<p>ERROR: {$e->getMessage()}</p>");
         switch($e->getCode()){
             case "23505":
                 echo("<p id='error'>Chave duplicada. O elemento não foi inserido.</p>");
@@ -218,7 +217,6 @@ values(:numTelefone, :instanteChamada, :nomePessoa, :moradaLocal, :numProcessoSo
                 echo("<p id='error'>Campo inválido.</p>");
                 break;
         }
-
     }
 
 ?>

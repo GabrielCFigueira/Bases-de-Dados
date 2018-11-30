@@ -37,21 +37,19 @@ group by numProcessoSocorro) as Aud_EE
 where Acc_EE.numAcc > Aud_EE.numAud;
 
 --4.
-select count(numSegmento) as totalSegmentos
-from (select numSegmento
+select count(1) as totalSegmentos
 from Vigia
 natural join Video
 natural join SegmentoVideo
 where duracao > '00:01:00'
 and moradaLocal = 'Monchique'
-and date_part('year', dataHoraInicio) = '2018'
-and date_part('month', dataHoraInicio) = '08'
-group by numSegmento) as segmentos;
+and dataHoraInicio >= '2018-08-01 00:00:00'
+and dataHoraFim < '2018-09-01 00:00:00';
 
 --5.
-select distinct numMeio
+select *
 from MeioCombate
-where numMeio not in (select numMeio
+where (numMeio,nomeEntidade) not in (select numMeio, nomeEntidade
                       from MeioApoio
                       natural join Acciona);
 
@@ -60,7 +58,7 @@ select nomeEntidade
 from MeioCombate m_c1
 where not exists(
     select distinct numProcessoSocorro
-    from ProcessoSocorro
+    from Acciona
     except
     select distinct numProcessoSocorro
     from (Acciona

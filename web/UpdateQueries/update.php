@@ -2,7 +2,7 @@
     <head>
         <title> Insert </title>
         <link rel="stylesheet" href="../style.css"/>
-        <link rel="icon" type="image/png" href="../Postgresql.png"/>
+        <link rel="icon" type="image/png" href="../database.png"/>
     </head>
     <body>
         <center>
@@ -18,18 +18,17 @@
                 <a href="../list.php?table=Evento">Eventos de Emergência</a>
                 <ul>
                     <li><a href="../InsertQueries/insert.php?table=Evento">Inserir</a></li>
-                    <li><a href="../assoc.php?table=EventoProcesso">Associar Processo</a></li>
+                    <li><a href="../list.php?table=EventoProcesso">Associar Processo</a></li>
                 </ul>
             </li>
             <li><a href="../list.php?table=Processo">Processos de Socorro</a>
                 <ul>
-                    <li><a href="../InsertQueries/insert.php?table=Evento">Inserir</a></li>
+                    <li><a href="../InsertQueries/insert.php?table=Processo">Inserir</a></li>
                 </ul>
             </li>
             <li><a href="../list.php?table=Meio">Meios</a>
                 <ul>
                     <li><a href="../InsertQueries/insert.php?table=Meio">Inserir</a></li>
-                    <li><a href="">Listar</a></li>
                     <li><a href="../list.php?table=MeioCombate">Combate</a>
                         <ul>
                             <li><a href="../InsertQueries/insert.php?table=MeioCombate">Inserir</a></li>
@@ -45,7 +44,7 @@
                             <li><a href="../InsertQueries/insert.php?table=MeioSocorro">Inserir</a></li>
                         </ul>
                     </li>
-                    <li><a href="../assoc.php?table=MeioProcesso">Associar Processo</a></li>
+                    <li><a href="../list.php?table=MeioProcesso">Associar Processo</a></li>
                 </ul>
             </li>
             <li><a href="../list.php?table=Entidade">Entidades</a>
@@ -89,9 +88,6 @@
 
     try {
         include "../connect.php";
-        
-        $db = new PDO("pgsql:host=$host;dbname=$dbname", $user, $password);
-        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         if ($table == "MeioCombate"  || $table == "MeioApoio" || $table == "MeioSocorro") {
 
@@ -99,17 +95,17 @@
             $nomeEntidade = $_REQUEST['nomeEntidade'];
 
             echo("<div id='div_50_percent'><div id='div_update_meios'><form id='form_style' action='runUpdate.php?table=$table&numMeio=$numMeio&nomeEntidade=$nomeEntidade' method='post'><p><input type='hidden' name='table' value='$table'/></p>");
-            if ($table == "EditarMeioCombate"){
+            if ($table == "MeioCombate"){
                 echo("<p id='form_title'>Editar Meio de Combate</p>");
-            }else if ($table == "EditarMeioApoio"){
+            }else if ($table == "MeioApoio"){
                 echo("<p id='form_title'>Editar Meio de Apoio</p>");
-            }else if($table == "EditarMeioSocorro"){
+            }else if($table == "MeioSocorro"){
                 echo("<p id='form_title'>Editar Meio de Socorro</p>");
             }
             echo("<p>Número do Meio:</p> <input id='input_style' type='text' name='newNumMeio' value='$numMeio'/>
             <p>Nome Entidade:</p> <input id='input_style' type='text' name='newNomeEntidade' value='$nomeEntidade'/>
             <br>
-            <input id='button_style' type='submit' value='Submit'/>
+            <input id='button_style' type='submit' value='Submeter'/>
             </form></div></div>");
 
             $sql = "select numMeio, nomeEntidade from Meio group by numMeio, nomeEntidade order by numMeio, nomeEntidade;";

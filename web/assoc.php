@@ -2,7 +2,7 @@
     <head>
         <title> Associar </title>
         <link rel="stylesheet" href="style.css"/>
-        <link rel="icon" type="image/png" href="Postgresql.png"/>
+        <link rel="icon" type="image/png" href="database.png"/>
     </head>
     <body>
     <center>
@@ -18,12 +18,12 @@
                 <a href="list.php?table=Evento">Eventos de Emergência</a>
                 <ul>
                     <li><a href="InsertQueries/insert.php?table=Evento">Inserir</a></li>
-                    <li><a href="assoc.php?table=EventoProcesso">Associar Processo</a></li>
+                    <li><a href="list.php?table=EventoProcesso">Associar Processo</a></li>
                 </ul>
             </li>
             <li><a href="list.php?table=Processo">Processos de Socorro</a>
                 <ul>
-                    <li><a href="InsertQueries/insert.php?table=Evento">Inserir</a></li>
+                    <li><a href="InsertQueries/insert.php?table=Processo">Inserir</a></li>
                 </ul>
             </li>
             <li><a href="list.php?table=Meio">Meios</a>
@@ -44,7 +44,7 @@
                             <li><a href="InsertQueries/insert.php?table=MeioSocorro">Inserir</a></li>
                         </ul>
                     </li>
-                    <li><a href="assoc.php?table=MeioProcesso">Associar Processo</a></li>
+                    <li><a href="list.php?table=MeioProcesso">Associar Processo</a></li>
                 </ul>
             </li>
             <li><a href="list.php?table=Entidade">Entidades</a>
@@ -61,32 +61,34 @@
                 </ul>
             </li>
         </ul>
-    <center>
 <?php
 
-function printQuery($result,$name) {
-    if ($name == "MeioProcesso"){
-        echo("<div id='div_table_assoc_meio_proc'>");
-    }else if ($name == "EventoProcesso"){
-        echo("<div id='div_table_assoc_evento_proc'>");
-    }
+function assocProcess($numProcessoSocorro) {
 
-    echo("<table border='1'>");
-    if ($name == "MeioProcesso") {
-        echo("<tr><th>Numero Meio</th><th>Nome Meio</th><th>Nome Entidade</th><th>Número de Processo do Socorro</th></tr>\n");
-    }else if ($name == "EventoProcesso"){
-        echo("<tr><th>Numero Telefone</th><th>Instante Chamada</th><th>Nome Pessoa</th><th>Morada Local</th><th>Numero Processo Socorro</th></tr>\n");
-    }
+		include "connect.php";
 
-    $result->setFetchMode(PDO::FETCH_ASSOC);   
-    while($row = $result->fetch()){ 
-        echo("<tr>"); 
-        foreach($row as $key=>$val) { 
-            echo("<td> $val </td>\n"); 
+    	echo("<select id='combo_style' name='numProcessoSocorro'>");
+
+        $sql = "select * from ProcessoSocorro;";
+        $result = $db->prepare($sql);
+
+        $result->execute();
+
+        $result->setFetchMode(PDO::FETCH_ASSOC);
+
+        if (empty($numProcessoSocorro))
+            echo("<option value='NULL' selected > Escolha um número </option>\n");
+
+        while($row = $result->fetch()){ 
+            foreach($row as $key=>$val) {
+            	if ($val == $numProcessoSocorro)
+            		echo("<option value=$val selected > $val </option>\n");
+            	else
+                	echo("<option value=$val> $val </option>\n");
+            }
         }
-        echo("</tr>");
-    }
-    echo("</table></div>");
+
+        echo("</select>");
 }
 
 $table = $_REQUEST['table'];
@@ -94,52 +96,47 @@ $table = $_REQUEST['table'];
 
 try 
 {
-    include "connect.php";
-    
-    $db = new PDO("pgsql:host=$host;dbname=$dbname", $user, $password);
-    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-
-
     if ($table == "MeioProcesso") {
 
-        $sql = "select m.numMeio, m.nomeMeio, m.nomeEntidade, numProcessoSocorro from Meio m left outer join acciona a 
-on m.nomeEntidade = a.nomeEntidade and m.numMeio = a.numMeio order by nomeEntidade, numMeio;";
-        $result = $db->prepare($sql);
+    	$numMeio = $_REQUEST['numMeio'];
+        $nomeEntidade = $_REQUEST['nomeEntidade'];
 
-        $result->execute();
-
-        echo("<div id='div_input_assoc'><form id='form_style' action='InsertQueries/runInsertion.php' method='post'>
+        echo("<form id='form_style' action='InsertQueries/runInsertion.php' method='post'>
         <p><input type='hidden' name='table' value='$table'/></p>
-        <p id='form_title'>Associar Meio a Processo de Socorro</p>
-        <p>Número do Meio:</p> <input id='input_style' type='text' name='numMeio'/>
-        <p>Nome da Entidade Detentora do Meio:</p> <input id='input_style' type='text' name='nomeEntidade'/>
-        <p>Número de Processo de Socorro:</p> <input id='input_style' type='text' name='numProcessoSocorro'/>
-        <br>
-        <input id='button_style' type='submit' value='Submit'/>
-        </form></div>");
+        <input type='hidden' name='numMeio' value='$numMeio'/>
+        <input type='hidden' name='nomeEntidade' value='$nomeEntidade'/>
+        <p id='form_title'>Associar Processo de Socorro a Meio</p>
+        <p><b>Número do Meio:</b> $numMeio</p>
+        <p><b>Nome da Entidade Detentora do Meio:</b> $nomeEntidade</p>
+        <p><b>Número de Processo de Socorro:</b></p>");
 
-        printQuery($result, $table);
+        assocProcess("");
+
+        echo("<br>
+        <input id='button_style' type='submit' value='Submeter'/>
+        </form>");
     }
     else if ($table == "EventoProcesso") {
 
-        $sql = "select numTelefone, instanteChamada, nomePessoa, moradaLocal, e.numProcessoSocorro from EventoEmergencia e 
-left outer join ProcessoSocorro p on e.numProcessoSocorro=p.numProcessoSocorro order by e.numTelefone, e.instanteChamada;";
-        $result = $db->prepare($sql);
+    	$numTelefone = $_REQUEST['numTelefone'];
+        $instanteChamada = $_REQUEST['instanteChamada'];
+        $numProcessoSocorro = $_REQUEST['numProcessoSocorro'];
+        
+        echo("<form id='form_style_evento_proc' action='UpdateQueries/runUpdate.php' method='post'>
+        <input type='hidden' name='table' value='$table'/>
+        <input type='hidden' name='numTelefone' value='$numTelefone'/>
+        <input type='hidden' name='instanteChamada' value='$instanteChamada'/>
+        <input type='hidden' name='oldNumProcessoSocorro' value='$numProcessoSocorro'/>
+        <p id='form_title'>Associar Processo de Socorro a Evento de Emergência</p>
+        <p><b>Número de Telefone:</b> $numTelefone</p>
+        <p><b>Instante da Chamada:</b> $instanteChamada</p>
+        <p><b>Número de Processo de Socorro:</b></p>");
 
-        $result->execute();
-
-        echo("<div id='div_input_assoc_evento_proc'><form id='form_style_evento_proc' action='UpdateQueries/runUpdate.php' method='post'>
-        <p><input type='hidden' name='table' value='$table'/></p>
-        <p id='form_title'>Associar Evento de Emergência a Processo de Socorro</p>
-        <p>Número de Telefone:</p> <input id='input_style' type='text' name='numTelefone'/>
-        <p>Instante da Chamada:</p> <input id='input_style' type='text' name='instanteChamada'/>
-        <p>Número de Processo de Socorro:</p> <input id='input_style' type='text' name='numProcessoSocorro'/>
-        <br>
-        <input id='button_style' type='submit' value='Submit'/>
-        </form></div>");
-
-        printQuery($result, $table);
+        assocProcess($numProcessoSocorro);
+        
+        echo("<br>
+        <input id='button_style' type='submit' value='Submeter'/>
+        </form>");
     }
     
     else {
@@ -155,6 +152,5 @@ catch (PDOException $e)
 
 
 ?>
-</center>
     </body>
 </html>

@@ -2,7 +2,7 @@
     <head>
         <title> Inserir </title>
         <link rel="stylesheet" href="../style.css"/>
-        <link rel="icon" type="image/png" href="../Postgresql.png"/>
+        <link rel="icon" type="image/png" href="../database.png"/>
     </head>
     <body>
         <center>
@@ -18,18 +18,17 @@
                 <a href="../list.php?table=Evento">Eventos de Emergência</a>
                 <ul>
                     <li><a href="../InsertQueries/insert.php?table=Evento">Inserir</a></li>
-                    <li><a href="../assoc.php?table=EventoProcesso">Associar Processo</a></li>
+                    <li><a href="../list.php?table=EventoProcesso">Associar Processo</a></li>
                 </ul>
             </li>
             <li><a href="../list.php?table=Processo">Processos de Socorro</a>
                 <ul>
-                    <li><a href="../InsertQueries/insert.php?table=Evento">Inserir</a></li>
+                    <li><a href="../InsertQueries/insert.php?table=Processo">Inserir</a></li>
                 </ul>
             </li>
             <li><a href="../list.php?table=Meio">Meios</a>
                 <ul>
                     <li><a href="../InsertQueries/insert.php?table=Meio">Inserir</a></li>
-                    <li><a href="">Listar</a></li>
                     <li><a href="../list.php?table=MeioCombate">Combate</a>
                         <ul>
                             <li><a href="../InsertQueries/insert.php?table=MeioCombate">Inserir</a></li>
@@ -45,7 +44,7 @@
                             <li><a href="../InsertQueries/insert.php?table=MeioSocorro">Inserir</a></li>
                         </ul>
                     </li>
-                    <li><a href="../assoc.php?table=MeioProcesso">Associar Processo</a></li>
+                    <li><a href="../list.php?table=MeioProcesso">Associar Processo</a></li>
                 </ul>
             </li>
             <li><a href="../list.php?table=Entidade">Entidades</a>
@@ -64,6 +63,24 @@
         </ul>
 <?php
 
+    function select_html($result, $name) {
+
+        echo("<select id='combo_style' name='$name'>");
+
+        echo("<option value='NULL' selected > Escolha uma opção </option>\n");
+
+        $result->setFetchMode(PDO::FETCH_ASSOC);
+        while($row = $result->fetch()){ 
+            foreach($row as $key=>$val) {
+                echo("<option value=$val> $val </option>\n");
+            }
+        }
+
+        echo("</select>");
+    }
+
+    include "../connect.php";
+
     $table = $_REQUEST['table'];
 
     if ($table == "Local") {
@@ -73,10 +90,32 @@
         <p id='form_title'>Inserir novo Local</p>
         <p>Morada do Local:</p> <input id='input_style' type='text' name='moradaLocal'/>
         <br>
-        <input id='button_style' type='submit' value='Submit'/>
+        <input id='button_style' type='submit' value='Submeter'/>
         </form>");
 
-    } else  if ($table == "Evento") {
+    } else  if ($table == "Processo") {
+        
+        echo("<form id='form_style' action='runInsertion.php' method='post'>
+        <p><input type='hidden' name='table' value='$table'/></p>
+        <p id='form_title'>Inserir novo Processo de Socorro</p>
+        <p>Número de Processo Socorro:</p> <input id='input_style' type='text' name='numProcessoSocorro'/>
+        <p id='form_title'>Insira um Evento de Emergência</p>
+        <p>Número de Telefone:</p> <input id='input_style' type='text' name='numTelefone'/>
+        <p>Instante da Chamada:</p> <input id='input_style' type='text' name='instanteChamada'/>
+        <p>Nome da Pessoa:</p> <input id='input_style' type='text' name='nomePessoa'/>
+        <p>Morada do Local:</p>");
+
+        $sql = "select * from local order by moradaLocal;";
+        $result = $db->prepare($sql);
+        $result->execute();
+        
+        select_html($result, "moradaLocal");
+
+        echo("<br>
+        <input id='button_style' type='submit' value='Submeter'/>
+        </form>");
+
+    } else if($table == "Evento") {
 
         echo("<form id='form_style' action='runInsertion.php' method='post'>
         <p><input type='hidden' name='table' value='$table'/></p>
@@ -84,10 +123,24 @@
         <p>Número de Telefone:</p> <input id='input_style' type='text' name='numTelefone'/>
         <p>Instante da Chamada:</p> <input id='input_style' type='text' name='instanteChamada'/>
         <p>Nome da Pessoa:</p> <input id='input_style' type='text' name='nomePessoa'/>
-        <p>Morada do Local:</p> <input id='input_style' type='text' name='moradaLocal'/>
-        <p>Número de Processo de Socorro:</p> <input id='input_style' type='text' name='numProcessoSocorro'/>
-        <br>
-        <input id='button_style' type='submit' value='Submit'/>
+        <p>Morada do Local:</p>");
+
+        $sql = "select * from local order by moradaLocal;";
+        $result = $db->prepare($sql);
+        $result->execute();
+        
+        select_html($result, "moradaLocal");
+
+        echo("<p>Número de Processo de Socorro:</p>");
+
+        $sql = "select * from processosocorro order by numprocessosocorro;";
+        $result = $db->prepare($sql);
+        $result->execute();
+        
+        select_html($result, "numProcessoSocorro");
+
+        echo("<br>
+        <input id='button_style' type='submit' value='Submeter'/>
         </form>");
 
     } else  if ($table == "Meio") {
@@ -97,9 +150,16 @@
         <p id='form_title'>Inserir novo Meio</p>
         <p>Número do Meio:</p> <input id='input_style' type='text' name='numMeio'/>
         <p>Nome do Meio:</p> <input id='input_style' type='text' name='nomeMeio'/>
-        <p>Nome da Entidade Detentora do Meio:</p> <input id='input_style' type='text' name='nomeEntidade'/>
-        <br>
-        <input id='button_style' type='submit' value='Submit'/>
+        <p>Nome da Entidade Detentora do Meio:</p>");
+
+        $sql = "select * from entidademeio order by nomeentidade;";
+        $result = $db->prepare($sql);
+        $result->execute();
+        
+        select_html($result, "nomeEntidade");
+
+        echo("<br>
+        <input id='button_style' type='submit' value='Submeter'/>
         </form>");
 
     } else  if ($table == "Entidade") {
@@ -109,7 +169,7 @@
         <p id='form_title'>Inserir nova Entidade</p>
         <p>Nome da Entidade:</p> <input id='input_style' type='text' name='nomeEntidade'/>
         <br>
-        <input id='button_style' type='submit' value='Submit'/>
+        <input id='button_style' type='submit' value='Submeter'/>
         </form>");
 
     } else  if ($table == "MeioCombate") {
@@ -120,7 +180,7 @@
         <p>Número do Meio:</p> <input id='input_style' type='text' name='numMeio'/>
         <p>Nome Entidade:</p> <input id='input_style' type='text' name='nomeEntidade'/>
         <br>
-        <input id='button_style' type='submit' value='Submit'/>
+        <input id='button_style' type='submit' value='Submeter'/>
         </form>");
 
     } else  if ($table == "MeioApoio") {
@@ -131,7 +191,7 @@
         <p>Número do Meio:</p> <input id='input_style' type='text' name='numMeio'/>
         <p>Nome Entidade:</p> <input id='input_style' type='text' name='nomeEntidade'/>
         <br>
-        <input id='button_style' type='submit' value='Submit'/>
+        <input id='button_style' type='submit' value='Submeter'/>
         </form>");
 
     } else  if ($table == "MeioSocorro") {
@@ -142,7 +202,7 @@
         <p>Número do Meio:</p> <input id='input_style' type='text' name='numMeio'/>
         <p>Nome Entidade:</p> <input id='input_style' type='text' name='nomeEntidade'/>
         <br>
-        <input id='button_style' type='submit' value='Submit'/>
+        <input id='button_style' type='submit' value='Submeter'/>
         </form>");
 
     } else {
