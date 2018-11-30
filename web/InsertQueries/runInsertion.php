@@ -41,11 +41,11 @@
             $result = $db->prepare($sql);
             $result->execute([':numProcessoSocorro' => $numProcessoSocorro]);
 
-            echo("<p id='list_name_success'>Processo de Socorro inserido com sucesso!</p>");
-
             $sql = "insert into EventoEmergencia(numTelefone, instanteChamada, nomePessoa, moradaLocal, numProcessoSocorro) values(:numTelefone, :instanteChamada, :nomePessoa, :moradaLocal, :numProcessoSocorro);";
             $result = $db->prepare($sql);   
             $result->execute([':moradaLocal' => $moradaLocal, ':numTelefone' => $numTelefone, ':instanteChamada' => $instanteChamada, ':nomePessoa' => $nomePessoa, ':numProcessoSocorro' => $numProcessoSocorro]);
+
+            echo("<p id='list_name_success'>Processo de Socorro inserido com sucesso!</p>");
 
             echo("<p id='list_name_success'>Evento de Emergência inserido com sucesso!</p>");
 
