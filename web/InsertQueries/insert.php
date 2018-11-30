@@ -67,8 +67,8 @@
         <p><input type='hidden' name='table' value='$table'/></p>
         <p id='form_title'>Inserir novo Evento de Emergência</p>
         <p><b>Número de Telefone:</b></p> <input id='input_style' type='text' name='numTelefone'/>
-        <p><b>Instante da Chamada:</b></p> <input id='input_style' type='text' name='instanteChamada'/>
-        <p><b>Nome da Pessoa:</b>(aaaa-mm-dd hh:mm:ss)</p> <input id='input_style' type='text' name='nomePessoa'/>
+        <p><b>Instante da Chamada:</b>(aaaa-mm-dd hh:mm:ss)</p> <input id='input_style' type='text' name='instanteChamada'/>
+        <p><b>Nome da Pessoa:</b></p> <input id='input_style' type='text' name='nomePessoa'/>
         <p><b>Morada do Local:</b></p>");
 
         $sql = "select * from local order by moradaLocal;";
