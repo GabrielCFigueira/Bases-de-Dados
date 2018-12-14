@@ -1,7 +1,7 @@
-drop table facto;
-drop table d_tempo;
-drop table d_meio;
-drop table d_evento;
+drop table if exists facto;
+drop table if exists d_tempo;
+drop table if exists d_meio;
+drop table if exists d_evento;
 
 create table d_evento(
     idEvento serial not null,
